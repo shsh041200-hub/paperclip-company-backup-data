@@ -8,15 +8,16 @@
 
 | Content | Count |
 |---------|-------|
-| Agents | 2 |
+| Agents | 3 |
 | Projects | 1 |
-| Skills | 18 |
-| Tasks | 22 |
+| Skills | 19 |
+| Tasks | 8 |
 
 ### Agents
 
 | Agent | Role | Reports To |
 |-------|------|------------|
+| Backend Engineer | Engineer | ceo |
 | CEO | CEO | — |
 | CTO | CTO | ceo |
 
@@ -44,6 +45,7 @@
 | packlinx-decision-log | Required reasoning protocol for any non-trivial decision at Packlinx — options, benchmark, decision, reversibility. Mandatory before allocating budget, hiring, committing the company to a direction, or shipping any user-facing change. | catalog |
 | paperclip-create-agent | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-agent) |
 | paperclip-create-plugin | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-plugin) |
+| paperclip-dev | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-dev) |
 | paperclip | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip) |
 | para-memory-files | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/para-memory-files) |
 

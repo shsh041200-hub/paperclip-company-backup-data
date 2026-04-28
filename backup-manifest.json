@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-28T02:44:03.120Z",
+  "generatedAt": "2026-04-28T14:05:02.965Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -12,9 +12,59 @@
     "issues": true,
     "skills": true
   },
-  "counts": null,
+  "counts": {
+    "files": 43,
+    "agents": 3,
+    "skills": 19,
+    "projects": 1,
+    "issues": 8
+  },
   "warnings": [
     "Skipped 10 terminated agents from export."
   ],
-  "fileInventory": null
+  "fileInventory": [
+    ".paperclip.yaml",
+    "COMPANY.md",
+    "README.md",
+    "agents/backend-engineer/AGENTS.md",
+    "agents/backend-engineer/HEARTBEAT.md",
+    "agents/backend-engineer/SOUL.md",
+    "agents/ceo/AGENTS.md",
+    "agents/ceo/HEARTBEAT.md",
+    "agents/ceo/SOUL.md",
+    "agents/cto/AGENTS.md",
+    "agents/cto/HEARTBEAT.md",
+    "agents/cto/SOUL.md",
+    "agents/cto/runs/2026-04-28-0233-decisions.md",
+    "agents/cto/runs/2026-04-28-0330-decisions.md",
+    "images/org-chart.png",
+    "projects/packlinx-website/PROJECT.md",
+    "skills/company/PACAA/benchmark-methodology/SKILL.md",
+    "skills/company/PACAA/encoding-discipline/SKILL.md",
+    "skills/company/PACAA/packlinx-context/SKILL.md",
+    "skills/local/backend-engineer-playbook/SKILL.md",
+    "skills/local/cmo-playbook/SKILL.md",
+    "skills/local/coo-playbook/SKILL.md",
+    "skills/local/cto-playbook/SKILL.md",
+    "skills/local/designer-playbook/SKILL.md",
+    "skills/local/frontend-engineer-playbook/SKILL.md",
+    "skills/local/head-of-sales-playbook/SKILL.md",
+    "skills/local/hop-playbook/SKILL.md",
+    "skills/local/legal-counsel-playbook/SKILL.md",
+    "skills/local/packlinx-comms/SKILL.md",
+    "skills/local/packlinx-decision-log/SKILL.md",
+    "skills/paperclipai/paperclip/paperclip-create-agent/SKILL.md",
+    "skills/paperclipai/paperclip/paperclip-create-plugin/SKILL.md",
+    "skills/paperclipai/paperclip/paperclip-dev/SKILL.md",
+    "skills/paperclipai/paperclip/paperclip/SKILL.md",
+    "skills/paperclipai/paperclip/para-memory-files/SKILL.md",
+    "tasks/daily-company-packages-backup/TASK.md",
+    "tasks/pacaa-16/TASK.md",
+    "tasks/pacaa-17/TASK.md",
+    "tasks/pacaa-18/TASK.md",
+    "tasks/pacaa-19/TASK.md",
+    "tasks/pacaa-2/TASK.md",
+    "tasks/pacaa-21/TASK.md",
+    "tasks/pacaa-47/TASK.md"
+  ]
 }

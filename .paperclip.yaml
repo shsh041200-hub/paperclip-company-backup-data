@@ -1,9 +1,21 @@
 schema: "paperclip/v1"
 agents:
+  backend-engineer:
+    role: "engineer"
+    icon: "code"
+    capabilities: "Owns the Packlinx data layer — schema, ingestion pipeline, dedup + canonicalization, profile completeness audit. SG-1 (8-category vendor registration 90%) named owner; direct owner of P1.1–P1.4. Cross-cuts data model with CTO; co-owns P4.3 vendor-self-exposure analytics with Frontend Engineer post Pair 2."
+    adapter:
+      config:
+        chrome: true
+        effort: "medium"
+        graceSec: 50
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
   ceo:
     role: "ceo"
     adapter:
       config:
+        chrome: true
         dangerouslySkipPermissions: true
         effort: "high"
         graceSec: 500
@@ -22,6 +34,7 @@ agents:
     capabilities: "Owns Packlinx technical foundations: architecture, code review, infrastructure, plugin authoring."
     adapter:
       config:
+        chrome: true
         effort: "medium"
         graceSec: 50
         model: "claude-opus-4-6"
@@ -49,97 +62,43 @@ routines:
 sidebar:
   agents:
     - "ceo"
+    - "backend-engineer"
     - "cto"
   projects:
     - "packlinx-website"
 tasks:
-  pacaa-1:
-    identifier: "PACAA-1"
-    priority: "medium"
-    status: "done"
-  pacaa-10:
-    identifier: "PACAA-10"
-    priority: "medium"
-    status: "done"
-  pacaa-11:
-    identifier: "PACAA-11"
-    priority: "medium"
-    status: "done"
-  pacaa-12:
-    identifier: "PACAA-12"
-    priority: "high"
-    status: "done"
-  pacaa-13:
-    identifier: "PACAA-13"
-    priority: "high"
-    status: "done"
-  pacaa-14:
-    identifier: "PACAA-14"
-    priority: "high"
-    status: "done"
-  pacaa-15:
-    identifier: "PACAA-15"
-    priority: "medium"
-    status: "blocked"
   pacaa-16:
     identifier: "PACAA-16"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-17:
     identifier: "PACAA-17"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "todo"
+    status: "done"
   pacaa-18:
     identifier: "PACAA-18"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "todo"
+    status: "done"
   pacaa-19:
     identifier: "PACAA-19"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "todo"
+    status: "done"
   pacaa-2:
     identifier: "PACAA-2"
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
-  pacaa-20:
-    identifier: "PACAA-20"
-    priority: "medium"
-    status: "done"
   pacaa-21:
     identifier: "PACAA-21"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-47:
+    identifier: "PACAA-47"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
     status: "in_progress"
-  pacaa-3:
-    identifier: "PACAA-3"
-    priority: "medium"
-    status: "done"
-  pacaa-4:
-    identifier: "PACAA-4"
-    priority: "medium"
-    status: "done"
-  pacaa-5:
-    identifier: "PACAA-5"
-    priority: "medium"
-    status: "done"
-  pacaa-6:
-    identifier: "PACAA-6"
-    priority: "medium"
-    status: "done"
-  pacaa-7:
-    identifier: "PACAA-7"
-    priority: "medium"
-    status: "done"
-  pacaa-8:
-    identifier: "PACAA-8"
-    priority: "high"
-    status: "done"
-  pacaa-9:
-    identifier: "PACAA-9"
-    priority: "high"
-    status: "done"
