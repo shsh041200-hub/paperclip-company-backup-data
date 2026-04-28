@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-04-28T02:44:03.120Z",
+  "schemaVersion": 5,
+  "source": {
+    "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
+    "companyName": "packlinx_company"
+  },
+  "includes": {
+    "company": true,
+    "agents": true,
+    "projects": true,
+    "issues": true,
+    "skills": true
+  },
+  "counts": null,
+  "warnings": [
+    "Skipped 10 terminated agents from export."
+  ],
+  "fileInventory": null
+}
