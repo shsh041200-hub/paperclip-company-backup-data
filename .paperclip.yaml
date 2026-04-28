@@ -224,7 +224,7 @@ tasks:
   pacaa-43:
     identifier: "PACAA-43"
     priority: "medium"
-    status: "in_review"
+    status: "done"
   pacaa-44:
     identifier: "PACAA-44"
     priority: "medium"
@@ -242,10 +242,27 @@ tasks:
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-48:
+    identifier: "PACAA-48"
+    priority: "medium"
+    status: "done"
+  pacaa-49:
+    identifier: "PACAA-49"
+    priority: "medium"
+    status: "done"
   pacaa-5:
     identifier: "PACAA-5"
     priority: "medium"
     status: "done"
+  pacaa-50:
+    identifier: "PACAA-50"
+    priority: "medium"
+    status: "done"
+  pacaa-51:
+    identifier: "PACAA-51"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-6:
     identifier: "PACAA-6"
     priority: "medium"
