@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-28T14:05:02.965Z",
+  "generatedAt": "2026-04-28T14:06:35.200Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 43,
+    "files": 83,
     "agents": 3,
     "skills": 19,
     "projects": 1,
-    "issues": 8
+    "issues": 48
   },
   "warnings": [
     "Skipped 10 terminated agents from export."
@@ -59,12 +59,52 @@
     "skills/paperclipai/paperclip/paperclip/SKILL.md",
     "skills/paperclipai/paperclip/para-memory-files/SKILL.md",
     "tasks/daily-company-packages-backup/TASK.md",
+    "tasks/pacaa-1/TASK.md",
+    "tasks/pacaa-10/TASK.md",
+    "tasks/pacaa-11/TASK.md",
+    "tasks/pacaa-12/TASK.md",
+    "tasks/pacaa-13/TASK.md",
+    "tasks/pacaa-14/TASK.md",
+    "tasks/pacaa-15/TASK.md",
     "tasks/pacaa-16/TASK.md",
     "tasks/pacaa-17/TASK.md",
     "tasks/pacaa-18/TASK.md",
     "tasks/pacaa-19/TASK.md",
     "tasks/pacaa-2/TASK.md",
+    "tasks/pacaa-20/TASK.md",
     "tasks/pacaa-21/TASK.md",
-    "tasks/pacaa-47/TASK.md"
+    "tasks/pacaa-22/TASK.md",
+    "tasks/pacaa-23/TASK.md",
+    "tasks/pacaa-24/TASK.md",
+    "tasks/pacaa-25/TASK.md",
+    "tasks/pacaa-26/TASK.md",
+    "tasks/pacaa-27/TASK.md",
+    "tasks/pacaa-28/TASK.md",
+    "tasks/pacaa-29/TASK.md",
+    "tasks/pacaa-3/TASK.md",
+    "tasks/pacaa-30/TASK.md",
+    "tasks/pacaa-31/TASK.md",
+    "tasks/pacaa-32/TASK.md",
+    "tasks/pacaa-33/TASK.md",
+    "tasks/pacaa-34/TASK.md",
+    "tasks/pacaa-35/TASK.md",
+    "tasks/pacaa-36/TASK.md",
+    "tasks/pacaa-37/TASK.md",
+    "tasks/pacaa-38/TASK.md",
+    "tasks/pacaa-39/TASK.md",
+    "tasks/pacaa-4/TASK.md",
+    "tasks/pacaa-40/TASK.md",
+    "tasks/pacaa-41/TASK.md",
+    "tasks/pacaa-42/TASK.md",
+    "tasks/pacaa-43/TASK.md",
+    "tasks/pacaa-44/TASK.md",
+    "tasks/pacaa-45/TASK.md",
+    "tasks/pacaa-46/TASK.md",
+    "tasks/pacaa-47/TASK.md",
+    "tasks/pacaa-5/TASK.md",
+    "tasks/pacaa-6/TASK.md",
+    "tasks/pacaa-7/TASK.md",
+    "tasks/pacaa-8/TASK.md",
+    "tasks/pacaa-9/TASK.md"
   ]
 }
