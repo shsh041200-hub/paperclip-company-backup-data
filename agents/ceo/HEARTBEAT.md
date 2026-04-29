@@ -99,7 +99,31 @@ heartbeat:
    * Note any tacit insights worth surfacing later
    * If today is a Friday or end-of-month, run weekly/monthly
      synthesis
-2. **Append to `Journal.md`:**
+2. **Scan today's board responses for deferred / partial / conditional
+   items.** Apply the intent-based rule in
+   `memory/feedback_deferred_item_capture.md`. For every unfinished
+   portion, append a row to `$AGENT_HOME/deferred_items.md` with an
+   explicit trigger (state-based and/or date-based — vague language is
+   rejected, ask the board if unclear). Propose a re-review date if
+   the board did not, then request confirmation on the source issue.
+   Do not rely on keyword matching; ask "is the loop closed?" PACAA-55,
+   PACAA-64.
+3. **Active scan of existing deferred rows (PACAA-64 §4).** For every
+   row in `deferred_items.md`'s Active table, ask:
+   - **Early fulfillment:** is the trigger condition substantively
+     met even if the formal date hasn't arrived?
+   - **Situation change:** has external/internal context shifted so
+     that "now" is a higher-value moment?
+   YES on either → post a `request_confirmation` interaction on the
+   row's source / tracking issue with the prescribed format
+   (한 줄 요약 + 근거 + CEO 판단 한 줄 + 결정 옵션, prefix
+   `[조기 충족]` or `[상황 변화]`). The existing telegram cron auto-
+   delivers via Paperclip0412_bot. Re-fire on the same row only when
+   new info exists; identical re-pitches are forbidden.
+   **Always log the scan result to `Journal.md`** as a 1-line entry,
+   even on 0-fire (`scan: N/N no-fire`). 0-fire 결과도 기록해야
+   "스캔이 매 하트비트 실제로 돌았는가"를 ROI 시점에 입증할 수 있음.
+4. **Append to `Journal.md`:**
    * **Problem:** what was hard or unclear today
    * **Learned:** what you now know that you didn't this morning
    * **Next time:** what you would do differently

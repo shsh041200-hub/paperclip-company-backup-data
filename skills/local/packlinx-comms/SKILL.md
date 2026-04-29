@@ -157,6 +157,73 @@ this company.
   fencing.
 - Using emoji unless the founder explicitly asked for them.
 
+## Deferred items — capture, trigger, notify (PACAA-55, PACAA-64)
+
+The board's partial-accept / conditional / "later" responses leave
+unfinished portions hanging. The CEO is the closer of those loops.
+
+**Five non-negotiable principles.**
+
+1. **No trigger = no save.** Every row in
+   `$AGENT_HOME/deferred_items.md` MUST carry an explicit trigger:
+   either a state-based condition (machine- or human-checkable) or a
+   calendar date, or both. Vague language ("나중에", "안정되면" without
+   a definition) is rejected. If the board's response leaves the
+   trigger unclear, ask once (kind: `ask_user_questions`) before
+   saving. Asking is cheaper than a silent miss.
+2. **Storage is side-work, never primary.** Capturing deferred items
+   never pre-empts SG-1 / SG-3 / 1st-priority work. Lowest priority,
+   minimal decomposition, lightweight reporting.
+3. **Trigger fired ≠ auto-implement.** When a row's trigger fires
+   (date hit, state condition met, or active-scan early-fulfillment),
+   the CEO does NOT silently re-run the work. Post a
+   `request_confirmation` interaction on the source/tracking issue
+   in this format:
+   - 한 줄 요약 (deferred portion)
+   - 실행 적절한 시기인 근거 (why now)
+   - **CEO 판단 한 줄** — exactly one of "지금 도입 권장" /
+     "조금 더 미루기 권장" / "도입 또는 폐기 갈림길" + 짧은 근거
+     (one sentence; the board reads this in 5 seconds)
+   - 보드 결정 옵션: 실행 / 더 미루기 / 폐기
+   - Active-scan triggers prepend `[조기 충족]` or `[상황 변화]`.
+   The existing telegram cron
+   (`/tools/board-visibility/notify-telegram.py`, every 5 min) picks
+   up the pending interaction and pushes a Paperclip0412_bot message
+   with approve/reject buttons. Board must approve before execution.
+4. **CEO is the active scanner, not a passive timer.** Every
+   heartbeat Phase 6, walk every active row and ask: (a) early
+   fulfillment — has the trigger condition substantively been met
+   even if the formal date hasn't arrived? (b) situation change —
+   has external/internal context shifted such that "now" is a
+   higher-value moment? YES on either → fire trigger-fire
+   notification. NO on every row → no notification this heartbeat.
+5. **No daily-duplicate notifications.** Re-fire on the same row
+   only when new info exists (new evidence, judgment change,
+   external change). The "새 정보 없음" → silence rule is hard. If
+   re-firing, deliver only the delta ("어제 보고 + 추가 정보:
+   페어 1이 P1.3까지 완료. 지금 도입 권장 강화."), not a full
+   re-send. The cron's seen_ids state file dedups identical
+   interactions; the act of "create a new interaction" is itself
+   the new-info gate — only do it when there is real new info.
+
+**Capture flow at-a-glance.**
+
+```
+board partial-accept / 보류 / 조건부
+  → trigger clear? 
+      yes → write row to deferred_items.md (status: confirmed)
+      no  → ask board (kind: ask_user_questions); save only after answer
+  → trigger fires (date / state / active-scan)
+      → request_confirmation interaction on tracking issue
+      → telegram cron auto-pushes via Paperclip0412_bot
+      → board accepts → execute
+      → board rejects → request new trigger; re-save row
+```
+
+The full schema, the heuristic table for proposing dates, and the
+Phase 6 active-scan procedure live in
+`$AGENT_HOME/deferred_items.md`.
+
 ## Self-check before posting
 
 - [ ] First sentence is the point or the ask
@@ -166,3 +233,6 @@ this company.
 - [ ] No filler openings or trailing summaries
 - [ ] If escalating: TL;DR + recommendation included
 - [ ] Markdown multiline preserved (no flattened JSON)
+- [ ] If this response defers/partials/conditions any portion of an
+      ask: deferred_items.md row added with explicit trigger before
+      heartbeat exits
