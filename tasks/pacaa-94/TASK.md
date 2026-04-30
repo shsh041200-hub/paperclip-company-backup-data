@@ -13,7 +13,7 @@ Next.js SSG `/keywords/[slug]` 50 페이지. 페이지 구성:
 * 내부 링크 (관련 카테고리, 다른 키워드)
 * claim CTA
 
-vendor < 3 키워드는 fallback 템플릿 (가이드 + claim CTA, vendor 리스트 빈약 노출 회피).
+vendor \< 3 키워드는 fallback 템플릿 (가이드 + claim CTA, vendor 리스트 빈약 노출 회피).
 
 ## DoD
 

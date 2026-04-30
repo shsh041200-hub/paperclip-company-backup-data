@@ -8,10 +8,10 @@
 
 | Content | Count |
 |---------|-------|
-| Agents | 3 |
+| Agents | 4 |
 | Projects | 1 |
-| Skills | 19 |
-| Tasks | 100 |
+| Skills | 21 |
+| Tasks | 136 |
 
 ### Agents
 
@@ -20,6 +20,7 @@
 | Backend Engineer | Engineer | ceo |
 | CEO | CEO | — |
 | CTO | CTO | ceo |
+| Legal Counsel | general | ceo |
 
 ### Projects
 
@@ -40,9 +41,11 @@
 | frontend-engineer-playbook | Frontend engineer specialty playbook — runbook scoped to the Packlinx Next.js 16 + React + TypeScript stack covering component patterns, data fetching, accessibility, and the Korean-text rendering rules that catch most production bugs. | catalog |
 | head-of-sales-playbook | Head of Sales specialty playbook — outbound script library and pricing-negotiation checklist for Korean B2B vendor and buyer outreach at Packlinx. Read before sending an outbound or negotiating a price. | catalog |
 | hop-playbook | Head of Product specialty playbook — ticket grooming template and success-metric framework for the Packlinx product surface. Read before grooming a backlog or proposing a feature. | catalog |
+| legal-consult | Legal Counsel 호출 표준 절차 — 법적 우려가 있는 결정에서 한국 법률 자문을 받는 절차. PIPA / 표시광고법 / 통신판매업 / 저작권·상표권 / 약관 영역. SG-1~4 trigger 룰과 함께 사용. | catalog |
 | legal-counsel-playbook | Legal Counsel specialty playbook — Korean compliance checklist (PIPA, e-commerce act, fair trade, advertising) and takedown drafting template for the Packlinx packaging directory. Read before any legal-facing artifact or compliance review. | catalog |
 | packlinx-comms | Communication discipline for every Packlinx agent — voice, language routing (Korean vs English), ticket/comment style, and escalation triggers. Read before posting any comment, writing any external-facing copy, or escalating to the board. | catalog |
 | packlinx-decision-log | Required reasoning protocol for any non-trivial decision at Packlinx — options, benchmark, decision, reversibility. Mandatory before allocating budget, hiring, committing the company to a direction, or shipping any user-facing change. | catalog |
+| paperclip-converting-plans-to-tasks | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-converting-plans-to-tasks) |
 | paperclip-create-agent | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-agent) |
 | paperclip-create-plugin | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-plugin) |
 | paperclip-dev | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-dev) |
@@ -58,4 +61,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-04-29
+Exported from [Paperclip](https://paperclip.ing) on 2026-04-30

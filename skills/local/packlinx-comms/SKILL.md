@@ -236,3 +236,94 @@ Phase 6 active-scan procedure live in
 - [ ] If this response defers/partials/conditions any portion of an
       ask: deferred_items.md row added with explicit trigger before
       heartbeat exits
+
+***
+
+## Board-facing Telegram output (PACAA-106)
+
+Telegram alerts to the board (대표) follow a fixed three-class shape.
+Anything sent through `tools/board-visibility/notify-telegram.py` is
+built by `_telegram_format` and validated by `assert_telegram_safe`
+before fire. Do not hand-format Telegram bodies that bypass the
+builders.
+
+### Three classes
+
+**A. 액션** — board needs to do something off-platform.
+
+```
+[액션] {보드가 무엇을 해야 하는지, 한 줄}
+이유: {왜 필요한지, 한 줄}
+막히는 일: {진행 안 되면 멈추는 작업, 한 줄}
+상세: {첨부 파일명}
+```
+
+**B. 승인** — yes/no decision. Inline buttons: `✅ 승인` / `❌ 반려`.
+
+```
+[승인] {무엇을 승인하는지, 한 줄}
+승인 시: {한 줄 영향}
+거절 시: {한 줄 영향}
+상세: {첨부 파일명}
+```
+
+**C. 선택** — pick one of N options. ≤3 options → inline buttons.
+>3 → "1, 2, 3 중 답장해 주세요" hint + numeric reply.
+
+```
+[선택] {무엇을 결정하는지, 한 줄}
+1) {선택지 1} — {한 줄 영향}
+2) {선택지 2} — {한 줄 영향}
+3) {선택지 3} — {한 줄 영향}
+⭐ 추천: {번호}
+근거: {한 줄}
+상세: {첨부 파일명}
+```
+
+### Classification mapping (Paperclip → class)
+
+| Source | Class |
+|---|---|
+| `approvals?status=pending` | B. 승인 |
+| interaction `request_confirmation` | B. 승인 |
+| interaction `ask_user_questions` (with options) | C. 선택 |
+| interaction `ask_user_questions` (free-form) | A. 액션 |
+| interaction `suggest_tasks` | C. 선택 |
+| `issues?status=in_review` | non-actionable bundle |
+
+### Readability rules (enforced by `assert_telegram_safe`)
+
+1. Korean first; English jargon last.
+2. Plain words ("임계값" → "이 숫자에 도달함").
+3. ≤1 PACAA-XX in body.
+4. One-line conclusion at top, details in attachment.
+5. "보드가 할 일" line is mandatory (the `[액션]/[승인]/[선택]`
+   header itself satisfies this for those three classes).
+6. Mobile width: ≤25 Korean chars per line; no boxes; no
+   `═──━│` divider clutter; short button labels.
+7. Functional emojis only: ⭐ (추천), ✅ (승인), ❌ (반려). No
+   decorative emojis anywhere.
+
+### Attachment
+
+Filename: `{IDENTIFIER}_{kind}_{YYYYMMDD-HHMM}.txt`
+(kind ∈ `action|approval|choice|non_actionable`).
+
+Sections (only the present ones, in this order):
+`■ 무엇을 결정해야 하나` → `■ 배경 (왜 지금)` →
+`■ 권장 / 선택지` → `■ 위험 / 이 일이 안 되면` →
+`■ 직전 대화`.
+
+Indent depth ≤1 (2 spaces or `- `). No box characters.
+Length cap 1500 chars; the builder truncates with `…(이하 생략)`.
+
+### Tooling
+
+- `notify-telegram.py --sample={action|approval|choice}` — synthesize
+  one fixture through the builder pipeline. Use to verify formatting
+  without waiting for a live event.
+- `notify-telegram.py --dry-run` — print body+attachment for every
+  pending approval/interaction; no Telegram fire.
+- `assert_telegram_safe(body, attachment, kind)` — raises
+  `TelegramFormatViolation` on any rule break. Called automatically
+  inside `notify-telegram.py main()`; dry-run reports without raising.

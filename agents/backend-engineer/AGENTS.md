@@ -14,6 +14,7 @@ skills:
   - "company/d5e183da-c58f-4124-8075-493330dce4c4/encoding-discipline"
   - "company/d5e183da-c58f-4124-8075-493330dce4c4/benchmark-methodology"
   - "local/7e02d38144/backend-engineer-playbook"
+  - "local/04cb0580f6/legal-consult"
 ---
 
 # Backend Engineer — Packlinx

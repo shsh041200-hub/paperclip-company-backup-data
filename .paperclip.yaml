@@ -9,7 +9,7 @@ agents:
         chrome: true
         effort: "medium"
         graceSec: 50
-        model: "claude-opus-4-7"
+        model: "claude-sonnet-4-6"
       type: "claude_local"
   ceo:
     role: "ceo"
@@ -37,8 +37,25 @@ agents:
         chrome: true
         effort: "medium"
         graceSec: 50
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+  legal-counsel:
+    role: "general"
+    icon: "shield"
+    capabilities: "한국 법률 한정 사내 자문 — PIPA / 표시광고법 / 통신판매업 / 저작권·상표권 / 약관·처리방침. 호출 시 자문 + 주 1회 정기 점검. 자문 산출만 수행, 다른 에이전트에 배정 금지."
+    adapter:
+      config:
+        dangerouslySkipPermissions: true
+        effort: "medium"
+        graceSec: 50
         model: "claude-opus-4-7"
       type: "claude_local"
+    runtime:
+      heartbeat:
+        maxConcurrentRuns: 3
+company:
+  attachmentMaxBytes: 10485760
+  requireBoardApprovalForNewAgents: true
 projects:
   packlinx-website:
     color: "#6366f1"
@@ -68,6 +85,30 @@ routines:
         cronExpression: "0 23 * * *"
         label: "Daily 23:00 KST"
         timezone: "Asia/Seoul"
+  legal-counsel-weekly-self-audit:
+    concurrencyPolicy: "skip_if_active"
+    status: "archived"
+  legal-counsel-weekly-self-audit-2:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "30 9 * * 1"
+        label: "Monday 09:30 KST weekly self-audit"
+        timezone: "Asia/Seoul"
+  pacaa-103-psi-quota-retry-one-shot:
+    concurrencyPolicy: "skip_if_active"
+    priority: "low"
+  pacaa-104-5d-index-audit-one-shot:
+    concurrencyPolicy: "skip_if_active"
+  pacaa-121-t-14d-gsc-alternate-canonical-pool-one-shot:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 14 5 *"
+        label: "PACAA-121 T+14d one-shot 2026-05-14 09:00 KST"
+        timezone: "Asia/Seoul"
   stale-blocked-issue-sweep:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
@@ -82,6 +123,7 @@ sidebar:
     - "ceo"
     - "backend-engineer"
     - "cto"
+    - "legal-counsel"
   projects:
     - "packlinx-website"
 tasks:
@@ -93,14 +135,132 @@ tasks:
     identifier: "PACAA-10"
     priority: "medium"
     status: "done"
+  pacaa-100:
+    identifier: "PACAA-100"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-101:
+    identifier: "PACAA-101"
+    priority: "medium"
+    status: "done"
+  pacaa-102:
+    identifier: "PACAA-102"
+    priority: "medium"
+    status: "done"
+  pacaa-103:
+    identifier: "PACAA-103"
+    priority: "low"
+    status: "blocked"
+  pacaa-104:
+    identifier: "PACAA-104"
+    priority: "medium"
+    status: "blocked"
+  pacaa-105:
+    identifier: "PACAA-105"
+    priority: "high"
+    status: "done"
+  pacaa-106:
+    identifier: "PACAA-106"
+    priority: "medium"
+    status: "done"
+  pacaa-107:
+    identifier: "PACAA-107"
+    priority: "medium"
+    status: "done"
+  pacaa-108:
+    identifier: "PACAA-108"
+    priority: "medium"
+    status: "done"
+  pacaa-109:
+    identifier: "PACAA-109"
+    priority: "medium"
+    status: "done"
   pacaa-11:
     identifier: "PACAA-11"
     priority: "medium"
     status: "done"
+  pacaa-110:
+    identifier: "PACAA-110"
+    priority: "medium"
+    status: "done"
+  pacaa-111:
+    identifier: "PACAA-111"
+    priority: "medium"
+    status: "done"
+  pacaa-112:
+    identifier: "PACAA-112"
+    priority: "medium"
+    status: "done"
+  pacaa-113:
+    identifier: "PACAA-113"
+    priority: "medium"
+    status: "blocked"
+  pacaa-114:
+    identifier: "PACAA-114"
+    priority: "high"
+    status: "done"
+  pacaa-115:
+    identifier: "PACAA-115"
+    priority: "high"
+    status: "blocked"
+  pacaa-116:
+    identifier: "PACAA-116"
+    priority: "high"
+    status: "done"
+  pacaa-117:
+    identifier: "PACAA-117"
+    priority: "high"
+    status: "done"
+  pacaa-118:
+    identifier: "PACAA-118"
+    priority: "high"
+    status: "todo"
+  pacaa-119:
+    identifier: "PACAA-119"
+    priority: "medium"
+    status: "todo"
   pacaa-12:
     identifier: "PACAA-12"
     priority: "high"
     status: "done"
+  pacaa-120:
+    identifier: "PACAA-120"
+    priority: "high"
+    status: "done"
+  pacaa-121:
+    identifier: "PACAA-121"
+    priority: "high"
+    status: "done"
+  pacaa-122:
+    identifier: "PACAA-122"
+    priority: "high"
+    status: "done"
+  pacaa-123:
+    identifier: "PACAA-123"
+    priority: "high"
+    status: "done"
+  pacaa-124:
+    identifier: "PACAA-124"
+    priority: "medium"
+    status: "done"
+  pacaa-125:
+    identifier: "PACAA-125"
+    priority: "medium"
+    status: "blocked"
+  pacaa-126:
+    identifier: "PACAA-126"
+    priority: "high"
+    status: "done"
+  pacaa-127:
+    identifier: "PACAA-127"
+    priority: "medium"
+    status: "backlog"
+  pacaa-128:
+    identifier: "PACAA-128"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-13:
     identifier: "PACAA-13"
     priority: "high"
@@ -418,7 +578,7 @@ tasks:
   pacaa-80:
     identifier: "PACAA-80"
     priority: "medium"
-    status: "in_review"
+    status: "done"
   pacaa-81:
     identifier: "PACAA-81"
     priority: "medium"
@@ -466,19 +626,19 @@ tasks:
   pacaa-91:
     identifier: "PACAA-91"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-92:
     identifier: "PACAA-92"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-93:
     identifier: "PACAA-93"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-94:
     identifier: "PACAA-94"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-95:
     identifier: "PACAA-95"
     priority: "high"
@@ -491,4 +651,12 @@ tasks:
     identifier: "PACAA-97"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
+  pacaa-98:
+    identifier: "PACAA-98"
+    priority: "medium"
+    status: "done"
+  pacaa-99:
+    identifier: "PACAA-99"
+    priority: "medium"
+    status: "done"

@@ -5,7 +5,7 @@ assignee: "backend-engineer"
 
 ## 산출물
 
-50 키워드 + 예비 풀 10개의 월 검색량 + 경쟁도 측정. 임계값 (월 ≥ 50, 경쟁도 low~medium) 미통과 키워드는 [PACAA-82 plan §7](/PACAA/issues/PACAA-82#document-plan) 예비 풀에서 교체. 측정 결과를 plan §12 (신규) 로 추가.
+50 키워드 + 예비 풀 10개의 월 검색량 + 경쟁도 측정. 임계값 (월 ≥ 50, 경쟁도 low\~medium) 미통과 키워드는 [PACAA-82 plan §7](/PACAA/issues/PACAA-82#document-plan) 예비 풀에서 교체. 측정 결과를 plan §12 (신규) 로 추가.
 
 ## 블로커
 
