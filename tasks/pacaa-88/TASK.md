@@ -1,5 +1,6 @@
 ---
 name: "P1.1 보강 — label_sticker 분모 재산정 (KSIC 5-digit + 산업 비율)"
+assignee: "ceo"
 ---
 
 ## 배경

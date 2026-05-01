@@ -1,5 +1,6 @@
 ---
 name: "[PACAA-118] /companies 라우트 slug_redirects 308 middleware 구현"
+assignee: "cto"
 ---
 
 PACAA-122 DB migration 완료 — slug_redirects 185행 등록. 현재 old NNNN slug → 404. app-layer middleware 구현 필요.

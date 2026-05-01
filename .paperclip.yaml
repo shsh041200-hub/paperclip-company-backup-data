@@ -11,6 +11,10 @@ agents:
         graceSec: 50
         model: "claude-sonnet-4-6"
       type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 1800
   ceo:
     role: "ceo"
     adapter:
@@ -28,6 +32,22 @@ agents:
         maxConcurrentRuns: 1
     permissions:
       canCreateAgents: true
+  cmo:
+    role: "cmo"
+    icon: "search"
+    capabilities: "Owns SG-2 SEO acquisition end-to-end: search-intent mapping, programmatic landing optimization, in-depth category guides, and Naver SA + GSC ops — with E-E-A-T discipline and Legal sign-off for competitor-touching content."
+    adapter:
+      config:
+        chrome: true
+        effort: "medium"
+        graceSec: 50
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 1800
+        maxConcurrentRuns: 3
   cto:
     role: "cto"
     icon: "circuit-board"
@@ -39,6 +59,29 @@ agents:
         graceSec: 50
         model: "claude-sonnet-4-6"
       type: "claude_local"
+  e5-worker:
+    role: "general"
+    icon: "git-branch"
+    capabilities: "Identity-only service account. Holds the JWT used by the Cloudflare Worker (PACAA-168) to call POST /api/issues/{id}/comments when a GitHub PR with PACAA-XXX in title/body is merged. No autonomous behavior, no LLM, no heartbeat. The agent record exists solely so wake-event comments are stamped 'E5 Worker' (clean audit) instead of 'CEO' (mis-attribution)."
+    adapter:
+      config:
+        timeoutSec: 5
+      type: "process"
+  frontend-engineer:
+    role: "engineer"
+    icon: "code"
+    capabilities: "Owns the buyer-facing and vendor-facing rendered surface of Packlinx — programmatic SEO landing pages (P5.1~P5.3), search/browse, vendor profile pages, and the vendor self-action portal (SG-4 / P4.1~P4.3). Korean-first, mobile-first, SSG/SSR for SEO. Coordinates with CMO on content/keyword strategy and Backend Engineer on data shape."
+    adapter:
+      config:
+        chrome: true
+        effort: "medium"
+        graceSec: 50
+        model: "claude-sonnet-4-6"
+      type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 1800
   legal-counsel:
     role: "general"
     icon: "shield"
@@ -101,6 +144,12 @@ routines:
     priority: "low"
   pacaa-104-5d-index-audit-one-shot:
     concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "7 9 5 5 *"
+        label: "one-shot 2026-05-05 09:07 KST"
+        timezone: "Asia/Seoul"
   pacaa-121-t-14d-gsc-alternate-canonical-pool-one-shot:
     concurrencyPolicy: "skip_if_active"
     triggers:
@@ -108,6 +157,21 @@ routines:
         kind: "schedule"
         cronExpression: "0 9 14 5 *"
         label: "PACAA-121 T+14d one-shot 2026-05-14 09:00 KST"
+        timezone: "Asia/Seoul"
+  pacaa-129-gsc-4xx-2026-05-08:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 8 5 *"
+        label: "PACAA-129 one-shot 2026-05-08 09:00 KST"
+        timezone: "Asia/Seoul"
+  pacaa-96-serp-rank-50:
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 * * 1"
+        label: "PACAA-96 주간 SERP 트래킹 — 매주 월요일 09:00 KST"
         timezone: "Asia/Seoul"
   stale-blocked-issue-sweep:
     concurrencyPolicy: "skip_if_active"
@@ -122,7 +186,10 @@ sidebar:
   agents:
     - "ceo"
     - "backend-engineer"
+    - "cmo"
     - "cto"
+    - "e5-worker"
+    - "frontend-engineer"
     - "legal-counsel"
   projects:
     - "packlinx-website"
@@ -151,7 +218,7 @@ tasks:
   pacaa-103:
     identifier: "PACAA-103"
     priority: "low"
-    status: "blocked"
+    status: "done"
   pacaa-104:
     identifier: "PACAA-104"
     priority: "medium"
@@ -195,7 +262,7 @@ tasks:
   pacaa-113:
     identifier: "PACAA-113"
     priority: "medium"
-    status: "blocked"
+    status: "done"
   pacaa-114:
     identifier: "PACAA-114"
     priority: "high"
@@ -203,7 +270,7 @@ tasks:
   pacaa-115:
     identifier: "PACAA-115"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-116:
     identifier: "PACAA-116"
     priority: "high"
@@ -215,11 +282,11 @@ tasks:
   pacaa-118:
     identifier: "PACAA-118"
     priority: "high"
-    status: "todo"
+    status: "done"
   pacaa-119:
     identifier: "PACAA-119"
     priority: "medium"
-    status: "todo"
+    status: "done"
   pacaa-12:
     identifier: "PACAA-12"
     priority: "high"
@@ -247,47 +314,273 @@ tasks:
   pacaa-125:
     identifier: "PACAA-125"
     priority: "medium"
-    status: "blocked"
+    status: "done"
   pacaa-126:
     identifier: "PACAA-126"
     priority: "high"
     status: "done"
   pacaa-127:
     identifier: "PACAA-127"
-    priority: "medium"
-    status: "backlog"
+    priority: "high"
+    status: "done"
   pacaa-128:
     identifier: "PACAA-128"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
+  pacaa-129:
+    identifier: "PACAA-129"
+    priority: "medium"
+    status: "backlog"
   pacaa-13:
     identifier: "PACAA-13"
     priority: "high"
     status: "done"
+  pacaa-130:
+    identifier: "PACAA-130"
+    priority: "medium"
+    status: "backlog"
+  pacaa-131:
+    identifier: "PACAA-131"
+    priority: "medium"
+    status: "backlog"
+  pacaa-132:
+    identifier: "PACAA-132"
+    priority: "medium"
+    status: "backlog"
+  pacaa-133:
+    identifier: "PACAA-133"
+    priority: "high"
+    status: "done"
+  pacaa-134:
+    identifier: "PACAA-134"
+    priority: "high"
+    status: "done"
+  pacaa-135:
+    identifier: "PACAA-135"
+    priority: "medium"
+    status: "done"
+  pacaa-136:
+    identifier: "PACAA-136"
+    priority: "medium"
+    status: "done"
+  pacaa-137:
+    identifier: "PACAA-137"
+    priority: "medium"
+    status: "done"
+  pacaa-138:
+    identifier: "PACAA-138"
+    priority: "high"
+    status: "done"
+  pacaa-139:
+    identifier: "PACAA-139"
+    priority: "medium"
+    status: "done"
   pacaa-14:
     identifier: "PACAA-14"
+    priority: "high"
+    status: "done"
+  pacaa-140:
+    identifier: "PACAA-140"
+    priority: "medium"
+    status: "done"
+  pacaa-141:
+    identifier: "PACAA-141"
+    priority: "medium"
+    status: "done"
+  pacaa-142:
+    identifier: "PACAA-142"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-143:
+    identifier: "PACAA-143"
+    priority: "medium"
+    status: "done"
+  pacaa-144:
+    identifier: "PACAA-144"
+    priority: "medium"
+    status: "done"
+  pacaa-145:
+    identifier: "PACAA-145"
+    priority: "medium"
+    status: "done"
+  pacaa-146:
+    identifier: "PACAA-146"
+    priority: "medium"
+    status: "done"
+  pacaa-147:
+    identifier: "PACAA-147"
+    priority: "medium"
+    status: "done"
+  pacaa-148:
+    identifier: "PACAA-148"
+    priority: "high"
+    status: "done"
+  pacaa-149:
+    identifier: "PACAA-149"
     priority: "high"
     status: "done"
   pacaa-15:
     identifier: "PACAA-15"
     priority: "medium"
     status: "done"
+  pacaa-150:
+    identifier: "PACAA-150"
+    priority: "high"
+    status: "done"
+  pacaa-151:
+    identifier: "PACAA-151"
+    priority: "high"
+    status: "done"
+  pacaa-152:
+    identifier: "PACAA-152"
+    priority: "high"
+    status: "cancelled"
+  pacaa-153:
+    identifier: "PACAA-153"
+    priority: "high"
+    status: "done"
+  pacaa-154:
+    identifier: "PACAA-154"
+    priority: "high"
+    status: "done"
+  pacaa-155:
+    identifier: "PACAA-155"
+    priority: "medium"
+    status: "in_progress"
+  pacaa-156:
+    identifier: "PACAA-156"
+    priority: "high"
+    status: "done"
+  pacaa-157:
+    identifier: "PACAA-157"
+    priority: "high"
+    status: "done"
+  pacaa-158:
+    identifier: "PACAA-158"
+    priority: "critical"
+    status: "done"
+  pacaa-159:
+    identifier: "PACAA-159"
+    priority: "critical"
+    status: "done"
   pacaa-16:
     identifier: "PACAA-16"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-160:
+    identifier: "PACAA-160"
+    priority: "high"
+    status: "done"
+  pacaa-161:
+    identifier: "PACAA-161"
+    priority: "medium"
+    status: "done"
+  pacaa-162:
+    identifier: "PACAA-162"
+    priority: "high"
+    status: "done"
+  pacaa-163:
+    identifier: "PACAA-163"
+    priority: "high"
+    status: "done"
+  pacaa-164:
+    identifier: "PACAA-164"
+    priority: "high"
+    status: "backlog"
+  pacaa-165:
+    identifier: "PACAA-165"
+    priority: "high"
+    status: "done"
+  pacaa-166:
+    identifier: "PACAA-166"
+    priority: "high"
+    status: "done"
+  pacaa-167:
+    identifier: "PACAA-167"
+    priority: "high"
+    status: "backlog"
+  pacaa-168:
+    identifier: "PACAA-168"
+    priority: "high"
+    status: "blocked"
+  pacaa-169:
+    identifier: "PACAA-169"
+    priority: "high"
+    status: "backlog"
   pacaa-17:
     identifier: "PACAA-17"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-170:
+    identifier: "PACAA-170"
+    priority: "medium"
+    status: "done"
+  pacaa-171:
+    identifier: "PACAA-171"
+    priority: "medium"
+    status: "done"
+  pacaa-172:
+    identifier: "PACAA-172"
+    priority: "medium"
+    status: "done"
+  pacaa-173:
+    identifier: "PACAA-173"
+    priority: "medium"
+    status: "done"
+  pacaa-174:
+    identifier: "PACAA-174"
+    priority: "high"
+    status: "done"
+  pacaa-175:
+    identifier: "PACAA-175"
+    priority: "high"
+    status: "done"
+  pacaa-176:
+    identifier: "PACAA-176"
+    priority: "medium"
+    status: "done"
+  pacaa-177:
+    identifier: "PACAA-177"
+    priority: "medium"
+    status: "done"
+  pacaa-178:
+    identifier: "PACAA-178"
+    priority: "medium"
+    status: "done"
+  pacaa-179:
+    identifier: "PACAA-179"
+    priority: "high"
     status: "done"
   pacaa-18:
     identifier: "PACAA-18"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-180:
+    identifier: "PACAA-180"
+    priority: "high"
+    status: "done"
+  pacaa-181:
+    identifier: "PACAA-181"
+    priority: "high"
+    status: "done"
+  pacaa-182:
+    identifier: "PACAA-182"
+    priority: "medium"
+    status: "done"
+  pacaa-183:
+    identifier: "PACAA-183"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
+  pacaa-184:
+    identifier: "PACAA-184"
+    priority: "high"
+    status: "in_progress"
   pacaa-19:
     identifier: "PACAA-19"
     priority: "medium"
@@ -549,12 +842,12 @@ tasks:
     status: "done"
   pacaa-74:
     identifier: "PACAA-74"
-    priority: "medium"
-    status: "backlog"
+    priority: "high"
+    status: "done"
   pacaa-75:
     identifier: "PACAA-75"
-    priority: "medium"
-    status: "backlog"
+    priority: "high"
+    status: "done"
   pacaa-76:
     identifier: "PACAA-76"
     priority: "high"
@@ -606,11 +899,11 @@ tasks:
   pacaa-87:
     identifier: "PACAA-87"
     priority: "high"
-    status: "cancelled"
+    status: "done"
   pacaa-88:
     identifier: "PACAA-88"
     priority: "low"
-    status: "backlog"
+    status: "done"
   pacaa-89:
     identifier: "PACAA-89"
     priority: "medium"

@@ -13,6 +13,7 @@ skills:
   - "local/bc9b531c33/packlinx-comms"
   - "local/bcc6a51c5f/packlinx-decision-log"
   - "local/04cb0580f6/legal-consult"
+  - "company/d5e183da-c58f-4124-8075-493330dce4c4/event-driven-orchestration"
 ---
 
 # CEO — Packlinx

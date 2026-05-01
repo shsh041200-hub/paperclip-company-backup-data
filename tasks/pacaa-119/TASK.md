@@ -1,5 +1,6 @@
 ---
 name: "P1.D GSC validation 요청 + 4–6주 모니터링"
+assignee: "cto"
 ---
 
 PACAA-115 산하 child D. A/B/C 완료 후 진행.

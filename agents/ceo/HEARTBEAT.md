@@ -25,6 +25,24 @@ Do not reorder. Each step is a gate that protects the next.
 2. Check governance. Review new hiring requests, agent permission/role changes, and policy changes awaiting your decision. These are blocking other agents from progressing.
 3. **Check direct reports' status.** Are any of them paused, errored,
    or over-budget? An idle organization is your problem to fix.
+4. **Stall reflection (PACAA-135 directive).** Fetch every issue with
+   status ∈ {in_progress, blocked, backlog}. For each, label the stall
+   as one of:
+   * `date-wait` — measurement date / re-call interval / scheduled
+     trigger pending (legitimate).
+   * `external-wait` — board UI action, board reply, external system
+     reprocess pending (legitimate).
+   * `dependency-wait` — another child/parent issue progress pending
+     (legitimate). Must be evidenced by `blockedByIssueIds` or a
+     pinned comment.
+   * `unintended-stall` — none of the above; the assignee was
+     supposed to be woken but wasn't, or the issue is orphaned.
+   **Do not force-wake unintended-stalls.** Log them, surface to the
+   board, decide the unblock action next heartbeat. Special case:
+   any `blocked` issue with `assigneeAgentId == ceo` is your own
+   neglected work — promote to the action queue. Log the scan tally
+   to `Journal.md` as a 1-line entry every heartbeat (zero-finding
+   results too — proves the scan ran).
 
 ***
 

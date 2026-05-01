@@ -1,6 +1,6 @@
 ---
 name: "P2.5 — 50 키워드 programmatic SEO 랜딩 페이지 (실행)"
-assignee: "backend-engineer"
+assignee: "frontend-engineer"
 ---
 
 ## 배경

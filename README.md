@@ -8,10 +8,10 @@
 
 | Content | Count |
 |---------|-------|
-| Agents | 4 |
+| Agents | 7 |
 | Projects | 1 |
-| Skills | 21 |
-| Tasks | 136 |
+| Skills | 22 |
+| Tasks | 194 |
 
 ### Agents
 
@@ -19,7 +19,10 @@
 |-------|------|------------|
 | Backend Engineer | Engineer | ceo |
 | CEO | CEO | — |
+| CMO | CMO | ceo |
 | CTO | CTO | ceo |
+| E5 Worker | general | ceo |
+| Frontend Engineer | Engineer | ceo |
 | Legal Counsel | general | ceo |
 
 ### Projects
@@ -32,6 +35,7 @@
 |-------|-------------|--------|
 | benchmark-methodology | WHAT/WHY/HOW/SIMULATE framework for evaluating any strategic proposal against proven precedents. Use before recommending category-level decisions. | catalog |
 | encoding-discipline | UTF-8 encoding rules for all file I/O, commits, comments, and inter-agent communication. Mandatory for any work involving Korean text. | catalog |
+| event-driven-orchestration | Required deadline-discipline protocol for every Packlinx agent. Before setting any time-based deadline on a task, classify it as Category A (externally time-bound) or Category B (event-bound) and convert Category B to event triggers. Used at task creation, plan authoring, and during stall reflection. | catalog |
 | packlinx-context | Company context for Packlinx — mission, market, users, stage, and operating constraints. Read at the start of any non-trivial decision. | catalog |
 | backend-engineer-playbook | Backend engineer specialty playbook — runbook scoped to the Packlinx Supabase + Postgres + Edge Functions stack covering schema discipline, RLS, migration safety, and the data-integrity rules that protect vendor records. | catalog |
 | cmo-playbook | CMO specialty playbook — content brief template and Korean B2B SEO playbook scoped to Naver-first acquisition for the Packlinx packaging directory. Read before commissioning content or proposing an SEO move. | catalog |
@@ -61,4 +65,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-04-30
+Exported from [Paperclip](https://paperclip.ing) on 2026-05-01
