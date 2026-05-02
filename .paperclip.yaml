@@ -67,6 +67,8 @@ agents:
       config:
         timeoutSec: 5
       type: "process"
+    permissions:
+      canCreateAgents: true
   frontend-engineer:
     role: "engineer"
     icon: "code"
@@ -128,6 +130,45 @@ routines:
         cronExpression: "0 23 * * *"
         label: "Daily 23:00 KST"
         timezone: "Asia/Seoul"
+  e6-seo-indexing-check-gsc-naver-indexing-threshold-wake:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 3 * * *"
+        enabled: false
+        label: "E6 daily 03:00 KST"
+        timezone: "Asia/Seoul"
+      -
+        kind: "schedule"
+        cronExpression: "0 3 * * *"
+        enabled: false
+        label: "E6 daily 03:00 KST"
+        timezone: "Asia/Seoul"
+  e6-seo-indexing-check-gsc-naver-indexing-threshold-wake-2:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 3 * * *"
+        enabled: false
+        label: "E6 daily 03:00 KST"
+        timezone: "Asia/Seoul"
+      -
+        kind: "schedule"
+        cronExpression: "0 3 * * *"
+        enabled: false
+        label: "E6 daily 03:00 KST"
+        timezone: "Asia/Seoul"
+  e7-stall-sweep-in-progress-blocked-backlog-stall-wake-comment:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 */6 * * *"
+        enabled: false
+        label: "E7 stall_sweep 6h"
+        timezone: "Asia/Seoul"
   legal-counsel-weekly-self-audit:
     concurrencyPolicy: "skip_if_active"
     status: "archived"
@@ -166,6 +207,27 @@ routines:
         cronExpression: "0 9 8 5 *"
         label: "PACAA-129 one-shot 2026-05-08 09:00 KST"
         timezone: "Asia/Seoul"
+  pacaa-196-backstop-flexible-packaging-guide-gsc-soak:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 15 5 *"
+        label: "PACAA-196 backstop 2026-05-15"
+        timezone: "Asia/Seoul"
+      -
+        kind: "schedule"
+        cronExpression: "0 9 15 5 *"
+        label: "PACAA-196 backstop 2026-05-15"
+        timezone: "Asia/Seoul"
+  pacaa-211-backstop-packaging-machinery-guide-gsc-soak:
+    concurrencyPolicy: "skip_if_active"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 9 5 *"
+        label: "PACAA-211 backstop 2026-05-09"
+        timezone: "Asia/Seoul"
   pacaa-96-serp-rank-50:
     triggers:
       -
@@ -173,6 +235,18 @@ routines:
         cronExpression: "0 9 * * 1"
         label: "PACAA-96 주간 SERP 트래킹 — 매주 월요일 09:00 KST"
         timezone: "Asia/Seoul"
+  phase2-canary-eval-due-phase-2-1-e6-e7-enable:
+    concurrencyPolicy: "skip_if_active"
+    priority: "high"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 9 5 *"
+        label: "Phase 2 eval-due 2026-05-09 09:00 KST"
+        timezone: "Asia/Seoul"
+  phase4-eval-stub-phase-4-option-3-vs-option-1:
+    concurrencyPolicy: "skip_if_active"
+    priority: "low"
   stale-blocked-issue-sweep:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
@@ -181,6 +255,16 @@ routines:
         kind: "schedule"
         cronExpression: "0 9 * * 1"
         label: "Mon 09:00 KST"
+        timezone: "Asia/Seoul"
+  wake-audit-digest-24h-wake-event-audit-log-board-digest:
+    concurrencyPolicy: "skip_if_active"
+    priority: "low"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 * * *"
+        enabled: false
+        label: "daily 09:00 KST"
         timezone: "Asia/Seoul"
 sidebar:
   agents:
@@ -448,7 +532,7 @@ tasks:
   pacaa-155:
     identifier: "PACAA-155"
     priority: "medium"
-    status: "in_progress"
+    status: "backlog"
   pacaa-156:
     identifier: "PACAA-156"
     priority: "high"
@@ -501,15 +585,15 @@ tasks:
   pacaa-167:
     identifier: "PACAA-167"
     priority: "high"
-    status: "backlog"
+    status: "in_progress"
   pacaa-168:
     identifier: "PACAA-168"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-169:
     identifier: "PACAA-169"
     priority: "high"
-    status: "backlog"
+    status: "done"
   pacaa-17:
     identifier: "PACAA-17"
     priority: "medium"
@@ -576,15 +660,75 @@ tasks:
     identifier: "PACAA-183"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-184:
     identifier: "PACAA-184"
     priority: "high"
-    status: "in_progress"
+    status: "done"
+  pacaa-185:
+    identifier: "PACAA-185"
+    priority: "high"
+    status: "done"
+  pacaa-186:
+    identifier: "PACAA-186"
+    priority: "high"
+    status: "done"
+  pacaa-187:
+    identifier: "PACAA-187"
+    priority: "medium"
+    status: "done"
+  pacaa-188:
+    identifier: "PACAA-188"
+    priority: "high"
+    status: "done"
+  pacaa-189:
+    identifier: "PACAA-189"
+    priority: "high"
+    status: "done"
   pacaa-19:
     identifier: "PACAA-19"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-190:
+    identifier: "PACAA-190"
+    priority: "high"
+    status: "done"
+  pacaa-191:
+    identifier: "PACAA-191"
+    priority: "medium"
+    status: "done"
+  pacaa-192:
+    identifier: "PACAA-192"
+    priority: "low"
+    status: "backlog"
+  pacaa-193:
+    identifier: "PACAA-193"
+    priority: "low"
+    status: "todo"
+  pacaa-194:
+    identifier: "PACAA-194"
+    priority: "low"
+    status: "todo"
+  pacaa-195:
+    identifier: "PACAA-195"
+    priority: "high"
+    status: "done"
+  pacaa-196:
+    identifier: "PACAA-196"
+    priority: "medium"
+    status: "backlog"
+  pacaa-197:
+    identifier: "PACAA-197"
+    priority: "high"
+    status: "done"
+  pacaa-198:
+    identifier: "PACAA-198"
+    priority: "high"
+    status: "done"
+  pacaa-199:
+    identifier: "PACAA-199"
+    priority: "high"
     status: "done"
   pacaa-2:
     identifier: "PACAA-2"
@@ -595,15 +739,117 @@ tasks:
     identifier: "PACAA-20"
     priority: "medium"
     status: "done"
+  pacaa-200:
+    identifier: "PACAA-200"
+    priority: "high"
+    status: "done"
+  pacaa-201:
+    identifier: "PACAA-201"
+    priority: "high"
+    status: "done"
+  pacaa-202:
+    identifier: "PACAA-202"
+    priority: "medium"
+    status: "backlog"
+  pacaa-203:
+    identifier: "PACAA-203"
+    priority: "high"
+    status: "done"
+  pacaa-204:
+    identifier: "PACAA-204"
+    priority: "critical"
+    status: "done"
+  pacaa-205:
+    identifier: "PACAA-205"
+    priority: "high"
+    status: "done"
+  pacaa-206:
+    identifier: "PACAA-206"
+    priority: "critical"
+    status: "done"
+  pacaa-207:
+    identifier: "PACAA-207"
+    priority: "high"
+    status: "done"
+  pacaa-208:
+    identifier: "PACAA-208"
+    priority: "high"
+    status: "done"
+  pacaa-209:
+    identifier: "PACAA-209"
+    priority: "high"
+    status: "done"
   pacaa-21:
     identifier: "PACAA-21"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-210:
+    identifier: "PACAA-210"
+    priority: "medium"
+    status: "backlog"
+  pacaa-211:
+    identifier: "PACAA-211"
+    priority: "medium"
+    status: "backlog"
+  pacaa-212:
+    identifier: "PACAA-212"
+    priority: "medium"
+    status: "done"
+  pacaa-213:
+    identifier: "PACAA-213"
+    priority: "medium"
+    status: "done"
+  pacaa-214:
+    identifier: "PACAA-214"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-215:
+    identifier: "PACAA-215"
+    priority: "medium"
+    status: "done"
+  pacaa-216:
+    identifier: "PACAA-216"
+    priority: "medium"
+    status: "done"
+  pacaa-217:
+    identifier: "PACAA-217"
+    priority: "medium"
+    status: "done"
+  pacaa-218:
+    identifier: "PACAA-218"
+    priority: "medium"
+    status: "done"
+  pacaa-219:
+    identifier: "PACAA-219"
+    priority: "high"
+    status: "done"
   pacaa-22:
     identifier: "PACAA-22"
     priority: "medium"
     status: "done"
+  pacaa-220:
+    identifier: "PACAA-220"
+    priority: "low"
+    status: "todo"
+  pacaa-221:
+    identifier: "PACAA-221"
+    priority: "medium"
+    status: "done"
+  pacaa-222:
+    identifier: "PACAA-222"
+    priority: "medium"
+    status: "done"
+  pacaa-223:
+    identifier: "PACAA-223"
+    priority: "high"
+    status: "in_progress"
+  pacaa-224:
+    identifier: "PACAA-224"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-23:
     identifier: "PACAA-23"
     priority: "high"
@@ -935,7 +1181,7 @@ tasks:
   pacaa-95:
     identifier: "PACAA-95"
     priority: "high"
-    status: "blocked"
+    status: "backlog"
   pacaa-96:
     identifier: "PACAA-96"
     priority: "medium"

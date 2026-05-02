@@ -1,6 +1,6 @@
 ---
 name: "Phase 1A: Cloudflare Worker — E5 GitHub PR webhook → wake comment poster"
-assignee: "ceo"
+assignee: "backend-engineer"
 ---
 
 ## 배경
