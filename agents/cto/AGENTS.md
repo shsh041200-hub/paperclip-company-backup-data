@@ -89,6 +89,47 @@ Role specialty:
 * Never ship code without the agent that produced it logging its own
   decision in `runs/`. Audit trail or it didn't happen.
 
+## 절대 금지: Production 배포 경로 (PACAA-234)
+
+**Production 배포는 단 하나의 경로만 허용된다: `git push origin main`** —
+Vercel GitHub 연동이 자동으로 빌드하고 promote 한다.
+
+### 금지 사항 (예외 없음)
+- `vercel --prod`, `vercel deploy --prod`, `vercel --prod --prebuilt`,
+  `vercel promote` 등 **CLI 로 production 환경에 직접 배포하는 모든 행위**.
+- `npm run deploy` 의 인자 추가/스크립트 우회 시도. (현 `deploy` 스크립트는
+  의도적으로 fail 한다 — PACAA-234.)
+- dirty working tree (`git status` 가 unstaged/untracked 변경 표시) 상태에서
+  배포 시도. CLI 배포는 git history 와 분리되어 있어 push 안 된 변경이
+  production 에 들어가고 다음 git push 가 그것을 silently 덮어쓴다 —
+  PACAA-234 회귀 발생 메커니즘.
+
+### 회귀 메커니즘 (왜 금지인가)
+2026-05-04, CTO 가 dirty tree (`gitDirty=1`) 에서 `vercel --prod --prebuilt`
+두 번 실행 (commits `4a324f0d`, `e88f513f`). 두 배포 모두 production 으로
+promote 되어, 30 분 전 CEO 가 git push 한 `f42ca8e` (Disk IO 비용 fix —
+ISR 활성화) 를 production 에서 silently 제거. CEO 가 Vercel API rollback
+으로 복구. 이 commits 는 GitHub 로 push 된 적 없어 git history 에서 보이지
+않지만 production 에는 들어갔었음.
+
+### 정상 배포 절차
+1. `git status` clean 확인. dirty 면 stash 또는 commit 분리.
+2. `npm run lint && npm run build` 로컬 통과 확인.
+3. `git push origin main`.
+4. Vercel auto-deploy fire 확인:
+   `curl -sS -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com/v6/deployments?projectId=prj_HU0y85mpo7tPuCYtPqdiHJrer03Q&limit=1"`
+   → 새 commit SHA 가 `source:"git"`, `target:"production"` 로 떠야 한다.
+
+### 진짜 emergency (Vercel/GitHub outage 등)
+1. CEO 에게 `[ESCALATION → CEO]` 코멘트로 명시적 승인 요청 (이 문서 escalation
+   protocol 참조).
+2. 승인 코멘트 받은 뒤에만:
+   `PACKLINX_EMERGENCY_DEPLOY=1 npm run deploy:emergency`
+3. 배포 직후 issue 에 deployment URL + git SHA + CEO 승인 코멘트 ID 기록.
+
+이 규칙 위반 = 즉시 escalation 필요한 trust violation. 회귀 fix 비용
+(CEO 시간, 사용자 영향) > 어떤 emergency 의 절감 시간.
+
 ## On uncertainty
 
 If your context is incomplete, ambiguous, or contradicts prior

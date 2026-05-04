@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-03T14:08:37.522Z",
+  "generatedAt": "2026-05-04T14:03:17.096Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,15 +13,16 @@
     "skills": true
   },
   "counts": {
-    "files": 296,
+    "files": 306,
     "agents": 7,
     "skills": 22,
     "projects": 1,
-    "issues": 250
+    "issues": 260
   },
   "warnings": [
     "Skipped 11 terminated agents from export.",
-    "Agent e5-worker command /bin/true was omitted from export because it is system-dependent."
+    "Agent e5-worker command /bin/true was omitted from export because it is system-dependent.",
+    "Tasks pacaa-239, pacaa-240, pacaa-241 reference workspace 4f98a142-6af1-434b-9bbf-403516cb003b, but that workspace could not be exported portably."
   ],
   "fileInventory": [
     ".paperclip.yaml",
@@ -232,7 +233,17 @@
     "tasks/pacaa-230/TASK.md",
     "tasks/pacaa-231/TASK.md",
     "tasks/pacaa-232/TASK.md",
+    "tasks/pacaa-233/TASK.md",
+    "tasks/pacaa-234/TASK.md",
+    "tasks/pacaa-235/TASK.md",
+    "tasks/pacaa-236/TASK.md",
+    "tasks/pacaa-237/TASK.md",
+    "tasks/pacaa-238/TASK.md",
+    "tasks/pacaa-239/TASK.md",
     "tasks/pacaa-24/TASK.md",
+    "tasks/pacaa-240/TASK.md",
+    "tasks/pacaa-241/TASK.md",
+    "tasks/pacaa-242/TASK.md",
     "tasks/pacaa-25/TASK.md",
     "tasks/pacaa-26/TASK.md",
     "tasks/pacaa-27/TASK.md",
