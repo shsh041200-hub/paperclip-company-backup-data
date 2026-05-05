@@ -28,6 +28,7 @@ agents:
       type: "claude_local"
     runtime:
       heartbeat:
+        cooldownSec: 30
         intervalSec: 300
         maxConcurrentRuns: 1
     permissions:
@@ -59,6 +60,11 @@ agents:
         graceSec: 50
         model: "claude-sonnet-4-6"
       type: "claude_local"
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 1800
+        maxConcurrentRuns: 1
   e5-worker:
     role: "general"
     icon: "git-branch"
@@ -307,7 +313,7 @@ tasks:
   pacaa-104:
     identifier: "PACAA-104"
     priority: "medium"
-    status: "blocked"
+    status: "done"
   pacaa-105:
     identifier: "PACAA-105"
     priority: "high"
@@ -896,7 +902,7 @@ tasks:
   pacaa-234:
     identifier: "PACAA-234"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-235:
     identifier: "PACAA-235"
     priority: "low"
@@ -910,7 +916,7 @@ tasks:
   pacaa-237:
     identifier: "PACAA-237"
     priority: "medium"
-    status: "blocked"
+    status: "in_progress"
   pacaa-238:
     identifier: "PACAA-238"
     priority: "medium"
@@ -936,11 +942,53 @@ tasks:
     identifier: "PACAA-242"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
+  pacaa-243:
+    identifier: "PACAA-243"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-244:
+    identifier: "PACAA-244"
+    priority: "medium"
+    status: "done"
+  pacaa-245:
+    identifier: "PACAA-245"
+    priority: "medium"
+    status: "done"
+  pacaa-246:
+    identifier: "PACAA-246"
+    priority: "medium"
+    status: "done"
+  pacaa-247:
+    identifier: "PACAA-247"
+    priority: "high"
+    status: "done"
+  pacaa-248:
+    identifier: "PACAA-248"
+    priority: "high"
+    status: "done"
+  pacaa-249:
+    identifier: "PACAA-249"
+    priority: "medium"
+    status: "done"
   pacaa-25:
     identifier: "PACAA-25"
     priority: "medium"
     status: "done"
+  pacaa-250:
+    identifier: "PACAA-250"
+    priority: "medium"
+    status: "done"
+  pacaa-251:
+    identifier: "PACAA-251"
+    priority: "medium"
+    status: "done"
+  pacaa-252:
+    identifier: "PACAA-252"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-26:
     identifier: "PACAA-26"
     priority: "high"
@@ -1208,7 +1256,7 @@ tasks:
   pacaa-83:
     identifier: "PACAA-83"
     priority: "medium"
-    status: "blocked"
+    status: "done"
   pacaa-84:
     identifier: "PACAA-84"
     priority: "medium"
@@ -1220,7 +1268,7 @@ tasks:
   pacaa-86:
     identifier: "PACAA-86"
     priority: "high"
-    status: "blocked"
+    status: "done"
   pacaa-87:
     identifier: "PACAA-87"
     priority: "high"
@@ -1232,7 +1280,7 @@ tasks:
   pacaa-89:
     identifier: "PACAA-89"
     priority: "medium"
-    status: "backlog"
+    status: "done"
   pacaa-9:
     identifier: "PACAA-9"
     priority: "high"
@@ -1260,7 +1308,7 @@ tasks:
   pacaa-95:
     identifier: "PACAA-95"
     priority: "high"
-    status: "backlog"
+    status: "done"
   pacaa-96:
     identifier: "PACAA-96"
     priority: "medium"

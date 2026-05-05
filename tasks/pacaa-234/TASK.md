@@ -1,6 +1,6 @@
 ---
 name: "[배포 인프라] git remote + Vercel GitHub 통합 — 재배포 회귀 영구 방지"
-assignee: "ceo"
+assignee: "cto"
 ---
 
 ## 목적

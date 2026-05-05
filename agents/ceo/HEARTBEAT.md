@@ -3,6 +3,31 @@
 This checklist runs at the start of every heartbeat. Do not skip steps.
 Do not reorder. Each step is a gate that protects the next.
 
+## Universal wake rule (PACAA-251 R1+R5, 사인오프 2026-05-05)
+
+**모든 wake — idle / scoped / routine / interaction / self-wake — 가 본
+7-Phase 를 거친다.** scoped wake 도 Phase 1·2·3·6·7 은 항상 실행. Phase 4
+(action) 만 wake payload 의 issue 에 한정.
+
+**금지 어휘** (자가 면제 anti-pattern, PACAA-237 36시간 stall 의 root
+cause): "simple mode" / "routine fire 는 다음 정식 heartbeat 에서" /
+"scoped wake 면제" / "본 wake scope 아님 → 다음 정식 heartbeat" /
+"interactional wake 라 7-Phase skip" / **"Idle. Exit."** (run 86bad34f
+의 종결 어휘 — 단일 query 후 0 hit 면 즉시 exit) / **"CEO recent: 0 →
+exit"** (assignee 필터 + 30분 윈도우 = HEARTBEAT.md spec 위반).
+
+**금지 패턴** (run 86bad34f transcript 코드 레벨):
+- `?assigneeAgentId=$ceo&limit=5` 만 쿼리하고 끝내기 — Phase 2.4 는 *회사
+  전체* 스캔. assignee 필터 단독은 spec 위반.
+- `updatedAt > now-30min` 윈도우 단독 — stall 정의는 *전체* open issue
+  대상.
+- 단일 쿼리 결과로 "Idle" 단정 — 코멘트 본문 grep, deferred scan, R2
+  ESCALATION grep 모두 별도 단계.
+
+scoped wake 의 `do not switch issue` 는 **액션 대상 한정**. **관찰 대상**
+(Phase 2 회사 전수 read-only 스캔, Phase 6.3 deferred 스캔, Phase 6.1
+PARA freshness check) 에는 적용 안 됨.
+
 ***
 
 ## Phase 1 — IDENTITY & CONTEXT (always first)
@@ -43,6 +68,17 @@ Do not reorder. Each step is a gate that protects the next.
    neglected work — promote to the action queue. Log the scan tally
    to `Journal.md` as a 1-line entry every heartbeat (zero-finding
    results too — proves the scan ran).
+
+5. **ESCALATION 코멘트 grep (PACAA-251 R2, 사인오프 2026-05-05).** Stall
+   reflection 마지막 단계. 회사 전체 open issue 의 *마지막 5개 코멘트*
+   본문에서 다음 regex match: `\[ESCALATION → CEO\]` /
+   `에스컬레이션 → CEO` / `^Blocked.*CEO` (case-insensitive).
+   **assignee 필터 무관.** PACAA-237 의 root cause = LLM crash 후
+   `assigneeAgentId` 가 Backend 에 잔존했지만 코멘트 본문엔 ESCALATION
+   서명. 1건 이상 hit 시 stall 카테고리 = `unintended-stall` + 즉시
+   action queue 승격 + Journal 1줄 기록 (`escalation_grep: N hit
+   ${issue_ids}`). 0-fire 도 `escalation_grep: 0/N` 로 기록 (스캔이
+   돌았다는 증거).
 
 ***
 
@@ -97,6 +133,13 @@ The four phases above keep the company moving. This phase is what
 makes the company *win*. Do at least one of the following every
 heartbeat:
 
+> **Idle wake 의무 (PACAA-251 R8, 사인오프 2026-05-05).** intervalSec
+> 환경 무관. inbox 가 비어 actionable work 가 없는 wake 도 본 Phase 5
+> 의 1개 항목 회전 (메트릭 / 신호 / 플랜 / 우선순위). **no-op exit 금지.**
+> "할 일 없음 → 즉시 종료" 패턴은 PACAA-237 직전까지 6일째 위반된 룰.
+> 토큰 비용 = subscription 0, idle wake 의 ROI 가 0 인 게 아니라 회전
+> 의무 미준수가 0 으로 만들었음.
+
 * **Review a key metric.** Revenue, vendor sign-ups, search-to-quote
   conversion, daily active users. Compare to last week. Note
   deviations.
@@ -117,6 +160,11 @@ heartbeat:
    * Note any tacit insights worth surfacing later
    * If today is a Friday or end-of-month, run weekly/monthly
      synthesis
+   * **PARA memory health-check (PACAA-251 R7, 사인오프 2026-05-05).**
+     `$AGENT_HOME/memory/` 디렉토리 last mtime 가 7일 초과 시 다음 디지트
+     채널로 1줄 surface (`PARA memory N일 정지`). 본 step 은 main
+     para-memory-files 작업이 아니라도 freshness 보장 health-check 만
+     필수. PACAA-237 직전 시점 6일 정지 발견.
 2. **Scan today's board responses for deferred / partial / conditional
    items.** Apply the intent-based rule in
    `memory/feedback_deferred_item_capture.md`. For every unfinished
@@ -155,8 +203,48 @@ This is non-negotiable. The Journal is how the company gets smarter.
 1. **Verify cleanliness.** No tickets left in an ambiguous state. No
    direct reports left blocked. Any board-pending items clearly
    flagged.
-2. **Set explicit "next heartbeat" focus.** Write one line to the
+2. **Self-verify gate (PACAA-251 R4, 사인오프 2026-05-05).** Exit 직전
+   다음 셋 모두 검증. 미충족 시 1줄 append / 파일 작성 후 재검증 — exit
+   차단 가능:
+   * (a) `Journal.md` last mtime ≥ 본 heartbeat startedAt
+   * (b) `runs/{YYYY-MM-DD}-{HHMM}-decisions.md` 존재 (trivial routing
+     예: 1줄 ack 만 하는 self-wake 은 면제 가능, 단 그 면제 사유를 Journal
+     entry 에 기록)
+   * (c) `deferred_items.md` 의 scan tally 가 Journal 에 1줄 기록
+     (`scan: N/N no-fire/${triggered_ids}` + `escalation_grep: N hit /
+     0/N`)
+   본 게이트는 PACAA-237 36시간 stall 의 직접 mitigation. 5/2~5/5 4일치
+   Journal entry 부재 + decisions log 부재가 root cause 였음.
+3. **Set explicit "next heartbeat" focus.** Write one line to the
    daily note: "Tomorrow's first priority: \_\_\_."
-3. **Stop.** Do not continue past natural stopping points to "be
+4. **Stop.** Do not continue past natural stopping points to "be
    productive." Quality of attention next heartbeat depends on
    leaving cleanly now.
+***
+
+## Appendix A — Daily Board Digest SOP (PACAA-251 R6, 사인오프 2026-05-05)
+
+Daily Board Digest routine 발사 시 **본문 작성 전에** 아래 사전 쿼리 실행:
+
+1. `GET /api/companies/{id}/issues?status=in_progress` — 전수.
+2. `GET /api/companies/{id}/issues?status=blocked` — 전수.
+3. 각 issue 의 *마지막 24h 코멘트* 본문에서 ESCALATION grep:
+   `\[ESCALATION → CEO\]` / `에스컬레이션 → CEO` / `^Blocked.*CEO` /
+   `에스컬레이션 완료` (case-insensitive).
+4. 결과 분류:
+   * **hit** = 코멘트 ESCALATION 패턴 1건 이상.
+   * **dormant** = `assigneeAgentId == ceo` + status `blocked` + 마지막
+     코멘트 ≥ 48h 전.
+   * **healthy** = 그 외.
+
+**작성 규칙**:
+- (b) hit 1건 이상 → "사람 손 0건" / "보드 액션 0건" 결론 **금지**.
+  hit 이슈를 디지트 본문 "보드 액션" 또는 "CEO 액션 즉시 처리" 섹션에
+  surface.
+- dormant 1건 이상 → 디지트 "CEO own neglected" 섹션에 1줄로 surface.
+- 디지트 본문 첫 줄에 `escalation_grep: N hit / dormant: M / healthy: K`
+  메타 라인 박기 (스캔이 돌았다는 증거).
+
+**root cause**: 2026-05-05 디지트가 PACAA-237 ESCALATION 9시간째였는데
+"사람 손 in_progress 0건" 으로 단정. 본 SOP 는 동일 false-confidence
+재발 차단.
