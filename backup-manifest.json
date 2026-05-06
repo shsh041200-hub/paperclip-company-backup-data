@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-05T14:09:39.733Z",
+  "generatedAt": "2026-05-06T14:13:11.076Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 316,
+    "files": 323,
     "agents": 7,
     "skills": 22,
     "projects": 1,
-    "issues": 270
+    "issues": 277
   },
   "warnings": [
     "Skipped 11 terminated agents from export.",
@@ -255,6 +255,13 @@
     "tasks/pacaa-250/TASK.md",
     "tasks/pacaa-251/TASK.md",
     "tasks/pacaa-252/TASK.md",
+    "tasks/pacaa-253/TASK.md",
+    "tasks/pacaa-254/TASK.md",
+    "tasks/pacaa-255/TASK.md",
+    "tasks/pacaa-256/TASK.md",
+    "tasks/pacaa-257/TASK.md",
+    "tasks/pacaa-258/TASK.md",
+    "tasks/pacaa-259/TASK.md",
     "tasks/pacaa-26/TASK.md",
     "tasks/pacaa-27/TASK.md",
     "tasks/pacaa-28/TASK.md",

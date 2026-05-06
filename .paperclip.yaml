@@ -15,6 +15,28 @@ agents:
       heartbeat:
         enabled: true
         intervalSec: 1800
+    inputs:
+      env:
+        GOOGLE_API_KEY:
+          description: "Optional default for GOOGLE_API_KEY on agent backend-engineer"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
+        GOOGLE_CSE_ID:
+          description: "Optional default for GOOGLE_CSE_ID on agent backend-engineer"
+          kind: "plain"
+          default: "855ca665efef34152"
+          requirement: "optional"
+        NAVER_CLIENT_ID:
+          description: "Optional default for NAVER_CLIENT_ID on agent backend-engineer"
+          kind: "plain"
+          default: "b2ukaD9bJtRo9C83IBRT"
+          requirement: "optional"
+        NAVER_CLIENT_SECRET:
+          description: "Optional default for NAVER_CLIENT_SECRET on agent backend-engineer"
+          kind: "secret"
+          default: ""
+          requirement: "optional"
   ceo:
     role: "ceo"
     adapter:
@@ -177,15 +199,15 @@ routines:
         timezone: "Asia/Seoul"
   legal-counsel-weekly-self-audit:
     concurrencyPolicy: "skip_if_active"
+    status: "archived"
+  legal-counsel-weekly-self-audit-2:
+    concurrencyPolicy: "skip_if_active"
     triggers:
       -
         kind: "schedule"
         cronExpression: "30 9 * * 1"
         label: "Monday 09:30 KST weekly self-audit"
         timezone: "Asia/Seoul"
-  legal-counsel-weekly-self-audit-2:
-    concurrencyPolicy: "skip_if_active"
-    status: "archived"
   pacaa-103-psi-quota-retry-one-shot:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
@@ -916,7 +938,7 @@ tasks:
   pacaa-237:
     identifier: "PACAA-237"
     priority: "medium"
-    status: "in_progress"
+    status: "done"
   pacaa-238:
     identifier: "PACAA-238"
     priority: "medium"
@@ -986,6 +1008,36 @@ tasks:
     status: "done"
   pacaa-252:
     identifier: "PACAA-252"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-253:
+    identifier: "PACAA-253"
+    priority: "high"
+    status: "done"
+  pacaa-254:
+    identifier: "PACAA-254"
+    priority: "medium"
+    status: "done"
+  pacaa-255:
+    identifier: "PACAA-255"
+    priority: "medium"
+    status: "done"
+  pacaa-256:
+    identifier: "PACAA-256"
+    priority: "high"
+    status: "done"
+  pacaa-257:
+    identifier: "PACAA-257"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-258:
+    identifier: "PACAA-258"
+    priority: "medium"
+    status: "done"
+  pacaa-259:
+    identifier: "PACAA-259"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "in_progress"
@@ -1312,7 +1364,7 @@ tasks:
   pacaa-96:
     identifier: "PACAA-96"
     priority: "medium"
-    status: "blocked"
+    status: "done"
   pacaa-97:
     identifier: "PACAA-97"
     priority: "medium"
