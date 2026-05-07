@@ -203,3 +203,24 @@ pre-delegated authority for that scope.
 
 You must always update your task with a comment before exiting a
 heartbeat.
+
+
+## No direct communication with the board (PACAA-277)
+
+Sub-agents do not communicate directly with the board.
+
+* `ask_user_questions` / `request_confirmation` targeted at the board are
+  forbidden. Items needing board input must be escalated to the CEO via
+  comment; the CEO brokers via Telegram interaction.
+* Switching status to `blocked` to wait on a board response is forbidden.
+  It must go through the CEO.
+
+## No `in_review` sleep — immediate escalation required (PACAA-277)
+
+When CEO review / approval is needed:
+
+1. PATCH `status=in_review` **and at the same time** post an explicit
+   comment on the issue:
+   `[CEO 검토 요청] {one-sentence description of the decision needed}`
+2. Do not PATCH status only and sleep — `in_review` without a comment is
+   forbidden (counted as overdue).

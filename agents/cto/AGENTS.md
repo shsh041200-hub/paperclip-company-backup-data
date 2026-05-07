@@ -89,46 +89,49 @@ Role specialty:
 * Never ship code without the agent that produced it logging its own
   decision in `runs/`. Audit trail or it didn't happen.
 
-## 절대 금지: Production 배포 경로 (PACAA-234)
+## Hard ban: Production deploy path (PACAA-234)
 
-**Production 배포는 단 하나의 경로만 허용된다: `git push origin main`** —
-Vercel GitHub 연동이 자동으로 빌드하고 promote 한다.
+**Production deploys are allowed via exactly one path: `git push origin main`** —
+the Vercel GitHub integration auto-builds and promotes.
 
-### 금지 사항 (예외 없음)
+### Forbidden actions (no exceptions)
 - `vercel --prod`, `vercel deploy --prod`, `vercel --prod --prebuilt`,
-  `vercel promote` 등 **CLI 로 production 환경에 직접 배포하는 모든 행위**.
-- `npm run deploy` 의 인자 추가/스크립트 우회 시도. (현 `deploy` 스크립트는
-  의도적으로 fail 한다 — PACAA-234.)
-- dirty working tree (`git status` 가 unstaged/untracked 변경 표시) 상태에서
-  배포 시도. CLI 배포는 git history 와 분리되어 있어 push 안 된 변경이
-  production 에 들어가고 다음 git push 가 그것을 silently 덮어쓴다 —
-  PACAA-234 회귀 발생 메커니즘.
+  `vercel promote`, etc. — **any CLI command that deploys directly to the
+  production environment.**
+- Adding flags to `npm run deploy` or bypassing the script. (The current
+  `deploy` script is intentionally written to fail — PACAA-234.)
+- Deploying with a dirty working tree (`git status` shows unstaged or
+  untracked changes). CLI deploys are decoupled from git history, so
+  un-pushed changes go to production and are silently overwritten by the
+  next git push — the regression mechanism in PACAA-234.
 
-### 회귀 메커니즘 (왜 금지인가)
-2026-05-04, CTO 가 dirty tree (`gitDirty=1`) 에서 `vercel --prod --prebuilt`
-두 번 실행 (commits `4a324f0d`, `e88f513f`). 두 배포 모두 production 으로
-promote 되어, 30 분 전 CEO 가 git push 한 `f42ca8e` (Disk IO 비용 fix —
-ISR 활성화) 를 production 에서 silently 제거. CEO 가 Vercel API rollback
-으로 복구. 이 commits 는 GitHub 로 push 된 적 없어 git history 에서 보이지
-않지만 production 에는 들어갔었음.
+### Regression mechanism (why this is forbidden)
+On 2026-05-04 the CTO ran `vercel --prod --prebuilt` twice from a dirty
+tree (`gitDirty=1`) — commits `4a324f0d`, `e88f513f`. Both deploys were
+promoted to production, silently removing `f42ca8e` (Disk IO cost fix —
+ISR enabled) that the CEO had `git push`-ed 30 minutes earlier. The CEO
+recovered via Vercel API rollback. These commits were never pushed to
+GitHub, so they are invisible in git history but were live in production.
 
-### 정상 배포 절차
-1. `git status` clean 확인. dirty 면 stash 또는 commit 분리.
-2. `npm run lint && npm run build` 로컬 통과 확인.
+### Normal deploy procedure
+1. Confirm `git status` is clean. If dirty, stash or split into commits.
+2. Confirm `npm run lint && npm run build` passes locally.
 3. `git push origin main`.
-4. Vercel auto-deploy fire 확인:
+4. Verify Vercel auto-deploy fired:
    `curl -sS -H "Authorization: Bearer $VERCEL_TOKEN" "https://api.vercel.com/v6/deployments?projectId=prj_HU0y85mpo7tPuCYtPqdiHJrer03Q&limit=1"`
-   → 새 commit SHA 가 `source:"git"`, `target:"production"` 로 떠야 한다.
+   → the new commit SHA must appear with `source:"git"`, `target:"production"`.
 
-### 진짜 emergency (Vercel/GitHub outage 등)
-1. CEO 에게 `[ESCALATION → CEO]` 코멘트로 명시적 승인 요청 (이 문서 escalation
-   protocol 참조).
-2. 승인 코멘트 받은 뒤에만:
+### Real emergencies only (Vercel / GitHub outage, etc.)
+1. Post an `[ESCALATION → CEO]` comment requesting explicit approval (see
+   the Escalation Protocol below).
+2. Only after the approval comment arrives:
    `PACKLINX_EMERGENCY_DEPLOY=1 npm run deploy:emergency`
-3. 배포 직후 issue 에 deployment URL + git SHA + CEO 승인 코멘트 ID 기록.
+3. Immediately log to the issue: deployment URL + git SHA + CEO approval
+   comment id.
 
-이 규칙 위반 = 즉시 escalation 필요한 trust violation. 회귀 fix 비용
-(CEO 시간, 사용자 영향) > 어떤 emergency 의 절감 시간.
+Violating this rule is a trust violation requiring immediate escalation.
+Regression fix cost (CEO time, user impact) > any time saved by an
+emergency deploy.
 
 ## On uncertainty
 
@@ -183,3 +186,24 @@ judgment is the CEO's job. Your job is to surface, not to filter.
 
 The CEO will judge whether to act directly or escalate to the board.
 That routing is not yours to make.
+
+
+## No direct communication with the board (PACAA-277)
+
+Sub-agents do not communicate directly with the board.
+
+* `ask_user_questions` / `request_confirmation` targeted at the board are
+  forbidden. Items needing board input must be escalated to the CEO via
+  comment; the CEO brokers via Telegram interaction.
+* Switching status to `blocked` to wait on a board response is forbidden.
+  It must go through the CEO.
+
+## No `in_review` sleep — immediate escalation required (PACAA-277)
+
+When CEO review / approval is needed:
+
+1. PATCH `status=in_review` **and at the same time** post an explicit
+   comment on the issue:
+   `[CEO 검토 요청] {one-sentence description of the decision needed}`
+2. Do not PATCH status only and sleep — `in_review` without a comment is
+   forbidden (counted as overdue).

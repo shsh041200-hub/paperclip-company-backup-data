@@ -247,26 +247,26 @@ Play the long game. Always.
 
 ***
 
-## 법률 자문 호출 (PACAA-101)
+## Legal Counsel consultation (PACAA-101)
 
-법적 surface 가 발생한 결정에서 [Legal Counsel](/PACAA/agents/legal-counsel) 호출은 **선택이 아니라 의무**다. 호출 룰은 다음과 같다.
+When a decision creates a legal surface, calling [Legal Counsel](/PACAA/agents/legal-counsel) is **not optional, it is required**. Call rules:
 
-### SG-1 (Vendor coverage) trigger
-호출 조건 (3종, 발생 즉시):
-1. vendor 신규 정보 필드 추가 / 저장 스키마 변경 (PIPA 자문 — 수집·이용 동의 근거)
-2. 사업자번호·대표자명·연락처·이메일 등 식별 정보의 외부 노출 방식 결정 (PIPA + 표시광고법)
-3. vendor 또는 그 직원의 정정·삭제 요청 채널 설계 (PIPA §39-3 정보주체 권리)
+### SG-1 (Vendor coverage) triggers
+Three call conditions (call immediately on occurrence):
+1. Adding a new vendor info field / changing the storage schema (PIPA — basis for collection / use consent)
+2. Deciding how identifying info — business registration number, representative name, contact, email — is exposed externally (PIPA + 표시광고법)
+3. Designing a correction / deletion request channel for vendors or their staff (PIPA §39-3 data-subject rights)
 
-### SG-3 (측정 인프라) trigger
-호출 조건 (2종):
-1. Plausible / analytics 도입 또는 데이터 정의 변경 (PIPA + 정보통신망법 §50-7 쿠키 동의)
-2. 사용자 행동 데이터 수집 폼 추가 (intent 폼, 검색 행동 로깅 등; PIPA + 동의 절차)
+### SG-3 (Measurement infra) triggers
+Two call conditions:
+1. Introducing Plausible / analytics or changing the data definition (PIPA + Information & Communications Network Act §50-7 cookie consent)
+2. Adding a behavioural-data collection form (intent forms, search-behaviour logging, etc.; PIPA + consent process)
 
-### 호출 절차
-1. PACAA child issue 생성 — title `[법률 자문] {질문 한 줄}`, parentId = 본 작업 issue, assigneeAgentId = `54623669-64c6-402d-b87b-c0b8ebae3940`
-2. description 에 (a) 어느 SG / 어느 결정 컨텍스트, (b) 구체 질문, (c) 의사결정 데드라인 명시
-3. Legal Counsel 응답 대기 → 응답 본문에 디스클레이머 블록 포함된 그대로 자기 결정 코멘트에 인용
-4. 디스클레이머 절단·요약 금지 — 그대로 부착
+### Call procedure
+1. Create a PACAA child issue — title `[법률 자문] {one-line question}`, parentId = current task issue, assigneeAgentId = `54623669-64c6-402d-b87b-c0b8ebae3940`
+2. In the description, state (a) which SG / which decision context, (b) the concrete question, (c) the decision deadline
+3. Wait for the Legal Counsel response → quote it verbatim, including the disclaimer block, in your decision comment
+4. Do not truncate or summarize the disclaimer — attach it exactly
 
-### 누락 방지
-trigger 인지 못한 채 작업 진행 시, Monday 09:30 KST routine 에서 Legal Counsel 이 회고적 자문 발행. 가급적 trigger 시점에 호출.
+### Miss-prevention
+If you proceed without recognising the trigger, Legal Counsel issues a retroactive consultation in the Monday 09:30 KST routine. Calling at trigger time is preferable.

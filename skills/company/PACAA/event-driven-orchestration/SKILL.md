@@ -11,188 +11,150 @@ metadata:
 key: "company/d5e183da-c58f-4124-8075-493330dce4c4/event-driven-orchestration"
 ---
 
-# Event-driven Orchestration — Packlinx 운영 패러다임
+# Event-driven Orchestration — Packlinx operating paradigm
 
-Packlinx는 **AI 에이전트 회사**다. 인간 회사의 시간 기반 운영 가정을
-그대로 적용하면 작업이 30분 만에 끝나도 시스템이 3일 마감으로 인식해
-체인 작업이 1.5시간이 1주일로 늘어난다. 이 스킬은 그 손실을 막기 위한
-**deadline 분류 + 트리거 체인** 프로토콜이다.
+Packlinx is an **AI-agent company**. Applying human-company time-based assumptions verbatim turns work that finishes in 30 minutes into a system that thinks the deadline is 3 days away — chained tasks that should take 1.5 hours stretch to a full week. This skill is the **deadline-classification + trigger-chain** protocol that prevents that loss.
 
-이 스킬의 권위 출처는 PACAA-146 보드 디렉티브 (2026-05-01)다.
+The authority for this skill is the PACAA-146 board directive (2026-05-01).
 
-## 언제 이 스킬을 호출하는가
+## When to invoke
 
-**필수 호출 시점:**
+**Mandatory invocation:**
 
-1. 새 task / issue / child issue 생성 시 — `dueAt` 또는 본문 마감일을
-   박기 전 자가 질문 통과 의무.
-2. plan 문서 작성 시 — Project Goal / phase / milestone 마다 마감
-   분류 의무.
-3. 보드/유저 메시지를 task 로 변환 시 — "X일 안에" 같은 인간
-   표현을 그대로 받아쓰지 말 것.
-4. heartbeat stall reflection 시 — 시간 마감으로 잡혀있던 backlog/blocked
-   를 카테고리 B 후보로 재분류.
-5. 일반 비즈니스 지식을 적용할 때 — "스프린트", "분기 OKR", "주간
-   1-on-1" 등 인간 회사 디폴트가 떠오르면 변환 사전 적용.
+1. Creating a new task / issue / child issue — pass the self-question check before setting `dueAt` or a deadline in the body.
+2. Authoring a plan document — every Project Goal / phase / milestone must be classified.
+3. Converting a board / user message into a task — do not transcribe human phrasing like "within X days" verbatim.
+4. During heartbeat stall reflection — reclassify time-bound backlog/blocked items as Category B candidates.
+5. When applying generic business knowledge — when defaults like "sprint", "quarterly OKR", or "weekly 1:1" surface, run them through the conversion dictionary first.
 
-**스킵 가능:** 단순 routing, ack, 이미 분류·승인된 작업의 후속 단계.
+**Skippable:** simple routing, acks, follow-up steps of already-classified-and-approved work.
 
-## 자가 질문 (Self-question, 의무)
+## Self-question (mandatory)
 
-새 마감을 박기 직전, 한 줄로 답할 것:
+Right before setting a deadline, answer in one line:
 
-> **"이 마감이 진짜 시간에 의존하는가, 아니면 이전 작업/이벤트
-> 완료에 의존하는가?"**
+> **"Does this deadline really depend on time, or does it depend on the completion of a prior task / event?"**
 
-후자면 시간 마감 박지 말고 **트리거 조건**으로 정의한다.
+If the latter, do not set a time deadline — define a **trigger condition** instead.
 
-## 두 카테고리
+## Two categories
 
-### Category A — Time-based justified (시간 마감 정당)
+### Category A — Time-based justified
 
-마감을 시간으로 박는 게 정당한 4가지 사유. 그 외는 전부 B.
+Four reasons that justify a time-based deadline. Anything else is B.
 
-1. **외부 의존성** — 우리가 통제할 수 없는 외부 시스템의 처리
-   지연. 예: Google 인덱싱 12주, Vercel 응답 36시간, GSC 데이터
-   재계산 48시간, 카카오/네이버 API quota 갱신.
-2. **데이터 축적 필요** — 일정 기간 누적해야 의미가 생기는 측정.
-   예: WUV 베이스라인 1주, 월간 사용자 행동, 분기 코호트 리텐션.
-3. **외부 약속/이벤트** — 우리가 외부에 commit 한 일정. 예: 분기
-   보고, 투자자 미팅, 계약 만기, 법정 신고 기한.
-4. **시장 자연 사이클** — 산업 자체의 시간성. 예: 한국 패키징
-   성수기 (9~11월), 명절 휴업, 회계연도.
+1. **External dependency** — a delay we cannot control. Examples: Google indexing 12 weeks, Vercel response 36h, GSC data reprocessing 48h, Kakao / Naver API quota refresh.
+2. **Data accumulation** — a measurement that is meaningful only after a window. Examples: WUV baseline 1 week, monthly user behaviour, quarterly cohort retention.
+3. **External commitment / event** — a commitment we made to an outside party. Examples: quarterly report, investor meeting, contract expiry, statutory filing deadline.
+4. **Natural market cycle** — the industry's intrinsic time. Examples: Korean packaging peak season (Sep–Nov), Korean holiday closures, fiscal year.
 
-이 4가지에 해당하는 마감은 시간 마감 유지하되, **원칙 4** (마감일
-재정의) 적용.
+If a deadline matches one of these four, keep the time deadline but apply **Principle 4** (deadline redefinition).
 
-### Category B — Event-based justified (이벤트 마감 정당)
+### Category B — Event-based justified
 
-다음 작업 유형의 시간 마감은 **거의 항상 거짓**이다. 트리거로 변환.
+Time deadlines on the following work types are **almost always false**. Convert to triggers.
 
-* **제작/생산** — 코드 구현, 디자인 산출, 콘텐츠 작성, 문서 작성.
-* **검증** — 코드리뷰, QA, 가설 검증, 테스트 실행.
-* **의사결정** — ADR 작성, 옵션 비교, 보드 승인 요청.
-* **학습/회고** — 회고록, 결정 audit, post-mortem.
+* **Production** — code implementation, design output, content writing, document drafting.
+* **Verification** — code review, QA, hypothesis validation, test execution.
+* **Decisions** — ADR drafting, option comparison, board approval requests.
+* **Learning / retrospective** — retros, decision audits, post-mortems.
 
-이런 작업의 진짜 의존은 "이전 단계 완료" 또는 "결정 인풋 도착"
-이다. "3일 안에"는 인간 회사의 캘린더 압박을 흉내낸 것일 뿐이다.
+The real dependency for these is "previous step done" or "decision input arrived." "Within 3 days" is just calendar pressure mimicked from human companies.
 
-## 4 운영 원칙
+## Four operating principles
 
-### 원칙 1 — 두 카테고리 분리 (위 정의)
+### Principle 1 — Separate the two categories (definitions above)
 
-작업 정의 시 카테고리 라벨 의무. 본문 또는 주석에 명시.
+When defining work, label the category. State it in the body or in metadata.
 
-### 원칙 2 — 자가 질문 의무
+### Principle 2 — Mandatory self-question
 
-위 자가 질문을 통과 못하면 시간 마감 박지 말 것. 통과하면 어떤
-A 사유인지 한 줄로 본문에 명시 ("외부 의존: Google indexing
-12주").
+If the self-question above does not pass, do not set a time deadline. If it passes, write the specific A reason in the body in one line ("External dependency: Google indexing 12 weeks").
 
-### 원칙 3 — 트리거 체인 자동화
+### Principle 3 — Automate trigger chains
 
-이벤트 기반 작업 정의 시 다음 3 요소를 본문 / 메타데이터에 박는다:
+When defining event-based work, bake the following 3 elements into the body / metadata:
 
-1. **선행 조건 (Trigger):** 어떤 이벤트가 발생하면 시작하는가.
-   * 예: "PACAA-X 가 status=done 으로 전환되면"
-   * 예: "보드가 plan revision N 을 accept 하면"
-   * 예: "검증 결과 X 지표가 임계값 통과 시"
-2. **즉시 실행:** 트리거 발화 시 마감일 대기 없이 active. Paperclip
-   에서는 `parentIssueId` 를 정확히 박아 child completion wake 가
-   터지게 하거나, blocker→unblock 시 자동 wake 가 터지게 한다.
-3. **후행 알림:** 이 작업 완료 시 다음 작업이 자동 시작되도록
-   chained issue 또는 routine trigger 를 미리 박는다. 매번 사람이
-   수동 wake 하지 않게.
+1. **Precondition (Trigger):** which event starts this work.
+   * e.g., "When PACAA-X transitions to status=done"
+   * e.g., "When the board accepts plan revision N"
+   * e.g., "When validation result X passes the threshold"
+2. **Immediate execution:** active on trigger fire, no deadline waiting. In Paperclip, set `parentIssueId` correctly so the child-completion wake fires automatically, or rely on blocker→unblock auto-wake.
+3. **Downstream notification:** wire a chained issue or routine trigger so the next task starts automatically when this one completes. No manual board wakes.
 
-### 원칙 4 — 시간 마감의 의미 재정의
+### Principle 4 — Redefine the meaning of time deadlines
 
-Category A 에서도 시간 마감 = "데드라인" 아닌 **"검토 시점"**:
+Even in Category A, a time deadline is a **"check-in"**, not a "commit":
 
-* 작업이 일찍 끝나면 즉시 다음 단계 진행 (마감일 대기 X).
-* 작업이 마감일까지 안 끝나면 그때 재평가 (자동 fail 처리 X).
-* `dueAt` 은 _check-in_ 시그널이지 _commit_ 이 아니다.
+* If the work finishes early, advance immediately (do not wait for the deadline).
+* If the work is not done by the deadline, reassess at that point (not auto-fail).
+* `dueAt` is a _check-in_ signal, not a _commit_.
 
-## 인간 → AI 변환 사전
+## Human → AI conversion dictionary
 
-CEO 와 모든 에이전트가 일반 비즈니스 지식을 적용할 때 다음 변환
-의무. 인간 회사 가정이 떠오르면 **AI 에이전트 회사 등가물**로
-교체.
+When the CEO and any agent apply generic business knowledge, the following conversions are mandatory. When a human-company assumption surfaces, replace it with the **AI-agent-company equivalent**.
 
-| 인간 회사 가정         | AI 에이전트 회사 변환                                       |
-| ---------------- | ------------------------------------------------- |
-| "스프린트 2주"        | "이벤트 체인 + Category A 항목만 시간 박싱"                   |
-| "분기 OKR"         | "Goal 트리 + 이벤트 트리거 + Category A 측정창"              |
-| "주간 1-on-1"      | "트리거 발화 시 자동 보고 / 변경 시 push"                     |
-| "프로젝트 간트 차트"     | "이벤트 의존성 그래프 (DAG)"                               |
-| "리소스 계획"         | "에이전트 동시성 + 병렬 child issue"                       |
-| "마감일 압박"         | "이전 작업 완료 압박"                                     |
-| "데일리 스탠드업"       | "heartbeat stall reflection + active child scan"  |
-| "분기 리뷰"          | "Category A 측정창 종료 시 자동 회고 트리거"                   |
-| "off-site 워크샵"   | "보드 정렬 회의 + 메모 capture (event)"                   |
-| "롤아웃 스케줄"        | "feature flag + 카나리 + 메트릭 게이트"                    |
-| "에스컬레이션 SLA 4시간" | "blocker 발생 즉시 escalate, hop count 제한"            |
+| Human-company assumption        | AI-agent-company conversion                                         |
+| ------------------------------- | ------------------------------------------------------------------- |
+| "2-week sprint"                 | "Event chain + time-box only Category A items"                      |
+| "Quarterly OKR"                 | "Goal tree + event triggers + Category A measurement window"        |
+| "Weekly 1:1"                    | "Auto-report on trigger fire / push-on-change"                      |
+| "Project Gantt chart"           | "Event-dependency graph (DAG)"                                      |
+| "Resource plan"                 | "Agent concurrency + parallel child issues"                         |
+| "Deadline pressure"             | "Pressure to complete the prior task"                               |
+| "Daily standup"                 | "heartbeat stall reflection + active child scan"                    |
+| "Quarterly review"              | "Auto-retrospective trigger when Category A measurement window ends"|
+| "Off-site workshop"             | "Board alignment meeting + memo capture (event)"                    |
+| "Rollout schedule"              | "Feature flag + canary + metric gate"                               |
+| "Escalation SLA 4h"             | "Escalate immediately on blocker, hop-count limit"                  |
 
-원래 인간 회사에서 통하던 디폴트는 **모두 의심**하라. 95% 는 캘린더
-압박 흉내, 5% 만 진짜 시간 의존이다.
+**Suspect every default that worked in a human company.** 95% are calendar-pressure mimicry; only 5% are real time dependencies.
 
-## Paperclip 적용 패턴
+## Paperclip application pattern
 
-이 스킬을 Paperclip 위에서 실제 박는 방법:
+How to actually wire this on Paperclip:
 
-1. **issue 본문 헤더에 카테고리 명시.** 예:
+1. **State the category in the issue body header.** Example:
 
    ```text
-   ## 마감 분류
-   - Category: B (제작 작업)
+   ## Deadline classification
+   - Category: B (production work)
    - Trigger: PACAA-95 status=done
-   - 후행: PACAA-104 자동 wake (parentIssueId 세팅)
+   - Downstream: PACAA-104 auto-wake (parentIssueId set)
    ```
 
-2. **`dueAt` 사용 규칙.** Category A 만 `dueAt` 세팅. Category B 는
-   `dueAt` 비우고 본문에 트리거 조건 명시.
+2. **`dueAt` rules.** Set `dueAt` only on Category A. For Category B, leave `dueAt` empty and state the trigger condition in the body.
 
-3. **`parentIssueId` 의무.** child issue 생성 시 항상 세팅. 그래야
-   `issue_children_completed` wake 가 자동 발사된다.
+3. **`parentIssueId` is mandatory.** Always set it on child-issue creation so `issue_children_completed` wake fires automatically.
 
-4. **Category B 인데 dueAt 박혀있는 issue 발견 시** — stall
-   reflection 단계에서 dueAt 제거 + 트리거 명시 PATCH. 보드 승인
-   불필요 (작업 의도 변경 아닌 운영 정정).
+4. **If you find a Category B issue with `dueAt` set** — during stall reflection, PATCH it to clear `dueAt` and add the trigger statement. No board approval needed (operational correction, not a change of intent).
 
-5. **Category A 에서도 일찍 끝났으면 즉시 다음 단계** — `dueAt`
-   까지 대기 금지. 다음 작업의 trigger 조건을 "PACAA-X done" 으로
-   박았다면 done 즉시 발사된다.
+5. **Even Category A: if the work finished early, advance immediately** — do not wait for `dueAt`. If the next task's trigger is wired as "PACAA-X done", it fires the moment the prior issue is marked done.
 
 ## Anti-patterns
 
-* **"3일 안에 X" 같은 인간 표현을 그대로 받아쓰기.** 보드/유저가
-  그 표현을 써도, 변환 의무는 에이전트에게 있다. "이 마감이 진짜
-  시간 의존인가?" 자가 질문 후 답.
-* **dueAt 만 박고 trigger 안 적기.** Category A 도 trigger 가 있을
-  수 있다 (예: "GSC 데이터 reprocessing 완료 후 측정"). 둘 다 명시.
-* **이벤트 작업을 캘린더로 페이싱.** "diff 가 작아도 일주일은
-  돌리자" 같은 인간 sprint 디폴트는 AI 에이전트한테는 순손실이다.
-* **트리거 체인을 사람이 수동 발사.** 매번 보드가 wake 누르게
-  만들지 말 것. parentIssueId / blockedByIssueIds 로 자동화.
-* **Category A 사유를 발명.** 진짜 외부 의존이 아니면서 "외부
-  의존" 라벨로 시간 박싱 정당화. 4 사유 중 어디에도 안 맞으면
-  B 다.
+* **Transcribing human phrases like "within 3 days" verbatim.** Even if the board / user used the phrase, the conversion duty falls on the agent. Self-question first, then answer.
+* **Setting `dueAt` without writing the trigger.** Even Category A items can have a trigger (e.g., "after GSC data reprocessing completes"). State both.
+* **Pacing event work by the calendar.** Human-sprint defaults like "let it run for a week even if the diff is small" are a pure loss for AI agents.
+* **Manually firing trigger chains.** Do not make the board press wake every time. Automate via `parentIssueId` / `blockedByIssueIds`.
+* **Inventing Category A reasons.** Don't justify time-boxing as "external dependency" when there is no real external blocker. If it does not match one of the four reasons, it's B.
 
-## Self-check (마감 박기 직전)
+## Self-check (right before setting a deadline)
 
-- [ ] 자가 질문 답함: 시간 의존 / 이벤트 의존
-- [ ] Category 라벨 본문에 명시
-- [ ] B 면 trigger 조건 + 후행 알림 박음, dueAt 비움
-- [ ] A 면 4 사유 중 어느 것인지 명시, dueAt 은 _검토 시점_
-- [ ] parentIssueId / blockedByIssueIds 로 자동 wake 체인 구성
-- [ ] 인간 회사 가정 (스프린트, 분기, SLA) 사용 시 변환 사전 적용
+- [ ] Self-question answered: time-dependent / event-dependent
+- [ ] Category label stated in the body
+- [ ] If B, trigger + downstream notification stated; `dueAt` cleared
+- [ ] If A, the specific reason among the 4 stated; `dueAt` is a _check-in_
+- [ ] Auto-wake chain wired via `parentIssueId` / `blockedByIssueIds`
+- [ ] When using human-company assumptions (sprint, quarter, SLA), conversion dictionary applied
 
-## 검증 지표 (PACAA-146 보드 합의)
+## Validation metrics (PACAA-146 board agreement)
 
-이 스킬 적용 후 1주 측정:
+One week after applying this skill, measure:
 
-* 작업 평균 완료 시간 (시간 → 시간 단위 기대)
-* 체인 작업 (A → B → C) 총 소요 (1주 → 시간 기대)
-* 에이전트 idle 시간 (대기 → 즉시 실행 기대)
-* `dueAt` 이 박힌 issue 중 Category A 비율 (≥80% 목표)
+* Average task completion time (hours, not days)
+* Total chain time (A → B → C) (target: hours, not a week)
+* Agent idle time (target: immediate fire, not waiting)
+* Among issues with `dueAt`, the share that is Category A (target ≥80%)
 
-지표 미달 시 스킬을 보강한다 (anti-pattern 추가, 변환 사전 확장).
+If metrics fall short, reinforce the skill (add anti-patterns, expand the conversion dictionary).

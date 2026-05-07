@@ -229,6 +229,7 @@ routines:
         timezone: "Asia/Seoul"
   pacaa-129-gsc-4xx-2026-05-08:
     concurrencyPolicy: "skip_if_active"
+    status: "archived"
     triggers:
       -
         kind: "schedule"
@@ -256,6 +257,15 @@ routines:
         kind: "schedule"
         cronExpression: "0 9 9 5 *"
         label: "PACAA-211 backstop 2026-05-09"
+        timezone: "Asia/Seoul"
+  pacaa-263-idle-improvement-weekly-digest:
+    concurrencyPolicy: "skip_if_active"
+    status: "archived"
+    triggers:
+      -
+        kind: "schedule"
+        cronExpression: "0 9 * * 1"
+        label: "Weekly Mon 09:00 KST"
         timezone: "Asia/Seoul"
   pacaa-96-serp-rank-50:
     triggers:
@@ -399,7 +409,7 @@ tasks:
   pacaa-119:
     identifier: "PACAA-119"
     priority: "medium"
-    status: "done"
+    status: "backlog"
   pacaa-12:
     identifier: "PACAA-12"
     priority: "high"
@@ -444,7 +454,7 @@ tasks:
   pacaa-129:
     identifier: "PACAA-129"
     priority: "medium"
-    status: "backlog"
+    status: "done"
   pacaa-13:
     identifier: "PACAA-13"
     priority: "high"
@@ -734,11 +744,11 @@ tasks:
   pacaa-193:
     identifier: "PACAA-193"
     priority: "low"
-    status: "todo"
+    status: "done"
   pacaa-194:
     identifier: "PACAA-194"
     priority: "low"
-    status: "todo"
+    status: "done"
   pacaa-195:
     identifier: "PACAA-195"
     priority: "high"
@@ -861,7 +871,7 @@ tasks:
   pacaa-220:
     identifier: "PACAA-220"
     priority: "low"
-    status: "todo"
+    status: "done"
   pacaa-221:
     identifier: "PACAA-221"
     priority: "medium"
@@ -1040,23 +1050,184 @@ tasks:
     identifier: "PACAA-259"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-26:
     identifier: "PACAA-26"
     priority: "high"
+    status: "done"
+  pacaa-260:
+    identifier: "PACAA-260"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-261:
+    identifier: "PACAA-261"
+    priority: "medium"
+    status: "cancelled"
+  pacaa-262:
+    identifier: "PACAA-262"
+    priority: "medium"
+    status: "done"
+  pacaa-263:
+    identifier: "PACAA-263"
+    priority: "medium"
+    status: "in_progress"
+  pacaa-264:
+    identifier: "PACAA-264"
+    priority: "medium"
+    status: "done"
+  pacaa-265:
+    identifier: "PACAA-265"
+    priority: "medium"
+    status: "done"
+  pacaa-266:
+    identifier: "PACAA-266"
+    priority: "medium"
+    status: "done"
+  pacaa-267:
+    identifier: "PACAA-267"
+    priority: "medium"
+    status: "done"
+  pacaa-268:
+    identifier: "PACAA-268"
+    priority: "medium"
+    status: "done"
+  pacaa-269:
+    identifier: "PACAA-269"
+    priority: "medium"
     status: "done"
   pacaa-27:
     identifier: "PACAA-27"
     priority: "high"
     status: "done"
+  pacaa-270:
+    identifier: "PACAA-270"
+    priority: "high"
+    status: "done"
+  pacaa-271:
+    identifier: "PACAA-271"
+    priority: "medium"
+    status: "done"
+  pacaa-272:
+    identifier: "PACAA-272"
+    priority: "medium"
+    status: "done"
+  pacaa-273:
+    identifier: "PACAA-273"
+    priority: "high"
+    status: "done"
+  pacaa-274:
+    identifier: "PACAA-274"
+    priority: "medium"
+    status: "done"
+  pacaa-275:
+    identifier: "PACAA-275"
+    priority: "low"
+    status: "backlog"
+  pacaa-276:
+    identifier: "PACAA-276"
+    priority: "medium"
+    status: "done"
+  pacaa-277:
+    identifier: "PACAA-277"
+    priority: "high"
+    status: "done"
+  pacaa-278:
+    identifier: "PACAA-278"
+    priority: "medium"
+    status: "done"
+  pacaa-279:
+    identifier: "PACAA-279"
+    priority: "low"
+    status: "done"
   pacaa-28:
     identifier: "PACAA-28"
     priority: "high"
+    status: "done"
+  pacaa-280:
+    identifier: "PACAA-280"
+    priority: "low"
+    status: "done"
+  pacaa-281:
+    identifier: "PACAA-281"
+    priority: "medium"
+    status: "cancelled"
+  pacaa-282:
+    identifier: "PACAA-282"
+    priority: "low"
+    status: "backlog"
+  pacaa-283:
+    identifier: "PACAA-283"
+    priority: "low"
+    status: "done"
+  pacaa-284:
+    identifier: "PACAA-284"
+    priority: "low"
+    status: "backlog"
+  pacaa-285:
+    identifier: "PACAA-285"
+    priority: "medium"
+    status: "done"
+  pacaa-286:
+    identifier: "PACAA-286"
+    priority: "medium"
+    status: "done"
+  pacaa-287:
+    identifier: "PACAA-287"
+    priority: "medium"
+    status: "done"
+  pacaa-288:
+    identifier: "PACAA-288"
+    priority: "low"
+    status: "backlog"
+  pacaa-289:
+    identifier: "PACAA-289"
+    priority: "low"
     status: "done"
   pacaa-29:
     identifier: "PACAA-29"
     priority: "high"
     status: "done"
+  pacaa-290:
+    identifier: "PACAA-290"
+    priority: "low"
+    status: "done"
+  pacaa-291:
+    identifier: "PACAA-291"
+    priority: "low"
+    status: "done"
+  pacaa-292:
+    identifier: "PACAA-292"
+    priority: "high"
+    status: "done"
+  pacaa-293:
+    identifier: "PACAA-293"
+    priority: "low"
+    status: "done"
+  pacaa-294:
+    identifier: "PACAA-294"
+    priority: "low"
+    status: "done"
+  pacaa-295:
+    identifier: "PACAA-295"
+    priority: "low"
+    status: "done"
+  pacaa-296:
+    identifier: "PACAA-296"
+    priority: "low"
+    status: "done"
+  pacaa-297:
+    identifier: "PACAA-297"
+    priority: "medium"
+    status: "done"
+  pacaa-298:
+    identifier: "PACAA-298"
+    priority: "medium"
+    status: "backlog"
+  pacaa-299:
+    identifier: "PACAA-299"
+    priority: "medium"
+    status: "backlog"
   pacaa-3:
     identifier: "PACAA-3"
     priority: "medium"
@@ -1065,6 +1236,19 @@ tasks:
     identifier: "PACAA-30"
     priority: "high"
     status: "done"
+  pacaa-300:
+    identifier: "PACAA-300"
+    priority: "medium"
+    status: "in_progress"
+  pacaa-301:
+    identifier: "PACAA-301"
+    priority: "medium"
+    status: "done"
+  pacaa-302:
+    identifier: "PACAA-302"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-31:
     identifier: "PACAA-31"
     priority: "low"
