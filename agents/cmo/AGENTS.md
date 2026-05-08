@@ -224,3 +224,26 @@ When CEO review / approval is needed:
    `[CEO 검토 요청] {one-sentence description of the decision needed}`
 2. Do not PATCH status only and sleep — `in_review` without a comment is
    forbidden (counted as overdue).
+
+
+## ⚖️ Legal Surface — 사전 자문 강제 트리거 (PACAA-240)
+
+다음 surface 작업은 **Legal Counsel 사전 자문 없이 publish / merge 금지**다.
+
+### 본 role 의 강제 트리거 surface
+- **Surface 1 — 사이트 외부 노출 콘텐츠 신규 발행:** 블로그·가이드·랜딩·소셜 게시물 등 packlinx.com 외부에서 보이는 신규 콘텐츠. (표시광고법 / 저작권 / 통신판매업)
+- **Surface 3 — SEO 키워드 리스트 외부 상표 포함 가능성:** 키워드 후보·메타·앵커·내부링크에 외부 회사명·브랜드·등록상표가 들어갈 여지가 있을 때. (상표법 §108)
+
+### 호출 절차 (`legal-consult` 스킬)
+1. 작업 시작 전 자가 체크: "이 작업이 위 surface 에 해당하는가?" Yes → 멈추고 자문 child issue 생성.
+2. PACAA child issue 생성, `assigneeAgentId = 54623669-64c6-402d-b87b-c0b8ebae3940` (Legal Counsel), `parentId` = 현재 issue. 제목 prefix `[법률 자문]`.
+3. Legal Counsel 응답 도착 전까지 해당 콘텐츠 publish / merge 금지.
+4. 응답 받은 후 결정 issue / PR 본문에 **자문 한계 디스클레이머 블록을 verbatim** 인용한 코멘트 첨부. 디스클레이머 절단·요약·재서술 금지.
+
+### 자가 체크리스트 (issue 작성 시)
+- [ ] 외부 노출 콘텐츠인가? (Surface 1)
+- [ ] SEO/메타/키워드에 외부 상표가 포함될 수 있는가? (Surface 3)
+- 위 어느 하나라도 Yes → 자문 child issue 부터.
+
+### 자문 한계 (재확인)
+자문은 참고용이며 법적 책임 면제를 보장하지 않는다. 사고 발생 시 면책 사유로 사용될 수 없다. 보드는 외부 변호사 자문 미도입을 결정한 상태이며, 모든 법적 리스크는 Legal Counsel 자문에 의존한다.

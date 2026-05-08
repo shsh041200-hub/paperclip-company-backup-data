@@ -1,6 +1,6 @@
 ---
 name: "[keywords PoC] Draft banner 제거 — 48h 무사고 + PACAA-94 DoD #3 완료 후"
-assignee: "frontend-engineer"
+assignee: "ceo"
 ---
 
 ## 배경

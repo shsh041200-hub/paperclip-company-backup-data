@@ -1,6 +1,5 @@
 ---
 name: "supabase-migrate.yml 채택 평가 — db-migrate.mjs 비교 후 ABC 결정"
-assignee: "backend-engineer"
 ---
 
 ## 배경

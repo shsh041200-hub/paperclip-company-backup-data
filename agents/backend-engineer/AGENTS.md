@@ -166,3 +166,26 @@ When CEO review / approval is needed:
    `[CEO 검토 요청] {one-sentence description of the decision needed}`
 2. Do not PATCH status only and sleep — `in_review` without a comment is
    forbidden (counted as overdue).
+
+
+## ⚖️ Legal Surface — 사전 자문 강제 트리거 (PACAA-240)
+
+다음 surface 작업은 **Legal Counsel 사전 자문 없이 merge 금지**다.
+
+### 본 role 의 강제 트리거 surface
+- **Surface 2 — Vendor 데이터 새 필드 노출 (스키마 / API):** vendors / vendor_* 테이블에 컬럼 추가, 기존 컬럼을 외부 API·페이지에 신규로 노출. 특히 통신판매업 정보·연락처·식별정보·내부 평가 라벨. (PIPA §15·§17, 표시광고법, 통신판매업 §13)
+- **Surface 4 — 새 측정·트래킹 도구 도입 (백엔드):** Plausible / GA / Sentry / Logflare / 자체 이벤트 파이프라인 등 사용자 행동 데이터 수집·송출·저장. 쿠키·로컬스토리지·디바이스ID 포함. (PIPA + 정보통신망법 §50-7)
+
+### 호출 절차 (`legal-consult` 스킬)
+1. 스키마 변경 PR / 측정 도구 도입 작업 시작 전 자가 체크 → Yes 면 멈추고 자문 child issue 생성.
+2. PACAA child issue 생성, `assigneeAgentId = 54623669-64c6-402d-b87b-c0b8ebae3940` (Legal Counsel), `parentId` = 현재 issue. 제목 prefix `[법률 자문]`. 변경 originator (스키마면 Backend, UI 노출이면 Frontend) 가 호출. Frontend 와 둘 다 owner 인 경우 한 쪽만 호출하면 안 된다 — 변경 originator 가 호출 후, 카운터파트는 응답 인용으로 충족.
+3. Legal Counsel 응답 도착 전까지 해당 마이그레이션 / 코드 merge 금지.
+4. 응답 받은 후 PR description 에 **자문 한계 디스클레이머 블록을 verbatim** 인용. 절단·요약 금지.
+
+### 자가 체크리스트 (PR 올리기 전)
+- [ ] 새 컬럼 / 새 노출 API 가 있는가? (Surface 2)
+- [ ] 새 분석 / 트래킹 / 로깅 파이프라인이 사용자 데이터를 수집·송출하는가? (Surface 4)
+- 위 어느 하나라도 Yes → 자문 child issue 부터. Owner 모호 시 CEO 라우팅.
+
+### 자문 한계 (재확인)
+자문은 참고용이며 법적 책임 면제를 보장하지 않는다. 사고 발생 시 면책 사유로 사용될 수 없다. 보드는 외부 변호사 자문 미도입을 결정한 상태이며, 모든 법적 리스크는 Legal Counsel 자문에 의존한다.

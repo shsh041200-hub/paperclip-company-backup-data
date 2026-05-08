@@ -239,7 +239,7 @@ Phase 6 active-scan procedure live in
 
 ***
 
-## Board-facing Telegram output (PACAA-106)
+## Board-facing Telegram output (PACAA-106 + PACAA-311)
 
 Telegram alerts to the board (대표) follow a fixed three-class shape.
 Anything sent through `tools/board-visibility/notify-telegram.py` is
@@ -247,23 +247,93 @@ built by `_telegram_format` and validated by `assert_telegram_safe`
 before fire. Do not hand-format Telegram bodies that bypass the
 builders.
 
-### Three classes
+### PACAA-311 — "send only when action is required" gate
+
+Board directive 2026-05-08: 봇 보고는 보드의 행동이 꼭 필요할 때만
+보내고, 보낼 때는 "현재 X 작업중인데 보드님의 Y 행동이 필요합니다"
+형태로 작성한다. 요약-말줄임("...") 금지 — 보드가 내용을 모르면
+선택·승인 자체가 의미가 없다.
+
+Before creating any interaction (`request_confirmation`,
+`ask_user_questions`, `suggest_tasks`) or approval, the author must
+satisfy the **send gate**:
+
+- Is a concrete board action required (✅/❌, 옵션 N 중 1, 자유 답장,
+  외부 대시보드 클릭)?
+- 가능한 **YES** → 만들어 보내기 OK.
+- 가능한 **NO** (FYI / 관찰 / 진행 보고 / 인지 요청) → 만들지 말 것.
+  내부 메모는 PARA / Journal / decision log, 진행 상황은 issue
+  comment 만 사용. Telegram 으로는 절대 보내지 않는다.
+
+The `feedback_board_fyi_silent_response` memory ("보드 FYI / observation
+은 silent action") is the same rule — PACAA-311 hardens it for any
+Paperclip-bot surface.
+
+### "현재 작업 / 보드님 필요 행동" frame
+
+Every Telegram body opens with this two-line frame in Korean,
+regardless of class:
+
+```
+현재 작업: {한 줄 — 무슨 일을 하고 있는지, 사실 기반}
+보드님 필요 행동: {한 줄 — 무엇을 결정/입력/클릭해야 하는지}
+```
+
+Then the class-specific body block (A/B/C) follows.
+
+### Tone — 전문가가 초보자에게 설명하듯
+
+Write as a domain expert calmly briefing a capable but
+non-specialist board member:
+
+- Define unfamiliar terms inline ("rate limit" → "Vercel 호출
+  횟수가 한도를 넘어 30분간 차단됨").
+- Spell out implications ("배포 실패" → "사이트가 1시간 동안 옛 버전
+  유지").
+- State the recommendation + 1-line rationale BEFORE the options.
+- Translate internal jargon ("backlog", "deferred", "P1", "in_review")
+  into plain Korean.
+
+### Brief but complete — no ellipsis truncation
+
+The body must contain enough context for the board to decide WITHOUT
+opening the attachment. **Mid-sentence ellipsis (`...`, `…`,
+`(이하 생략)`) is BANNED** — it hides exactly the content the board
+needs. If a section won't fit:
+
+- Shorten the source content (stronger summarization, not
+  truncation), or
+- Split into a second attachment (`{IDENTIFIER}_{kind}_part2_*.txt`),
+  or
+- Move secondary detail into the issue comment thread and link to it.
+
+### Three classes (templates updated PACAA-311)
 
 **A. 액션** — board needs to do something off-platform.
 
 ```
-[액션] {보드가 무엇을 해야 하는지, 한 줄}
-이유: {왜 필요한지, 한 줄}
-막히는 일: {진행 안 되면 멈추는 작업, 한 줄}
+현재 작업: {한 줄}
+보드님 필요 행동: {한 줄 — 어디서 무엇을 클릭/입력}
+
+배경: {2~3줄 — 왜 보드가 직접 해야 하는지}
+세부 절차:
+1) {UI text label 까지 명시한 step}
+2) {step}
+3) {step}
+완료 신호: {보드가 무엇을 보면 "끝"이라고 판단할 수 있는지}
 상세: {첨부 파일명}
 ```
 
 **B. 승인** — yes/no decision. Inline buttons: `✅ 승인` / `❌ 반려`.
 
 ```
-[승인] {무엇을 승인하는지, 한 줄}
-승인 시: {한 줄 영향}
-거절 시: {한 줄 영향}
+현재 작업: {한 줄}
+보드님 필요 행동: 아래 결정에 ✅승인 또는 ❌반려
+
+제안: {한 줄 — 무엇을 하려는지}
+근거: {2~3줄 — 왜 이 길이 옳은지, 측정 가능한 근거 우선}
+승인 시: {2~3줄 — 다음 단계 + 비용 + 되돌릴 수 있는지}
+반려 시: {2~3줄 — 멈추거나 대안 경로}
 상세: {첨부 파일명}
 ```
 
@@ -271,12 +341,19 @@ builders.
 >3 → "1, 2, 3 중 답장해 주세요" hint + numeric reply.
 
 ```
-[선택] {무엇을 결정하는지, 한 줄}
-1) {선택지 1} — {한 줄 영향}
-2) {선택지 2} — {한 줄 영향}
-3) {선택지 3} — {한 줄 영향}
+현재 작업: {한 줄}
+보드님 필요 행동: 아래 N개 옵션 중 하나 선택
+
+상황: {2~3줄 — 왜 갈림길인지}
+1) {선택지 1}
+   영향: {2줄 — 비용/시간/되돌리기 가능 여부}
+2) {선택지 2}
+   영향: {2줄}
+3) {선택지 3}
+   영향: {2줄}
+
 ⭐ 추천: {번호}
-근거: {한 줄}
+근거: {2~3줄 — 왜 이게 추천인지}
 상세: {첨부 파일명}
 ```
 
@@ -289,25 +366,35 @@ builders.
 | interaction `ask_user_questions` (with options) | C. 선택 |
 | interaction `ask_user_questions` (free-form) | A. 액션 |
 | interaction `suggest_tasks` | C. 선택 |
-| `issues?status=in_review` | non-actionable bundle |
+| `issues?status=in_review` | **send gate FAIL — do not push.** |
+
+`in_review` 묶음은 PACAA-311 send-gate 를 통과하지 못한다 (보드 즉시
+행동 요구 아님). bot 으로는 보내지 않고, 보드가 자발적으로 대시보드를
+열 때만 노출한다.
 
 ### Readability rules (enforced by `assert_telegram_safe`)
 
-1. Korean first; English jargon last.
-2. Plain words ("임계값" → "이 숫자에 도달함").
-3. ≤1 PACAA-XX in body.
-4. One-line conclusion at top, details in attachment.
-5. "보드가 할 일" line is mandatory (the `[액션]/[승인]/[선택]`
-   header itself satisfies this for those three classes).
-6. Mobile width: ≤25 Korean chars per line; no boxes; no
+1. **Send gate.** Reject if source is non-actionable (FYI /
+   observation / status-only / `in_review` bundle).
+2. **Korean first.** Body Korean ≥ 70% of tokens (proper-noun
+   whitelist excluded: Vercel, Cloudflare, Naver, etc.).
+3. **Frame opener.** Body MUST start with "현재 작업:" line and have
+   "보드님 필요 행동:" within the first 3 lines.
+4. **No ellipsis.** Body and attachment may not contain `...`, `…`,
+   or `(이하 생략)` as truncation markers (literal `…` inside Korean
+   prose like "그래서…" is banned too — rephrase).
+5. Plain words ("임계값" → "이 숫자에 도달함").
+6. ≤1 PACAA-XX in body.
+7. Mobile width: ≤25 Korean chars per line; no boxes; no
    `═──━│` divider clutter; short button labels.
-7. Functional emojis only: ⭐ (추천), ✅ (승인), ❌ (반려). No
+8. Functional emojis only: ⭐ (추천), ✅ (승인), ❌ (반려). No
    decorative emojis anywhere.
 
 ### Attachment
 
 Filename: `{IDENTIFIER}_{kind}_{YYYYMMDD-HHMM}.txt`
-(kind ∈ `action|approval|choice|non_actionable`).
+(kind ∈ `action|approval|choice`). `non_actionable` is removed —
+those are gated out at send time.
 
 Sections (only the present ones, in this order):
 `■ 무엇을 결정해야 하나` → `■ 배경 (왜 지금)` →
@@ -315,7 +402,8 @@ Sections (only the present ones, in this order):
 `■ 직전 대화`.
 
 Indent depth ≤1 (2 spaces or `- `). No box characters.
-Length cap 1500 chars; the builder truncates with `…(이하 생략)`.
+**Length cap 4000 chars.** Source longer than 4000 → split into
+`part2_*.txt`, never truncate with `…(이하 생략)` (PACAA-311).
 
 ### Tooling
 

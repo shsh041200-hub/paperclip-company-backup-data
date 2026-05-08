@@ -19,14 +19,25 @@ Every Packlinx agent. Use when handling decisions, actions, or artifacts with le
 
 ## Recognising the call trigger
 
-Per-SG concrete triggers live in SOUL.md (Backend/CTO) or `goal_skills/sg{2,4}_*.md`. Summary:
+### Mandatory surface — pre-consult required (PACAA-240)
+
+The 4 surfaces below are **hard-gated**: no merge / publish without a prior Legal Counsel consult. The same trigger list is embedded into CMO / Backend / Frontend AGENTS.md as a double fallback — if you read either source, you get the same rule.
+
+1. **Site-external content publishing** (CMO owner) — new blog / guide / landing / social posts visible outside packlinx.com. (표시광고법 / copyright / 통신판매업)
+2. **New vendor data field exposure** (Backend + Frontend co-owners; **change originator** triggers the consult) — schema additions, new API fields, or new UI surfaces that expose vendor info (esp. 통신판매업 / contact / identifiers / internal labels). (PIPA §15·§17, 표시광고법 §3, 통신판매업 §13)
+3. **SEO keyword list with possible third-party trademarks** (CMO owner) — keyword candidates / meta / anchors / internal links that could embed external company / brand / registered marks. (Trademark §108)
+4. **New measurement / tracking tool introduction** (Backend + Frontend co-owners; **change originator** triggers the consult) — Plausible / GA / GTM / Sentry / Pixel / self-built event pipeline / cookies / local-storage / fingerprint collection. (PIPA + 정보통신망법 §50-7)
+
+When Backend and Frontend are both owners (surfaces 2 and 4), the **change originator** calls; the counterpart cites the response. One-side-only consult = SOP miss. Owner ambiguity → CEO routing.
+
+### Other SG triggers (per-SG SOUL.md / `goal_skills/sg{2,4}_*.md`)
 
 - **SG-1 (Vendor coverage):** adding vendor info fields / exposing identification info / correction-deletion channels (PIPA)
 - **SG-2 (SEO):** using third-party content, images, logos (copyright) / third-party trademarks (trademark) / advertising labels (표시광고법)
 - **SG-3 (Measurement infra):** introducing Plausible / analytics (PIPA + cookie consent) / behavioural-data forms
 - **SG-4 (Vendor self-action):** changes to terms / privacy policy / claim·edit·intent form data items
 
-If a trigger match is missed, Legal Counsel issues a retroactive consultation in the Monday 09:30 KST routine — but calling at trigger time is safer.
+If a trigger match is missed, Legal Counsel issues a retroactive consultation in the Monday 09:30 KST routine — but calling at trigger time is safer. Misses on the 4 mandatory surfaces above are SOP violations and counted in the 2026-06-01 SOP-effectiveness review (kill criterion: misses > calls → SOP redesign).
 
 ## Call procedure
 
