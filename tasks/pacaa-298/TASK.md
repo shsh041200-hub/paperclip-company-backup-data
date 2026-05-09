@@ -1,6 +1,6 @@
 ---
 name: "SOP_TAKEDOWN.md 재구성 — /tmp 소실분 복원 + main repo PR (정보통신망법 제44조의2)"
-assignee: "legal-counsel"
+assignee: "ceo"
 ---
 
 ## 배경
