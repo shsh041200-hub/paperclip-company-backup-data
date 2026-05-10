@@ -1,6 +1,6 @@
 ---
 name: "가이드 페이지 P0 구현 — 카테고리 그루핑 + 카드 그리드"
-assignee: "frontend-engineer"
+assignee: "ceo"
 ---
 
 ## 가이드 페이지 P0 구현 — 카테고리 그루핑 + 카드 그리드

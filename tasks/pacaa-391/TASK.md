@@ -1,6 +1,6 @@
 ---
 name: "[CTO 어드바이저리] PACAA-355 PR #27 머지 준비 완료 — Vercel env 3개 + PR 머지 필요"
-assignee: "cto"
+assignee: "ceo"
 ---
 
 ## 행동 필요 (CEO) — 최종 업데이트 2026-05-09
