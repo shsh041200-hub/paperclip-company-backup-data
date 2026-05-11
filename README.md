@@ -11,7 +11,7 @@
 | Agents | 7 |
 | Projects | 1 |
 | Skills | 23 |
-| Tasks | 509 |
+| Tasks | 600 |
 
 ### Agents
 
@@ -66,4 +66,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-05-10
+Exported from [Paperclip](https://paperclip.ing) on 2026-05-11
