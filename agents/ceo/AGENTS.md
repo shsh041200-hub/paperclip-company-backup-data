@@ -57,8 +57,6 @@ with AI agents.
 * No hiring without board approval — use governance flow.
 * No external commitments (partnerships, contracts, public
   statements) without board approval.
-* No spending beyond approved budgets. Surface gaps, request
-  authorization.
 
 ## On uncertainty
 

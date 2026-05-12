@@ -52,7 +52,7 @@ agents:
       heartbeat:
         cooldownSec: 60
         enabled: true
-        intervalSec: 60
+        intervalSec: 1800
         maxConcurrentRuns: 10
     permissions:
       canCreateAgents: true
@@ -194,7 +194,6 @@ routines:
       -
         kind: "schedule"
         cronExpression: "0 */6 * * *"
-        enabled: false
         label: "E7 stall_sweep 6h"
         timezone: "Asia/Seoul"
   legal-counsel-weekly-self-audit:
@@ -305,6 +304,7 @@ routines:
   phase3-e7-enable-due-e7-stall-sweep-enable-trigger-patch:
     catchUpPolicy: "enqueue_missed_with_cap"
     concurrencyPolicy: "skip_if_active"
+    status: "archived"
     triggers:
       -
         kind: "schedule"
@@ -1598,7 +1598,7 @@ tasks:
   pacaa-369:
     identifier: "PACAA-369"
     priority: "medium"
-    status: "backlog"
+    status: "done"
   pacaa-37:
     identifier: "PACAA-37"
     priority: "medium"
@@ -2513,7 +2513,7 @@ tasks:
   pacaa-573:
     identifier: "PACAA-573"
     priority: "high"
-    status: "in_progress"
+    status: "done"
   pacaa-574:
     identifier: "PACAA-574"
     priority: "high"
@@ -2525,24 +2525,109 @@ tasks:
   pacaa-576:
     identifier: "PACAA-576"
     priority: "high"
-    status: "in_progress"
+    status: "done"
   pacaa-577:
     identifier: "PACAA-577"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-578:
     identifier: "PACAA-578"
     priority: "high"
-    status: "in_progress"
+    status: "done"
+  pacaa-579:
+    identifier: "PACAA-579"
+    priority: "high"
+    status: "done"
   pacaa-58:
     identifier: "PACAA-58"
+    priority: "medium"
+    status: "done"
+  pacaa-580:
+    identifier: "PACAA-580"
+    priority: "critical"
+    status: "done"
+  pacaa-581:
+    identifier: "PACAA-581"
+    priority: "low"
+    status: "todo"
+  pacaa-582:
+    identifier: "PACAA-582"
+    priority: "low"
+    status: "todo"
+  pacaa-583:
+    identifier: "PACAA-583"
+    priority: "low"
+    status: "todo"
+  pacaa-584:
+    identifier: "PACAA-584"
+    priority: "low"
+    status: "todo"
+  pacaa-585:
+    identifier: "PACAA-585"
+    priority: "critical"
+    status: "done"
+  pacaa-586:
+    identifier: "PACAA-586"
+    priority: "low"
+    status: "todo"
+  pacaa-587:
+    identifier: "PACAA-587"
+    priority: "low"
+    status: "todo"
+  pacaa-588:
+    identifier: "PACAA-588"
+    priority: "high"
+    status: "done"
+  pacaa-589:
+    identifier: "PACAA-589"
     priority: "medium"
     status: "done"
   pacaa-59:
     identifier: "PACAA-59"
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-590:
+    identifier: "PACAA-590"
+    priority: "medium"
+    status: "done"
+  pacaa-591:
+    identifier: "PACAA-591"
+    priority: "high"
+    status: "done"
+  pacaa-592:
+    identifier: "PACAA-592"
+    priority: "medium"
+    status: "done"
+  pacaa-593:
+    identifier: "PACAA-593"
+    priority: "medium"
+    status: "done"
+  pacaa-594:
+    identifier: "PACAA-594"
+    priority: "critical"
+    status: "done"
+  pacaa-595:
+    identifier: "PACAA-595"
+    priority: "medium"
+    status: "done"
+  pacaa-596:
+    identifier: "PACAA-596"
+    priority: "low"
+    status: "todo"
+  pacaa-597:
+    identifier: "PACAA-597"
+    priority: "low"
+    status: "todo"
+  pacaa-598:
+    identifier: "PACAA-598"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-599:
+    identifier: "PACAA-599"
+    priority: "medium"
     status: "done"
   pacaa-6:
     identifier: "PACAA-6"
@@ -2553,6 +2638,27 @@ tasks:
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-600:
+    identifier: "PACAA-600"
+    priority: "medium"
+    status: "done"
+  pacaa-601:
+    identifier: "PACAA-601"
+    priority: "medium"
+    status: "done"
+  pacaa-602:
+    identifier: "PACAA-602"
+    priority: "medium"
+    status: "done"
+  pacaa-603:
+    identifier: "PACAA-603"
+    priority: "low"
+    status: "todo"
+  pacaa-604:
+    identifier: "PACAA-604"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-61:
     identifier: "PACAA-61"
     priority: "low"

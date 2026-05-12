@@ -1,6 +1,6 @@
 ---
 name: "S1 — Sitemap-index 표준 구조 도입"
-assignee: "cto"
+assignee: "ceo"
 ---
 
 ## 배경
