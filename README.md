@@ -10,8 +10,8 @@
 |---------|-------|
 | Agents | 7 |
 | Projects | 1 |
-| Skills | 23 |
-| Tasks | 626 |
+| Skills | 25 |
+| Tasks | 678 |
 
 ### Agents
 
@@ -50,12 +50,14 @@
 | legal-counsel-playbook | Legal Counsel specialty playbook — Korean compliance checklist (PIPA, e-commerce act, fair trade, advertising) and takedown drafting template for the Packlinx packaging directory. Read before any legal-facing artifact or compliance review. | catalog |
 | packlinx-comms | Communication discipline for every Packlinx agent — voice, language routing (Korean vs English), ticket/comment style, and escalation triggers. Read before posting any comment, writing any external-facing copy, or escalating to the board. | catalog |
 | packlinx-decision-log | Required reasoning protocol for any non-trivial decision at Packlinx — options, benchmark, decision, reversibility. Mandatory before allocating budget, hiring, committing the company to a direction, or shipping any user-facing change. | catalog |
+| diagnose-why-work-stopped | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/diagnose-why-work-stopped) |
 | paperclip-converting-plans-to-tasks | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-converting-plans-to-tasks) |
 | paperclip-create-agent | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-agent) |
 | paperclip-create-plugin | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-create-plugin) |
 | paperclip-dev | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip-dev) |
 | paperclip | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/paperclip) |
 | para-memory-files | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/para-memory-files) |
+| terminal-bench-loop | > | [github](https://github.com/paperclipai/paperclip/tree/master/skills/terminal-bench-loop) |
 
 ## Getting Started
 
@@ -66,4 +68,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-05-12
+Exported from [Paperclip](https://paperclip.ing) on 2026-05-13

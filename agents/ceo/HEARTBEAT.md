@@ -213,23 +213,38 @@ Non-negotiable. Journal is how company gets smarter.
 
 ***
 
-## Appendix A — Daily Board Digest SOP (PACAA-251 R6)
+## Appendix A — Daily Board Digest SOP (PACAA-251 R6 + PACAA-608)
 
 When Daily Board Digest fires, **before drafting body**, run:
 
 1. `GET /api/companies/{id}/issues?status=in_progress` — full list.
 2. `GET /api/companies/{id}/issues?status=blocked` — full list.
-3. Each issue: grep ESCALATION in *last 24h comments* body:
+3. `GET /api/companies/{id}/issues?status=in_review` — full list.
+4. Each issue from steps 1–3: grep ESCALATION in *last 24h comments*
+   body:
    * `\[ESCALATION → CEO\]`
    * `에스컬레이션 → CEO`
    * `^Blocked.*CEO`
    * `에스컬레이션 완료`
      (case-insensitive).
-4. Classify:
+5. Classify:
    * **hit** \= 1+ comments match ESCALATION pattern.
    * **dormant** \= `assigneeAgentId == ceo` + status `blocked` +
      last comment ≥ 48h old.
    * **healthy** \= none of above.
+6. **Pending interactions sweep (PACAA-608 — mandatory).**
+   For **every** issue fetched in steps 1–3:
+   `GET /api/issues/{id}/interactions`
+   Collect all entries where `status == "pending"` and
+   `kind ∈ {"ask_user_questions", "request_confirmation"}`.
+   * Compute age: `now − createdAt` (hours).
+   * **Age ≥ 4h → board action required.** Surface the issue in the
+     "Board action" section with interaction id, kind, and age.
+   * Idempotency key for dedup:
+     `digest:{YYYY-MM-DD}:pending:{interactionId}`
+     (skip re-surfacing if already surface-logged that day).
+   * Count total pending interactions across all swept issues →
+     `P` (used in meta-line below).
 
 **Drafting rules:**
 
@@ -237,9 +252,16 @@ When Daily Board Digest fires, **before drafting body**, run:
   **forbidden**. Surface hit issues in "Board action" or
   "CEO action immediate" section.
 * 1+ dormant → surface in "CEO own neglected" section (1-liner).
-* Digest body first line: meta-line `escalation_grep: N hit /
-  dormant: M / healthy: K` (scan proof).
+* 1+ pending interaction ≥ 4h → "0 board actions" conclusion
+  **forbidden**. Surface each in "Board action" section with:
+  `[{IDENTIFIER}] {title} — {kind} pending {age}h (interaction {short-id})`
+* Digest body **first line** (meta-line — proof of scan):
+  `escalation_grep: N hit / dormant: M / healthy: K / pending_interactions: P`
 
-**Root cause:** 2026-05-05 digest declared "0 human in\_progress"
-while PACAA-237 had been ESCALATION for 9 hours. This SOP prevents
-same false-confidence recurrence.
+**Root cause (PACAA-237):** 2026-05-05 digest declared "0 human
+in\_progress" while PACAA-237 had been ESCALATION for 9 hours.
+
+**Root cause (PACAA-608):** 2026-05-13 digest reported
+"pending_interactions: 0" while interaction `1e4e3515` on PACAA-168
+had been pending 11+ days (P0 credential rotation). ESCALATION grep
+missed `kind=ask_user_questions` interactions entirely.

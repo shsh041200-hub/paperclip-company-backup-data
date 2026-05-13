@@ -6,7 +6,7 @@ metadata:
   sources:
     -
       kind: "github-dir"
-      commit: null
+      commit: "2d807331df3a83abab85bce84484b07aeae9f735"
       path: "skills/para-memory-files"
       repo: "paperclipai/paperclip"
       trackingRef: "master"
