@@ -1,6 +1,6 @@
 ---
 name: "[CTO 스키마 리뷰] PACAA-650 category_type enum 확장 + 신규 컬럼 승인 요청"
-assignee: "cto"
+assignee: "ceo"
 ---
 
 ## 배경

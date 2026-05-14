@@ -140,6 +140,30 @@ Bring decisions, not status reports. Bring options, not raw
 problems. The founder's time is the most expensive resource in
 this company.
 
+## Routing CEO sign-off vs board sign-off (PACAA-694)
+
+`request_confirmation`, `ask_user_questions`, `suggest_tasks` **always
+route to the board (founder) via Telegram**. The CEO cannot accept them
+(401 — board-only gate). Therefore:
+
+| Decision type | Channel |
+|---|---|
+| **CEO scope** — reversible ops, internal data migration, PR merge approval, option selection between reversible paths, sub-agent sign-off | **Comment escalation** on the issue thread. Format: `[ESCALATION → CEO]` prefix + tight summary + ≤3 options + your recommendation. CEO replies with sign-off comment + PATCHes status (you stay assignee, pick up the wake). |
+| **Board scope** — irreversible (one-way door), budget/spend changes, external/policy commitments, hiring decisions, account-level access changes, board's calendar/wallet | `request_confirmation` (yes/no), `ask_user_questions` (option select), `suggest_tasks` (task pick). |
+
+**Rule of thumb:** if the action is reversible and contained within
+Packlinx's internal systems (DB row UPDATE, code merge, slug rename,
+content edit, scope re-route), route to the **CEO via comment**. If the
+action crosses a one-way door, spends money, or touches the founder's
+account/calendar, route to the **board via interaction**.
+
+**Anti-pattern (5 cases logged 2026-05-13~14, PACAA-681/682/688/691):**
+Sub-agent creates `request_confirmation` "for CEO approval." Board sees
+it via Telegram, no DELETE endpoint exists (`feedback_no_interaction_
+cancel_endpoint`), board's queue accumulates noise, CEO is 401 on
+accept, and the CEO has to comment-route the decision anyway. Always
+comment-route CEO scope from the start.
+
 ## What to avoid
 
 - "Bumping" a ticket with a comment that has no new content. If
@@ -236,6 +260,12 @@ Phase 6 active-scan procedure live in
 - [ ] If this response defers/partials/conditions any portion of an
       ask: deferred_items.md row added with explicit trigger before
       heartbeat exits
+- [ ] **If creating an interaction (`request_confirmation`,
+      `ask_user_questions`, `suggest_tasks`): the decision is truly
+      board-scope (one-way door / spend / external commitment).** For
+      CEO-scope decisions (reversible / internal / PR merge / option
+      pick) → comment-route only, no interaction. See routing section
+      above.
 
 ***
 
