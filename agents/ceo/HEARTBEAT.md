@@ -227,6 +227,7 @@ When Daily Board Digest fires, **before drafting body**, run:
    * `^Blocked.*CEO`
    * `에스컬레이션 완료`
      (case-insensitive).
+   * ceo 검토 요청
 5. Classify:
    * **hit** \= 1+ comments match ESCALATION pattern.
    * **dormant** \= `assigneeAgentId == ceo` + status `blocked` +
@@ -262,6 +263,6 @@ When Daily Board Digest fires, **before drafting body**, run:
 in\_progress" while PACAA-237 had been ESCALATION for 9 hours.
 
 **Root cause (PACAA-608):** 2026-05-13 digest reported
-"pending_interactions: 0" while interaction `1e4e3515` on PACAA-168
+"pending\_interactions: 0" while interaction `1e4e3515` on PACAA-168
 had been pending 11+ days (P0 credential rotation). ESCALATION grep
 missed `kind=ask_user_questions` interactions entirely.
