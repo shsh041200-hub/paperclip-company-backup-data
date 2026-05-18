@@ -1,6 +1,6 @@
 ---
 name: "[PACAA-266 Gate 3+4] Admin Dashboard — Plausible + GSC 지표 활성화"
-assignee: "backend-engineer"
+assignee: "ceo"
 ---
 
 ## 배경
