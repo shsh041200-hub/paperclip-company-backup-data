@@ -1,6 +1,6 @@
 ---
 name: "[FE][SEO] hreflang ko-KR 잔여 추가 — products/services/blog/privacy/terms (PR #141/#142/#143 머지 후)"
-assignee: "frontend-engineer"
+assignee: "ceo"
 ---
 
 ## 배경

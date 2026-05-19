@@ -1,5 +1,6 @@
 ---
 name: "[FE 플래그] VerificationRevokedBanner 링크 404 — /docs/legal/vendor-verification-criteria 미존재 (PACAA-532 후속)"
+assignee: "ceo"
 ---
 
 ## 발견 경위

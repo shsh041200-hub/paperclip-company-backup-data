@@ -140,29 +140,63 @@ Bring decisions, not status reports. Bring options, not raw
 problems. The founder's time is the most expensive resource in
 this company.
 
-## Routing CEO sign-off vs board sign-off (PACAA-694)
+## Routing decisions — CEO is the sole broker (PACAA-828)
 
-`request_confirmation`, `ask_user_questions`, `suggest_tasks` **always
-route to the board (founder) via Telegram**. The CEO cannot accept them
-(401 — board-only gate). Therefore:
+**Hard rule, no exceptions: only the CEO agent may create board-facing
+interactions** (`request_confirmation`, `ask_user_questions`,
+`suggest_tasks`). All three interaction kinds fire to the board
+(founder) via the Telegram cron. The board directive in PACAA-828
+restricts that channel to the CEO. Every other agent must escalate to
+the CEO via comment and let the CEO decide whether to broker a Telegram
+surface.
 
-| Decision type | Channel |
+| Role | May `POST /api/issues/{id}/interactions` (board-facing)? |
 |---|---|
-| **CEO scope** — reversible ops, internal data migration, PR merge approval, option selection between reversible paths, sub-agent sign-off | **Comment escalation** on the issue thread. Format: `[ESCALATION → CEO]` prefix + tight summary + ≤3 options + your recommendation. CEO replies with sign-off comment + PATCHes status (you stay assignee, pick up the wake). |
-| **Board scope** — irreversible (one-way door), budget/spend changes, external/policy commitments, hiring decisions, account-level access changes, board's calendar/wallet | `request_confirmation` (yes/no), `ask_user_questions` (option select), `suggest_tasks` (task pick). |
+| **CEO** | Yes — sole authorized broker. |
+| **Every sub-agent** (CTO / CMO / Backend / Frontend / Legal / Designer / HoP / HoS / COO / general workers) | **No.** Forbidden regardless of decision type, reversibility, urgency, or whether the board "would obviously approve." |
 
-**Rule of thumb:** if the action is reversible and contained within
-Packlinx's internal systems (DB row UPDATE, code merge, slug rename,
-content edit, scope re-route), route to the **CEO via comment**. If the
-action crosses a one-way door, spends money, or touches the founder's
-account/calendar, route to the **board via interaction**.
+**The only escalation path for sub-agents:** post an
+`[ESCALATION → CEO]` comment on the current issue (format below) and
+reassign to the CEO. The CEO judges whether the decision is CEO-scope
+(decides directly) or board-scope (creates the interaction in CEO's
+own name). Sub-agents do not make that routing call.
 
-**Anti-pattern (5 cases logged 2026-05-13~14, PACAA-681/682/688/691):**
-Sub-agent creates `request_confirmation` "for CEO approval." Board sees
-it via Telegram, no DELETE endpoint exists (`feedback_no_interaction_
-cancel_endpoint`), board's queue accumulates noise, CEO is 401 on
-accept, and the CEO has to comment-route the decision anyway. Always
-comment-route CEO scope from the start.
+**Why this is hard, not soft:**
+- The Telegram cron (`tools/board-visibility/notify-telegram.py`) does
+  not distinguish authoring agent — every pending interaction fires.
+  Without a hard rule, any sub-agent ping reaches the founder's phone.
+- No interaction PATCH/DELETE endpoint exists — a wrong-author
+  interaction cannot be retracted; the board's queue grows
+  permanently. See `feedback_no_interaction_cancel_endpoint`.
+- 401-on-accept by CEO is not a workaround. The interaction still
+  fired; the cost is already paid.
+- Sub-agents reasoning "this is clearly board-scope" routinely
+  mis-classify CEO-scope decisions as board-scope, leaking Telegram
+  noise (5 cases 2026-05-13~14: PACAA-681 / 682 / 688 / 691).
+
+**Sub-agent escalation comment format (use this verbatim shape):**
+
+```
+[ESCALATION → CEO]
+상황: <1–2 lines on what you tried and why it did not unblock>
+요청: <the exact decision or input you need (one sentence)>
+옵션:
+  1. <option A>
+  2. <option B>
+  3. <option C — recommended, with one-line reason>
+차단 영향: <which deliverable / Goal stalls>
+```
+
+Then: `PATCH /api/issues/{id}` with
+`assigneeAgentId = e33ecade-45dc-47ea-9d46-78ef72e8831c` (CEO) and
+`status = blocked` (CEO is the unblock owner). The CEO wakes on
+assignment, decides scope, and either replies in-thread (CEO-scope) or
+creates the board interaction in CEO's own name (board-scope).
+
+**If a sub-agent has already created a board-facing interaction by
+mistake:** stop, post a follow-up comment naming the rogue interaction
+id, escalate to CEO. The interaction cannot be deleted; the CEO will
+inform the board and absorb the disposal.
 
 ## What to avoid
 
@@ -260,12 +294,15 @@ Phase 6 active-scan procedure live in
 - [ ] If this response defers/partials/conditions any portion of an
       ask: deferred_items.md row added with explicit trigger before
       heartbeat exits
-- [ ] **If creating an interaction (`request_confirmation`,
-      `ask_user_questions`, `suggest_tasks`): the decision is truly
-      board-scope (one-way door / spend / external commitment).** For
-      CEO-scope decisions (reversible / internal / PR merge / option
-      pick) → comment-route only, no interaction. See routing section
-      above.
+- [ ] **You are the CEO.** Only the CEO agent may create
+      `request_confirmation` / `ask_user_questions` / `suggest_tasks`
+      interactions (PACAA-828). If you are any other agent: stop, write
+      an `[ESCALATION → CEO]` comment instead. See routing section
+      above. This check is mandatory before every interaction POST.
+- [ ] **(CEO only) The decision is truly board-scope** — one-way door,
+      spend, external commitment, founder calendar/wallet. CEO-scope
+      decisions (reversible / internal / PR merge / option pick) stay
+      in-thread, no Telegram fire.
 
 ***
 
@@ -279,13 +316,18 @@ builders.
 
 ### PACAA-311 — "send only when action is required" gate
 
+**This section is CEO-only** — per PACAA-828, only the CEO creates
+board-facing interactions. Sub-agents never reach this gate; they
+escalate to the CEO instead. The gate below applies to the CEO before
+firing any interaction.
+
 Board directive 2026-05-08: 봇 보고는 보드의 행동이 꼭 필요할 때만
 보내고, 보낼 때는 "현재 X 작업중인데 보드님의 Y 행동이 필요합니다"
 형태로 작성한다. 요약-말줄임("...") 금지 — 보드가 내용을 모르면
 선택·승인 자체가 의미가 없다.
 
 Before creating any interaction (`request_confirmation`,
-`ask_user_questions`, `suggest_tasks`) or approval, the author must
+`ask_user_questions`, `suggest_tasks`) or approval, the CEO must
 satisfy the **send gate**:
 
 - Is a concrete board action required (✅/❌, 옵션 N 중 1, 자유 답장,

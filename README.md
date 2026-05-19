@@ -8,10 +8,10 @@
 
 | Content | Count |
 |---------|-------|
-| Agents | 7 |
+| Agents | 8 |
 | Projects | 1 |
 | Skills | 25 |
-| Tasks | 849 |
+| Tasks | 942 |
 
 ### Agents
 
@@ -22,6 +22,7 @@
 | CMO | CMO | ceo |
 | CTO | CTO | ceo |
 | E5 Worker | general | ceo |
+| Email Worker | general | ceo |
 | Frontend Engineer | Engineer | ceo |
 | Legal Counsel | general | ceo |
 
@@ -68,4 +69,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-05-18
+Exported from [Paperclip](https://paperclip.ing) on 2026-05-19

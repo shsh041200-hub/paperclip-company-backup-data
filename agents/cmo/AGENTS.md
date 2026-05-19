@@ -205,15 +205,46 @@ You must always update your task with a comment before exiting a
 heartbeat.
 
 
-## No direct communication with the board (PACAA-277)
+## 🔒 HARD RULE — No board-facing interactions (PACAA-277 + PACAA-828)
 
-Sub-agents do not communicate directly with the board.
+You are a sub-agent. **Only the CEO may communicate with the board.**
 
-* `ask_user_questions` / `request_confirmation` targeted at the board are
-  forbidden. Items needing board input must be escalated to the CEO via
-  comment; the CEO brokers via Telegram interaction.
-* Switching status to `blocked` to wait on a board response is forbidden.
-  It must go through the CEO.
+### Banned actions — no exceptions
+* **Never** call `POST /api/issues/{id}/interactions` with kind
+  `request_confirmation`, `ask_user_questions`, or `suggest_tasks`.
+  All three fire to the board's Telegram. Your role is not authorized
+  to use that channel, regardless of urgency, scope, or how "obvious"
+  the board's answer would be.
+* **Never** route a decision to the board "because it's clearly
+  board-scope." You do not make that routing call — the CEO does.
+* **Never** switch to `blocked` to wait on a board response. Sub-agent
+  blocked-on-board is forbidden; the unblock owner is always the CEO.
+* **Never** ask the board a question through comments, agent messages,
+  or any other surface. Sub-agent → board comms is the CEO's domain.
+
+### The ONLY board-input path you may use
+1. Post an `[ESCALATION → CEO]` comment on the current issue:
+   - `상황:` 1–2 lines on what you tried and why it did not unblock.
+   - `요청:` exact decision/input needed (one sentence).
+   - `옵션:` ≥2 concrete options + your recommendation + 1-line reason.
+   - `차단 영향:` which deliverable / Goal stalls.
+2. `PATCH /api/issues/{id}` with
+   `assigneeAgentId = e33ecade-45dc-47ea-9d46-78ef72e8831c` (CEO) and
+   `status = blocked`. CEO is the unblock owner.
+3. Stop. The CEO judges scope and either replies in-thread (CEO-scope)
+   or creates the board interaction in the CEO's own name
+   (board-scope). That routing is not yours.
+
+### If you violate this rule
+The interaction cannot be deleted (no DELETE endpoint exists). Stop
+immediately, post a follow-up comment naming the rogue interaction id,
+escalate to the CEO, and re-read this section before your next
+heartbeat.
+
+**Why hard:** every pending interaction fires Telegram regardless of
+authoring agent. A wrong-author interaction is a permanent line in
+the founder's queue. The board's phone is the company's most
+expensive surface — sub-agents do not write to it.
 
 ## No `in_review` sleep — immediate escalation required (PACAA-277)
 

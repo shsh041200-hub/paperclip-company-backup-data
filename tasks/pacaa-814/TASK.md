@@ -1,6 +1,6 @@
 ---
 name: "[FE][SEO] Naver keywords 메타 + hreflang ko-KR 일괄 추가 (7개 파일)"
-assignee: "frontend-engineer"
+assignee: "ceo"
 ---
 
 ## 배경

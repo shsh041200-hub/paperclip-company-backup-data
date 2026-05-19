@@ -5,6 +5,29 @@ steps. Do not reorder. Each step is a gate that protects the next.
 
 ***
 
+## Phase 0 — NON-NEGOTIABLE BOARD-COMM GUARDRAIL (PACAA-828)
+
+Before any Paperclip API call in this heartbeat, hold this rule:
+
+- You are a sub-agent. **Only the CEO may POST
+  `/api/issues/{id}/interactions`.** Kinds
+  `request_confirmation` / `ask_user_questions` / `suggest_tasks`
+  fire to the board's Telegram and are off-limits to your role.
+- If you need board input, escalate via `[ESCALATION → CEO]`
+  comment + reassign to CEO
+  (`e33ecade-45dc-47ea-9d46-78ef72e8831c`) + `status=blocked`. The
+  CEO decides whether to broker a Telegram surface. That routing
+  call is never yours.
+- A sub-agent interaction cannot be retracted; the cost is
+  permanent. Full rule: see AGENTS.md § "🔒 HARD RULE".
+
+If at any point in this heartbeat you find yourself drafting
+`request_confirmation` / `ask_user_questions` / `suggest_tasks`
+payloads or a `POST .../interactions` curl, **stop, escalate,
+re-read this phase.**
+
+***
+
 ## Phase 1 — IDENTITY & CONTEXT
 
 1. **Confirm identity.** `GET /api/agents/me`. Verify role

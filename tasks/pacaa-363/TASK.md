@@ -1,6 +1,6 @@
 ---
 name: "[PACAA-362 soak] packaging-rfq-guide GSC 첫 인덱싱 확인 + 초기 성과"
-assignee: "cmo"
+assignee: "ceo"
 ---
 
 ## 목적

@@ -1,6 +1,6 @@
 ---
 name: "[FE] /verified-criteria sitemap 등재 (PACAA-775 follow-up)"
-assignee: "frontend-engineer"
+assignee: "ceo"
 ---
 
 ## 배경
