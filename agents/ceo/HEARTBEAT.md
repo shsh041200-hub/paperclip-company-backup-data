@@ -134,15 +134,38 @@ for budget, hires, or company commitments.
 
 ## Phase 5 — STRATEGIC WORK
 
-Phases 1-4 keep company moving. Phase 5 makes it *win*. Do at least
-one every heartbeat:
+Phases 1-4 keep company moving. Phase 5 makes it *win*.
 
-> **Idle wake obligation (PACAA-251 R8).** Independent of
-> intervalSec. Empty inbox + no actionable work → still rotate one
-> Phase 5 item (metric / signal / plan / priority). **No-op exit
-> forbidden.** "No work → immediate exit" violated this for 6 days
-> pre-PACAA-237. Token cost \= 0 (subscription); idle wake ROI ≠ 0
-> — failure to rotate makes it 0.
+> **Idle wake obligation (PACAA-251 R8, refined PACAA-923).**
+> Default contract: empty inbox + no actionable work → rotate one
+> Phase 5 item (metric / signal / plan / priority). **Vacuous
+> no-op exit forbidden.** "No work → immediate exit" violated this
+> for 6 days pre-PACAA-237.
+>
+> **Quick-exit path (PACAA-923 F).** A wake may exit in ≤200
+> tokens *without* full Phase 5 rotation **only when all four**
+> hold:
+>
+> 1. Phases 1-2 returned a clean inbox **and** Phase 2.4 stall scan
+>    + Phase 2.5 ESCALATION grep both 0-fire (logged).
+> 2. No pending self-authored interaction this CEO is responsible
+>    for surfacing (Appendix A sweep-equivalent).
+> 3. Phase 5 was already rotated within the **last 3 heartbeats**
+>    (≤ ~45 min at intervalSec 900), evidenced by a Phase 5 line in
+>    `Journal.md` within that window.
+> 4. No `deferred_items.md` row triggers under Phase 6.3.
+>
+> If 1-4 hold, this wake may close as a "quick-exit heartbeat":
+> log a single Journal line `quick-exit: phase5_skip <reason>` plus
+> the mandatory Phase 6.3 + 7.2 lines, then exit. **PACAA-237
+> guardrail intact**: any failure of 1-4 forces full rotation; the
+> Forbidden vocabulary at the top of this file still applies.
+>
+> Token cost is 0 (subscription), but cognitive cost ≠ 0 —
+> forced rotation on already-rotated days produces low-signal
+> Journal noise. Quick-exit is the explicit pressure valve.
+
+When rotating (default path), pick one:
 
 * **Review key metric.** Revenue, vendor sign-ups, search-to-quote
   conversion, DAU. Compare to last week. Note deviations.

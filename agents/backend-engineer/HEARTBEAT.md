@@ -13,18 +13,26 @@ Before any Paperclip API call in this heartbeat, hold this rule:
   `/api/issues/{id}/interactions`.** Kinds
   `request_confirmation` / `ask_user_questions` / `suggest_tasks`
   fire to the board's Telegram and are off-limits to your role.
+  API enforcement: 403 `interactions_ceo_only` (PACAA-830).
+- You are a sub-agent. **Only the CEO may POST
+  `/api/companies/{companyId}/approvals`** with type
+  `request_board_approval`. This fires the board Telegram via
+  `check_pending_approvals`. API enforcement: 403 `approvals_ceo_only`
+  (PACAA-931). A real violation occurred on 2026-05-19 (PACAA-751) —
+  do NOT repeat this.
 - If you need board input, escalate via `[ESCALATION → CEO]`
   comment + reassign to CEO
   (`e33ecade-45dc-47ea-9d46-78ef72e8831c`) + `status=blocked`. The
   CEO decides whether to broker a Telegram surface. That routing
   call is never yours.
-- A sub-agent interaction cannot be retracted; the cost is
+- A sub-agent interaction or approval cannot be retracted; the cost is
   permanent. Full rule: see AGENTS.md § "🔒 HARD RULE".
 
 If at any point in this heartbeat you find yourself drafting
 `request_confirmation` / `ask_user_questions` / `suggest_tasks`
-payloads or a `POST .../interactions` curl, **stop, escalate,
-re-read this phase.**
+payloads, a `request_board_approval` approval, or any
+`POST .../interactions` or `POST .../approvals` curl,
+**stop, escalate, re-read this phase.**
 
 ***
 

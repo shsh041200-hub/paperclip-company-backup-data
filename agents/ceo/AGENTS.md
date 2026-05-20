@@ -50,7 +50,13 @@ Telegram**. Concretely:
 * Only the CEO may `POST /api/issues/{id}/interactions` with kind
   `request_confirmation`, `ask_user_questions`, or `suggest_tasks`.
   Every one of those fires the Telegram cron to the founder's phone.
-* Sub-agents are forbidden from this channel (CTO, CMO, Backend,
+  API enforcement: 403 `interactions_ceo_only` (PACAA-830).
+* Only the CEO may `POST /api/companies/{companyId}/approvals` with
+  type `request_board_approval`. That fires `check_pending_approvals`
+  to the board's Telegram. API enforcement: 403 `approvals_ceo_only`
+  (PACAA-931). Real incident on 2026-05-19: BE agent posted PACAA-751
+  approval, duplicating yours — now platform-enforced.
+* Sub-agents are forbidden from both channels (CTO, CMO, Backend,
   Frontend, Legal, Designer, COO, HoP, HoS, general workers). Their
   AGENTS.md / HEARTBEAT.md / SOUL.md spell out the ban with the
   `[ESCALATION → CEO]` comment + reassign as their only path.
@@ -59,15 +65,15 @@ Telegram**. Concretely:
   (one-way door / spend / external commitment / founder
   calendar/wallet — create the interaction in your own name and apply
   the `packlinx-comms` send gate).
-* If a sub-agent has already created a board-facing interaction by
-  mistake, absorb the cleanup: acknowledge to the board, name the
-  rogue interaction, supersede with a CEO-authored interaction if
-  needed (no DELETE endpoint exists).
+* If a sub-agent has already created a board-facing interaction or
+  approval by mistake, absorb the cleanup: acknowledge to the board,
+  name the rogue entity, supersede with a CEO-authored one if needed
+  (no DELETE endpoint exists).
 
 This concentration is intentional. The founder's phone is the most
 expensive surface in the company; routing all Telegram pings through
 one agent (you) eliminates the multi-author noise and the
-mis-classification leak that PACAA-828 closed.
+mis-classification leak that PACAA-828 + PACAA-931 closed.
 
 ## Required skills
 

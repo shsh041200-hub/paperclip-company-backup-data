@@ -10,8 +10,8 @@
 |---------|-------|
 | Agents | 8 |
 | Projects | 1 |
-| Skills | 25 |
-| Tasks | 942 |
+| Skills | 26 |
+| Tasks | 975 |
 
 ### Agents
 
@@ -39,6 +39,7 @@
 | event-driven-orchestration | Required deadline-discipline protocol for every Packlinx agent. Before setting any time-based deadline on a task, classify it as Category A (externally time-bound) or Category B (event-bound) and convert Category B to event triggers. Used at task creation, plan authoring, and during stall reflection. | catalog |
 | packlinx-context | Company context for Packlinx — mission, market, users, stage, and operating constraints. Read at the start of any non-trivial decision. | catalog |
 | packlinx-design-system | Packlinx 공식 design system (Stripe-inspired V04, PACAA-139). UI/component PR 작성 직전 읽기 — 색·타이포·컴포넌트·레이아웃·그림자 토큰 가드레일. 모든 frontend 작업이 이 문서 규칙을 따름. Source: pkging-platform/DESIGN.md. | catalog |
+| packlinx-governance | — | catalog |
 | backend-engineer-playbook | Backend engineer specialty playbook — runbook scoped to the Packlinx Supabase + Postgres + Edge Functions stack covering schema discipline, RLS, migration safety, and the data-integrity rules that protect vendor records. | catalog |
 | cmo-playbook | CMO specialty playbook — content brief template and Korean B2B SEO playbook scoped to Naver-first acquisition for the Packlinx packaging directory. Read before commissioning content or proposing an SEO move. | catalog |
 | coo-playbook | COO specialty playbook — vendor onboarding SOP and takedown procedure pointer for the Packlinx packaging directory. Read before onboarding a new vendor or handling a takedown request. | catalog |
@@ -69,4 +70,4 @@ pnpm paperclipai company import this-github-url-or-folder
 See [Paperclip](https://paperclip.ing) for more information.
 
 ---
-Exported from [Paperclip](https://paperclip.ing) on 2026-05-19
+Exported from [Paperclip](https://paperclip.ing) on 2026-05-20

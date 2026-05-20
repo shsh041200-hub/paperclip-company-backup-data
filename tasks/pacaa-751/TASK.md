@@ -1,6 +1,6 @@
 ---
 name: "[후속 PACAA-737] BE/CTO companies.vendor_model 옵트인 컬럼 추가 결정 (파이프라인 결과 후 보드 재결재)"
-assignee: "backend-engineer"
+assignee: "ceo"
 ---
 
 **부모**: PACAA-737 (보드 accept b38c793c). 최종 안 §B 데이터 시퀀싱 2단계.
