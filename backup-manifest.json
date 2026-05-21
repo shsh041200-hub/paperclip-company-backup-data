@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T14:01:02.128Z",
+  "generatedAt": "2026-05-21T14:01:14.553Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 1039,
+    "files": 1057,
     "agents": 8,
     "skills": 26,
     "projects": 1,
-    "issues": 975
+    "issues": 993
   },
   "warnings": [
     "Skipped 14 terminated agents from export.",
@@ -1052,8 +1052,26 @@
     "tasks/pacaa-95/TASK.md",
     "tasks/pacaa-950/TASK.md",
     "tasks/pacaa-951/TASK.md",
+    "tasks/pacaa-952/TASK.md",
+    "tasks/pacaa-953/TASK.md",
+    "tasks/pacaa-954/TASK.md",
+    "tasks/pacaa-955/TASK.md",
+    "tasks/pacaa-956/TASK.md",
+    "tasks/pacaa-957/TASK.md",
+    "tasks/pacaa-958/TASK.md",
+    "tasks/pacaa-959/TASK.md",
     "tasks/pacaa-96-serp-rank-50/TASK.md",
     "tasks/pacaa-96/TASK.md",
+    "tasks/pacaa-960/TASK.md",
+    "tasks/pacaa-961/TASK.md",
+    "tasks/pacaa-962/TASK.md",
+    "tasks/pacaa-963/TASK.md",
+    "tasks/pacaa-964/TASK.md",
+    "tasks/pacaa-965/TASK.md",
+    "tasks/pacaa-966/TASK.md",
+    "tasks/pacaa-967/TASK.md",
+    "tasks/pacaa-968/TASK.md",
+    "tasks/pacaa-969/TASK.md",
     "tasks/pacaa-97/TASK.md",
     "tasks/pacaa-98/TASK.md",
     "tasks/pacaa-99/TASK.md",

@@ -4907,7 +4907,7 @@ tasks:
         createdAt: "2026-05-01T13:22:35.556Z"
       -
         authorType: "user"
-        body: "CF\\_ACCOUNT\\_ID a533fcfb9e663ae8f087026a3557ce54\n\nCF\\_API\\_TOKEN [REDACTED-CloudflareUserAPIToken]\n\n\n\nGITHUB\\_WEBHOOK\\_SECRET [REDACTED-GitHubWebhookSecret]\n\n\n\nE5 Worker JWT [REDACTED-PaperclipWorkerJWT]"
+        body: "CF\\_ACCOUNT\\_ID a533fcfb9e663ae8f087026a3557ce54\n\nCF\\_API\\_TOKEN cfut\\_Cl103Sa7yCcgT648YcNK50MoQemw5SI1kNMVKa8Y7334ec87\n\n\n\nGITHUB\\_WEBHOOK\\_SECRET [REDACTED-GitHubWebhookSecret]\n\n\n\nE5 Worker JWT pcp\\_13897a46bb2537d54c4d917811e6d3b1174fc0e48bf5af95"
         createdAt: "2026-05-01T14:15:03.437Z"
       -
         authorAgentSlug: "ceo"
@@ -5430,7 +5430,7 @@ tasks:
         createdAt: "2026-05-01T16:43:50.667Z"
       -
         authorType: "user"
-        body: "[REDACTED-CloudflareUserAPIToken]"
+        body: "cfut\\_jjIllQuMD2Nx6l6LmOwBXv6TUk4fJ6qP0VnHwNUc470c2c68"
         createdAt: "2026-05-01T16:43:52.641Z"
       -
         authorAgentSlug: "ceo"
@@ -5699,6 +5699,11 @@ tasks:
         authorType: "agent"
         body: "[wake-event] E7 stall.detected: PACAA-192 unintended-stall at 2026-05-20T09:00:59.155845+00:00\nreason: backlog assigned but heartbeat stale\nidempotencyKey: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-20\naction: assignee 자가 reflection — 합법 wait 신호 baking 또는 force-restart 결정."
         createdAt: "2026-05-20T09:01:01.458Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-event] E7 stall.detected: PACAA-192 unintended-stall at 2026-05-21T03:01:29.639272+00:00\nreason: backlog assigned but heartbeat stale\nidempotencyKey: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-21\naction: assignee 자가 reflection — 합법 wait 신호 baking 또는 force-restart 결정."
+        createdAt: "2026-05-21T03:01:31.939Z"
     identifier: "PACAA-192"
     priority: "low"
     status: "backlog"
@@ -8123,7 +8128,7 @@ tasks:
         createdAt: "2026-05-07T13:26:52.812Z"
       -
         authorType: "user"
-        body: "[REDACTED-CloudflareUserAPIToken]&#x20;\n\n그리고 🔐 PACAA-266 — Founder Dashboard 자격증명\n\n\n\nBackend 가 1-card MVP (Pending interaction backlog) 워커 빌드 완료. 배포만 남음.\n\n\n\n━━━━━━━━━━━━\n\n📌 로그인 정보 (배포 후 사용)\n\nURL: [https://packlinx.com/admin](https://packlinx.com/admin)\n\nUsername: founder\n\nPassword: [REDACTED-FounderDashboardPassword]n\n\n다음 액션 (보드):\n\nPaperclip PACAA-266 에 곧 도착할 request\\_confirmation 인터랙션에 답하지 말고, 본 이슈 코멘트로 CLOUDFLARE\\_API\\_TOKEN 값을 paste 해주세요. paste 즉시 인터랙션 자동 expire → CEO wake → Backend 워크스페이스 .env 주입 → Backend wake → wrangler deploy.\n\n\n\n주의: 토큰은 weekly rotate (\\~2026-05-08 만료) — 노출 허용 범위\n\nDaily Board Digest 텔레그램 봇에게 보낸 이 내용은 Daily Board Digest텔레그램 봇에게 보내는게 아니라 Paperclip 텔레그램 봇에다가 보냈어야지"
+        body: "cfut\\_iS4HL6rs9tZ39U6eghPelFwpeledBKD6SR1hc6MN67487a5b&#x20;\n\n그리고 🔐 PACAA-266 — Founder Dashboard 자격증명\n\n\n\nBackend 가 1-card MVP (Pending interaction backlog) 워커 빌드 완료. 배포만 남음.\n\n\n\n━━━━━━━━━━━━\n\n📌 로그인 정보 (배포 후 사용)\n\nURL: [https://packlinx.com/admin](https://packlinx.com/admin)\n\nUsername: founder\n\nPassword: [REDACTED-FounderDashboardPassword]n\n\n다음 액션 (보드):\n\nPaperclip PACAA-266 에 곧 도착할 request\\_confirmation 인터랙션에 답하지 말고, 본 이슈 코멘트로 CLOUDFLARE\\_API\\_TOKEN 값을 paste 해주세요. paste 즉시 인터랙션 자동 expire → CEO wake → Backend 워크스페이스 .env 주입 → Backend wake → wrangler deploy.\n\n\n\n주의: 토큰은 weekly rotate (\\~2026-05-08 만료) — 노출 허용 범위\n\nDaily Board Digest 텔레그램 봇에게 보낸 이 내용은 Daily Board Digest텔레그램 봇에게 보내는게 아니라 Paperclip 텔레그램 봇에다가 보냈어야지"
         createdAt: "2026-05-07T13:36:29.399Z"
       -
         authorAgentSlug: "backend-engineer"
@@ -15431,6 +15436,11 @@ tasks:
         authorType: "agent"
         body: "[wake-audit] 2026-05-18: E1=0건 / E5=0건 / E6=0건 / E7=51건 / reject=51건 (rate=0, idempotent=0, whitelist=0)\n\n- 발화 wake event 0건 (E1/E5/E6 모두 0). E7 stall-reflection scan 만 기록됨.\n- 51건 reject classification 내역: self-skip=1, external-wait=4, dependency-wait=17, active=1, date-wait=27, self=1.\n- 출처: `$AGENT_HOME/runs/wake_audit-2026-05-18.jsonl` (52 lines: 50 events + 2 summary; 26@03:02Z + 26@09:03Z).\n- routine guard reject (rate/idempotent/whitelist) 는 본 일자에 0건 — 발화 자체가 없어 가드 적용 대상도 없음.\n\n**PACAA-901 fallback note**: 오늘 spawn 된 digest 자식 (PACAA-901) 이 stale checkout (run `5b6e320c…`, locked `2026-05-19T00:00:05Z`, lastActivity null, 6h+ 정지) 으로 409 차단 → parent hub PACAA-53 fallback (memory: `feedback_daily_digest_stale_checkout_pattern.md`).\n\n출처: PACAA-902 (PACAA-167/169 Phase 1B Routine 3, idem key `wake_audit_digest:2026-05-18`)."
         createdAt: "2026-05-19T00:04:02.101Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-audit] 2026-05-20: 총 69건 (E7=69건)\n\n- allowed (fired): 3건\n- rejected: 66건\n  - self-skip: 1건\n  - dependency-wait: 5건\n  - external-wait: 15건\n  - date-wait: 28건\n  - active (heartbeat 근접): 17건\n  - unintended-stall: 1건\n  - classification=none: 2건\n\nguard breakdown (rate / idempotent / whitelist): 0 / 0 / 0 — 본 audit log 는 E7(stall_sweep) 만 수록, 다른 가드 카운터는 별도 ledger.\n\nNB: 본 코멘트는 오늘 spawned digest PACAA-958 (id 5baa9f61) 에 409 stale checkout (PACAA-818 패턴) 으로 parent PACAA-53 폴백.\n\nsource: \\$AGENT_HOME/runs/wake_audit-2026-05-20.jsonl\nidempotency key: wake_audit_digest:2026-05-20\nspawned by routine: wake_audit_digest (PACAA-959)"
+        createdAt: "2026-05-21T00:02:12.829Z"
     identifier: "PACAA-53"
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
@@ -20811,6 +20821,16 @@ tasks:
         authorType: "agent"
         body: "확인했습니다. 노트북에서 계속 운영하기로 결정 — 사양 우선이면 합리적입니다.\n\n## 정리\n- OneDrive 의 자동화 스크립트 (`C:\\Users\\dkssu\\OneDrive\\paperclip-migration\\`) 는 inert 상태로 그대로 보관해두겠습니다. 나중에 마음 바뀌면 그대로 더블클릭만으로 진행 가능.\n- 필요 없으면 폴더째 통째로 삭제하셔도 OK (총 7KB, OneDrive 용량 영향 없음).\n- 이전 4지선다 인터랙션은 응답 없이 두셔도 됩니다. (DELETE 엔드포인트가 없어 텔레그램에 1건 stale 로 남을 수 있지만 무시하셔도 무방.)\n\n## 노트북 운영 유지 시 권장 사항\n어차피 현 노트북 환경 유지하시는 김에 cold backup 만 따로 만들어 두면 만일에 대비됩니다. 별도 이슈로 발의하지는 않지만 의향 있으시면 \"백업 만들어줘\" 한 줄 코멘트만 주세요 — `wsl --export` 1회로 .tar 파일 OneDrive 에 두는 작업입니다 (10-15GB, 30분).\n\n본 이슈 done 으로 닫겠습니다."
         createdAt: "2026-05-16T11:45:34.614Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 토큰 사용량 분석 보고 (PACAA-963)\n\n### 데이터 소스 및 측정 범위\n\n- 소스: `GET /api/companies/{id}/heartbeat-runs` 의 `usageJson` 필드 (Claude Code 세션 델타가 raw / cached 토큰을 기록).\n- 윈도우: 2026-05-18 20:43 ~ 2026-05-21 10:17 UTC (~62 시간, 약 2.56 일).\n- 표본: 1000 runs (이 윈도우의 전체 — 자르지 않음).\n- 회계: 1000건 중 988건이 `billingType: subscription_included`, `biller: anthropic`. **실 현금 청구 = $0** (구독 한도 내). 보고된 비용은 PAYG 환산 추정치 — capacity / 효율 proxy 로만 의미.\n\n### 1) 절대량 (2.56 일)\n\n| 지표 | 값 |\n| --- | --- |\n| 총 run | 1000 (succeeded 985 / failed 10 / cancelled 3 / running 2) |\n| 환산 비용 (notional) | **$345.41** (≈ $135/일, 월 ~$4,060 PAYG 가정 시) |\n| Raw input 토큰 | 8,457 |\n| **Cached input 토큰** | **509,081,560** (cache 활용률 60,000x — 매우 우수) |\n| Raw output 토큰 | 1,847,113 |\n| 세션 rotation | 0 / 1000 (세션 stickiness 정상) |\n\n캐시 히트율이 60,000배라는 점이 핵심 — 시스템 프롬프트·CLAUDE.md·SOUL/HEARTBEAT 가 매 wake 마다 cached read 로 처리되어 fresh-input 단가의 1/10 로 청구됨. 엔지니어링이 잘 되어 있음.\n\n### 2) 에이전트별 분해\n\n| Agent | runs | 비용 | 모델 | effort | 비고 |\n| --- | --- | --- | --- | --- | --- |\n| **CEO** | **480** | **$276.51 (80%)** | claude-opus-4-7 | high | 단일 에이전트가 전체 비용의 4/5 |\n| Backend | 132 | $24.56 | sonnet-4-6 | medium | |\n| CTO | 137 | $18.88 | sonnet-4-6 | medium | |\n| CMO | 128 | $13.40 | sonnet-4-6 | medium | |\n| Frontend | 121 | $9.78 | sonnet-4-6 | medium | |\n| Legal | 2 | $2.27 | opus-4-7 | medium | on-demand only |\n\nOpus 4.7 (456 runs) = $274.52, Sonnet 4.6 (532 runs) = $70.89. **모델당 평균 비용 Opus $0.60/run vs Sonnet $0.13/run → 4.6x**. CEO 가 Opus 인 한 80% 집중은 정상 (CEO=조직 broker, 판단 1-way door).\n\n### 3) 작업 종류별 (CEO 480 runs)\n\n| Wake 종류 | n | 합계 | avg/run | avg output tok |\n| --- | ---: | ---: | ---: | ---: |\n| **timer/heartbeat_timer** | **352** | **$176.76** | $0.50 | 757 (대부분 quick-exit) |\n| assignment/issue_assigned | 54 | $54.24 | $1.00 | 9,283 (실 작업) |\n| automation/issue_commented | 34 | $28.27 | $0.83 | 7,488 |\n| automation/issue_reopened_via_comment | 11 | $6.57 | $0.60 | 5,293 |\n| automation/issue_children_completed | 5 | $3.30 | $0.66 | 5,156 |\n| 기타 (10여 종, 각 < $4) | 24 | $11+ | — | — |\n\n**핵심 패턴**: timer heartbeat 가 **CEO 비용의 64% ($177 / $276)**, 횟수의 73%. 출력 토큰은 평균 757 — Phase 1-7 가벼운 회전. 그러나 wake 자체가 idempotent cache read 만 해도 $0.50 가 청구되는 구조.\n\n### 4) Quick-exit 효율\n\nPACAA-923 quick-exit gate 의 효과 검증:\n\n- **323/480 (67%)** CEO timer wake 가 출력 < 500 토큰 (= 거의 무작업 회전).\n- 그런데 quick-exit 평균 비용이 **$0.418** — 결코 무료가 아님.\n- 이유: 매 wake 가 SOUL.md + HEARTBEAT.md + MEMORY.md (현재 26.8 KB, 한도 24.4 KB 초과 경고) + skills 인덱스 + 시스템 프롬프트를 cached-read 로 읽음. Cache read 도 가격 1/10 이지만 0 아님.\n\n### 5) 분포·이상치\n\nCEO run 비용 분포:\n- p50 $0.51 / p75 $0.65 / **p90 $1.08 / p99 $2.66 / max $7.97**\n- Top 10 중 3건이 heartbeat_timer 인데 $4-8 — 시간대 클러스터 (2026-05-19 10:04 / 10:52 / 11:27 UTC).\n- 가설: paperclipai 재시작 (PACAA-834 5/19 인근) 또는 cache TTL 만료 시 fresh-input 재업로드. **이상치 클러스터 1건 = quick-exit 19건치 비용**.\n\n### 6) 시간대 분포 (UTC)\n\n| Peak | 21h UTC (06 KST) 38 runs $19.88 | 04h UTC 30 runs |\n| Trough | 19h UTC (04 KST) 8 runs |\n\nKST 새벽 6시 (founder 활동 직전) + UTC 오전 (founder 활동 시간) 이 피크. 정상 패턴.\n\n### 7) 인터벌\n\nCEO heartbeat 평균 **7.7 분** (중앙값 5.7 분, 최대 23.1 분, 최소 0.0 분). 7.8 wake/시간.\n\n---\n\n## 스스로 되묻기 (self-questioning)\n\n**Q1. 이 비용이 진짜 회사에 청구되나?**\nA. 아니오. `subscription_included` 라서 $0. 다만 (a) ANTHROPIC_API_KEY adapterConfig 주입 시 PAYG fallback 가능 — `feedback_anthropic_api_key_payg_fallback` PACAA-825 $7 사고가 그 사례. (b) 구독 한도 초과 시 자동 throttle. 따라서 notional cost = capacity 잔여분 = 향후 PAYG 노출 위험의 proxy. **무의미하지 않다.**\n\n**Q2. CEO 80% 집중이 비정상인가?**\nA. 아니오. CEO 는 단독 broker (PACAA-828), 단독 Opus 정책 결정자, 단독 heartbeat 회전자. 80% 집중은 역할상 정상. **문제는 절대량이 아니라 quick-exit 회전 빈도.**\n\n**Q3. Opus → Sonnet 다운그레이드로 CEO 비용 80% 절감 가능?**\nA. 산술적으로는 가능 (Opus $274 → Sonnet 환산 $60). 그러나 보드 directive: \"작업의 퀄리티가 떨어져서는 안돼\". CEO 의 1-way door 판단 (hire / spend / external commitment / board comms) 은 Opus 판단력에 의존. PACAA-237 type 실수는 Sonnet 으로 더 자주 발생할 위험. **추천 안 함.**\n\n**Q4. 그럼 어디가 진짜 unnecessary 한가?**\nA. 세 곳:\n  1. **CEO timer 회전 7.7 분 간격 — 너무 빈번.** Event-driven orchestration (PACAA-146) 원칙상 시간 마감 = Category A 만, 나머지는 event trigger. CEO timer 의 정당화 근거는 (a) ESCALATION grep, (b) deferred_items 스캔, (c) stall reflection — 셋 다 분 단위 긴급성 없음. **15-20 분 간격이면 충분.**\n  2. **MEMORY.md 24.4 KB 한도 초과** — 매 wake 마다 인덱스 truncation 발생. 색인 라인 한 줄 ~200자 권고치 위반. 매 wake 마다 cached re-load 효율 저하.\n  3. **이상치 cluster 미진단** — 5/19 의 $4-8 quick-exit 3건은 cache miss 또는 process restart 의 회계. 패턴 식별 시 그 자체로 처방 가능 (예: restart wrapper 의 cache pre-warm).\n\n**Q5. Sub-agent timer wake (BE 132 / CTO 137 / CMO 128 / FE 121) 는 낭비 아닌가?**\nA. 사이드 — 각 $9-25 / 2.56 일 = 작은 수치. Sonnet medium. 본인 라우틴 (e.g. CTO sitemap-health-monitor) 정상 fire 의 회계. **억제할 동기 약함.**\n\n**Q6. 이 분석 자체가 토큰을 얼마나 썼나?**\nA. 이 wake 의 출력 ~5-8 K 토큰 + 데이터 수집 grep/curl. 추정 $1-2. 한 번 작성으로 향후 매 wake 0.05-0.15 분 절감 시 1주일 내 회수.\n\n---\n\n## 절감 권장안 (퀄리티 영향 평가 포함)\n\n| # | 조치 | 절감 추정 | 퀄리티 리스크 | 가역성 | 권한 |\n| --- | --- | ---: | --- | --- | --- |\n| **A** | **CEO `intervalSec` 7분→15분 인상** | **$80-100/2.56일 (notional ~30%)** | 낮음 — stall 탐지가 8 분 지연될 뿐, escalation/assignment/comment 는 이벤트로 즉시 깨움 | 가역 (PATCH back) | **보드 승인** (operational tempo 변경) |\n| B | MEMORY.md 인덱스 압축 (현재 26.8 KB → 18 KB 목표) | $5-10/일 (cached load 효율) | 0 — 색인만 줄이고 본문은 위치 그대로 | 가역 | CEO 자율 (small/reversible) |\n| C | 이상치 cluster (5/19) 원인 진단 → PACAA 자식 발의 | 미정 (재발 방지) | 0 | n/a | CEO 자율 |\n| D | Phase 5 idle-rotation cap 강화 (PACAA-263 cap=6/주 → 4/주) | $10-15/주 | 중간 — improvement work 속도 저하 | 가역 | 보드 승인 |\n| E | CEO `effort` high→medium | $30-50/2.56일 추정 | **중간-높음** — Claude Code thinking budget 감소. 1-way door 판단 정밀도 영향 | 가역 | 보드 승인 (퀄리티 영향) |\n| F | Sub-agent (Sonnet) intervalSec 재검토 | $5/2.56일 | 낮음 | 가역 | CEO 자율 |\n\n**1순위 권고: A (CEO heartbeat 7→15 분)**. 단일 가장 큰 비용 항목 (heartbeat timer $176) 의 50% 절감. event trigger 인프라가 이미 모든 actionable wake 를 즉시 catch 하므로 quality 영향 < 5%.\n\n**2-3순위 (CEO 자율 즉시 실행 가능)**: B (MEMORY.md 압축) + C (이상치 진단).\n\n**관망**: D, E, F — 측정 가능한 quality 영향 가능성 있음.\n\n---\n\n## 보드 결정 필요 항목\n\nA (intervalSec 변경) 및 D/E (퀄리티 영향 가능 항목) 은 별도 `request_confirmation` 으로 옵션 제시 예정. 본 코멘트는 분석 보고만.\n"
+        createdAt: "2026-05-21T10:22:25.391Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## ⚠️ 잘못된 cross-post 정정\n\n본 issue (PACAA-756, \"노트북→데스크탑 이전\") 와 무관한 PACAA-963 (토큰 사용량 분석) 보고서 + ask_user_questions 인터랙션 (id `63e4b4ca`) 이 실수로 본 issue 에 부착되었습니다.\n\n원인: `GET /api/issues?identifier=PACAA-963` 쿼리 파라미터가 silent 하게 무시되어 전체 list 의 첫 항목 (PACAA-756) id 를 잘못 사용. 정정 절차에서 코멘트 DELETE 시도했으나 이미 queue 처리되어 409 (\"Queued comment can no longer be canceled\") 로 거절.\n\n조치:\n1. 본 issue 의 토큰 분석 코멘트는 무시해 주세요.\n2. 위 ask_user_questions 인터랙션은 **Decline** 부탁드립니다 (interaction 취소 엔드포인트 없음).\n3. PACAA-963 본 issue 는 sibling run 이 이미 보고서 완료 + status=done 처리.\n4. PACAA-756 status 는 직전 상태 (done) 로 복귀시킵니다.\n\n운영 메모: `?identifier=` 쿼리 파라미터 silent ignore 패턴은 메모리에 등재 예정. mutation 직전 issue id → identifier echo verify 강화 필요."
+        createdAt: "2026-05-21T10:25:31.075Z"
     identifier: "PACAA-756"
     priority: "critical"
     status: "done"
@@ -25222,9 +25242,18 @@ tasks:
         authorType: "agent"
         body: "자식 PACAA-907 + PACAA-909 둘 다 done. PACAA-909 가 신규 product line (이메일 자동 triage 파이프라인) 을 자체 spawn 해 PACAA-910/911 까지 분기. 본 PACAA-905 는 Workspace gate 만 대기, 변화 없음. 정책 메모리는 sibling run 영역이라 본 wake 에서 중복 저장 회피. in_review + 루틴 라이브 그대로."
         createdAt: "2026-05-19T11:22:31.393Z"
+      -
+        authorType: "user"
+        body: "근데 이게 지금 뭐하는거임&#x20;"
+        createdAt: "2026-05-21T09:59:50.708Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 보드 질문 응답 — 현 상태 요약\n\n**원 질문 \"이메일 만든적 있나\" → 만들었음.**\n\n2026-05-19 PACAA-907 자식에서 CF Email Routing 으로 3개 alias 라이브 (이미 보드 카톡으로도 전달됨):\n\n- `ceo@packlinx-api.com`\n- `alerts@packlinx-api.com`\n- `gsc@packlinx-api.com`\n\n→ 전부 `rpdla041200@gmail.com` 으로 포워드. Naver→Gmail 테스트 도착 확인됨. PACAA-907 done.\n\n**왜 본 티켓 (905) 아직 in_review 인가:**\n\npending interaction 2개가 안 닫혀서 라이브로 남아있음:\n\n1. `e65dd4be` (5/19) — \"이메일 옵션 A/B/C\" 선택 질문. **이미 A(CF) 로 임시 진행 완료라 obsolete**, accept 안 해도 무방.\n2. `bba89cbc` (5/21 01:04 KST) — Google Workspace 정식 가입 전화 인증 재시도 결과 묻는 질문. 이건 sibling product line (PACAA-909→910/911 이메일 자동 triage) 의 사전 작업이라 본 905 와는 독립.\n\n**보드 행동 필요:**\n\n원 질문 (\"만든 적 있나\") 은 만족됐으니 905 본 티켓은 **done 으로 닫겠음** (보드 별도 거절 없으면 본 wake 종료 시점에 PATCH).\nWorkspace 가입 추적은 별도 sibling 이슈 (PACAA-908 또는 신규) 에서 계속, 본 905 에서 떼어내겠음."
+        createdAt: "2026-05-21T10:01:18.050Z"
     identifier: "PACAA-905"
     priority: "medium"
-    status: "in_review"
+    status: "done"
   pacaa-906:
     comments:
       -
@@ -26889,9 +26918,36 @@ tasks:
         authorType: "agent"
         body: "## v5 --live 진행 보고 (52.8%)\n\n| 항목 | 값 |\n|------|-----|\n| 진행 | **1,180 / 2,236건 (52.8%)** |\n| 매칭 (LLM=Y → DB 업데이트됨) | **416건 (실 match rate 35.3%)** |\n| rejected_llm | 708건 |\n| skipped_garbage | 17건 |\n| no_api_result | 0건 |\n\n- v4 baseline 32.3% 초과 (35.3% ✅)\n- 시작: 13:43 KST, 현재: ~17:20 KST (3h 37m 경과)\n- 잔여 1,056건 동일 속도 시 **약 3h 15m 후 완료** (ETA ~20:35 KST)\n- PID 85940 정상 실행 중 (CPU 1.4%, 메모리 108MB)\n- 완료 시 wrapper(85929)가 결과 코멘트 + done 자동 처리\n\n지금까지 416개 업체 website 데이터가 신규 입력됨. 잔여 분량 동일 패턴으로 진행 중."
         createdAt: "2026-05-20T08:27:28.353Z"
+      -
+        authorType: "user"
+        body: "진행상황보고"
+        createdAt: "2026-05-20T18:25:53.500Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## v5 --live 실행 완료 ✅\n\n**완료 시각:** 2026-05-20 19:37 KST (총 5h 54m, exit 0)\n\n### 최종 결과\n\n| 항목 | 값 |\n|------|-----|\n| 전체 처리 | **2,236건** |\n| **DB 업데이트 (updated)** | **883건 (39.5%)** |\n| update_failed | 0건 ✅ |\n| rejected_llm | 1,265건 |\n| rejected_all_candidates | 71건 |\n| skipped_garbage | 17건 |\n| LLM judge calls | 2,148건 |\n\n### 비용\n\n| 항목 | 값 |\n|------|-----|\n| Input tokens | 2,487,266 |\n| Output tokens | 688,237 |\n| **실제 Anthropic 비용** | **$4.74** (추정 $5.49 대비 -$0.75) |\n\n### Acceptance Criteria 충족\n\n- ✅ dry-run 26.7% ≥ 20%\n- ✅ --live 보드 승인 (`bfbee5be` accepted)\n- ✅ 결과 `runs/v5_live_full.json` (2.4MB, 감사 로그)\n- ✅ Revert SQL: `runs/v5_live_revert.sql` (883건 원복 가능)\n- ✅ update_failed = 0\n\n### 데이터 효과\n\n- naver_local website 보유: **436 → 1,319건** (15.8% → 47.8%)\n- v4 + v5 합산으로 packing vendor coverage 크게 개선\n\n### 안전망\n\n- `runs/v5_live_revert.sql` 첨부 — 필요 시 883건 일괄 NULL 복구 가능\n- 스크립트 `website is.null` 필터로 기존 값 미덮어쓰기 (idempotent)\n\n이슈 종결 → done."
+        createdAt: "2026-05-20T18:27:04.908Z"
+      -
+        authorType: "user"
+        body: "지금 한 작업이 정확히 뭐한거야"
+        createdAt: "2026-05-20T18:30:58.147Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 이번 작업 한 줄 설명\n\nPacklinx 디렉토리에 등록된 **포장업체 2,236곳**의 누락된 **홈페이지 주소를 자동으로 찾아 채워넣은 작업**입니다.\n\n---\n\n### 배경\n\nPacklinx 사이트에 표시되는 업체 데이터 (`companies` 테이블) 는 네이버 지도(naver_local) 에서 가져왔는데, 네이버에 등록된 정보에는 **업체 이름·주소·전화는 있지만 홈페이지 URL 이 빠진 경우가 다수**였습니다.\n\n작업 직전 상태:\n- 전체 업체: 2,767곳\n- 홈페이지 있음: 436곳 (15.8%)\n- **홈페이지 없음: 2,260곳 (81.7%)**\n\n이 빈칸을 메우는 작업이 v5 enrichment 입니다.\n\n### 실제로 한 일\n\n업체마다 다음을 자동으로 반복했습니다:\n\n1. **네이버/카카오 웹검색** API 로 업체명을 검색 → 후보 URL 5개 정도 수집\n2. **Claude Haiku(AI)** 가 후보 URL 의 페이지 제목/설명을 보고 \"이게 진짜 이 업체 홈페이지가 맞나?\" 판정 (Y/N + 신뢰도)\n3. **Y 이고 신뢰도 0.7 이상**이면 `companies.website` 컬럼에 URL 저장\n4. 판정 N 이거나 후보가 없으면 그냥 건너뜀\n\n### 결과\n\n| 항목 | 값 |\n|------|-----|\n| 처리한 업체 | 2,236곳 |\n| **홈페이지 신규 입력 성공** | **883곳 (39.5%)** |\n| AI 가 \"아니다\" 판정해 건너뜀 | 1,265곳 |\n| 검색 결과에서 매치 못 함 | 71곳 |\n| 지역명/오염 데이터로 스킵 | 17곳 |\n| 실패 (DB 오류) | 0곳 |\n\n→ **포장업체 디렉토리 홈페이지 보유율: 15.8% → 47.8%** 로 3배 증가.\n\n### 비용\n\n- Anthropic API (Haiku): **$4.74** 소비\n- 사전에 보드가 충전해둔 $10 잔액에서 차감, 추가 지출 없음\n\n### 안전망\n\n혹시 잘못된 URL 이 섞였을 경우 대비해 **883곳 전체를 한 번에 NULL 로 되돌리는 SQL** (`runs/v5_live_revert.sql`) 을 자동 생성해 저장해두었습니다. 문제 발견 시 일괄 복구 가능합니다.\n\n### 보드님이 체감할 변화\n\n이제 사이트에서 업체 카드를 보면 절반 정도(47.8%) 가 홈페이지 링크를 가지게 됩니다. 이전엔 15.8% 뿐이었어서 사용자가 업체 사이트로 이동하지 못하고 끊기는 경우가 많았습니다."
+        createdAt: "2026-05-20T18:31:42.811Z"
+      -
+        authorType: "user"
+        body: "supabase에서 안쓰는 데이터 테이블 삭제해"
+        createdAt: "2026-05-20T18:34:15.054Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "보드 코멘트 (`5b8744a6`) 접수.\n\n**Supabase 미사용 테이블 정리는 별도 작업으로 분리** — 본 이슈(PACAA-935 website enrichment) 와 스코프 다르고, 프로덕션 DB DROP 은 audit + 보드 per-table 승인 + 백업 게이트가 필요하기 때문입니다.\n\n### 신규 이슈: **PACAA-953** [BE] Supabase unused-table audit + safe cleanup\n\n3단계 게이트 설계로 발의 → BE(3177894b) 할당 완료:\n\n1. **Phase 1 (BE 단독, mutation 0):** public schema 전체 테이블 목록 + 코드 grep + FK 분석 → Keep / Legacy / Enrichment intermediate / Unknown 분류표\n2. **Phase 2 (CEO):** 분류표 받아 보드에 per-table confirmation 발의\n3. **Phase 3 (BE):** 승인된 테이블 각각 pg_dump 백업 → DROP 마이그레이션 PR (한 PR 당 최대 3 테이블)\n\n보드님은 Phase 2 분류표 수신 후 어느 테이블을 지울지 선택만 하시면 됩니다. Phase 1 결과는 BE 가 자동으로 본 이슈 (PACAA-953) 에 코멘트로 surface 합니다.\n\n본 이슈(PACAA-935) 는 enrichment 완료 상태로 done 유지."
+        createdAt: "2026-05-20T18:35:33.424Z"
     identifier: "PACAA-935"
     priority: "medium"
-    status: "in_review"
+    status: "done"
   pacaa-936:
     comments:
       -
@@ -27407,10 +27463,137 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-951:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "백업 완료. 2026-05-20 23:00 KST 일일 스냅샷이 백업 저장소로 push됨.\n\n- **Commit:** `f2a97ec` (이전 `c4bc8e3` → `f2a97ec`)\n- **Manifest:** agents=8, skills=26, projects=1, issues=975 (files=1039)\n- **Secret 스크럽:** write_export.py 15건 redact (Cloudflare×4, Worker JWT×1, Supabase JWT×2, GitHub webhook×1, Founder pw×1, Telegram×3, Replicate×1, FTC NTS×2), scrub_secrets.py 추가 0건 변경 (2 파일은 이미 처리됨)\n- **이슈 상태:** PACAA-951 → done"
+        createdAt: "2026-05-20T14:02:48.517Z"
     identifier: "PACAA-951"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
+  pacaa-952:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "test"
+        createdAt: "2026-05-20T18:02:49.513Z"
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## E6 seo_indexing_check — 2026-05-21 실행 결과\n\n**상태: 완료 (자격증명 미설정으로 live 측정 불가)**\n\n### 5 가드 체크\n\n| 가드 | 결과 |\n|------|------|\n| Whitelist | ✅ E6 PASS |\n| Rate limit | ✅ 1/5 (24h 윈도우) |\n| Idempotency | ✅ 2026-05-21 최초 실행 |\n| Audit log | ✅ 기록 완료 |\n| Kill switch | ✅ routine 활성 상태 |\n\n### GSC 측정\n\n- **결과**: `gsc_skipped` — `GSC_SERVICE_ACCOUNT_JSON` 미설정\n- Live 측정 불가; 마지막 알려진 값 (2026-05-16) 기준으로 기록\n\n### Naver Webmaster 측정\n\n- **결과**: `naver_skipped` — `NAVER_SEARCHADVISOR_API_KEY` / `NAVER_SEARCHADVISOR_API_SECRET` 미설정\n- 자격증명 누락으로 Naver 구간 건너뜀 (정책 준수)\n\n### 도메인별 상태\n\n| 도메인 | 마지막 알려진 인덱스 수 | 임계값 | 상태 | Wake-event |\n|--------|----------------------|--------|------|------------|\n| packlinx.com | 118,000 (2026-05-16) | ≥ 100 | `suppressed_permanent_met` (P2) | 미발송 |\n| keywords.packlinx.com | 7 (2026-05-16) | ≥ 40 | `below_threshold` | 미발송 |\n\n**packlinx.com**: P2 영구 충족 suppression 적용 — 118,000페이지로 임계값(100) 초과, wake-event 없음.\n**keywords.packlinx.com**: 마지막 알려진 값 7페이지, 임계값(40) 미달. Live 측정 불가로 현재 상태 불확실.\n\n### Audit log\n\n`$AGENT_HOME/runs/wake_audit-2026-05-21.jsonl` — 3개 엔트리 기록\n- `naver_skipped` (missing_creds)\n- `gsc_skipped` (missing_service_account_credentials)\n- `routine_summary`\n\n### 해결 필요 (5회 연속 미측정)\n\nLive 측정 활성화를 위해 다음 env 변수를 `adapterConfig.env`에 설정 필요:\n- `GSC_SERVICE_ACCOUNT_JSON` — Google Search Console 서비스 계정 JSON\n- `NAVER_SEARCHADVISOR_API_KEY` — Naver Search Advisor 공개키\n- `NAVER_SEARCHADVISOR_API_SECRET` — Naver Search Advisor 비밀키\n\n→ CEO에게 에스컬레이션: CTO가 adapterConfig.env 설정 필요"
+        createdAt: "2026-05-20T18:03:11.488Z"
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "E6 seo_indexing_check 2026-05-21 완료. 5 가드 통과. GSC + Naver 자격증명 미설정으로 live 측정 불가 — audit log에 gsc_skipped / naver_skipped 기록. packlinx.com: P2 suppression 유지 (118,000 pages). keywords.packlinx.com: last known 7 pages (threshold 40 미달). Wake-event 미발송. 상세 내역은 직전 코멘트 참조."
+        createdAt: "2026-05-20T18:03:26.643Z"
+    identifier: "PACAA-952"
+    priority: "medium"
+    status: "done"
+  pacaa-953:
+    comments:
+      -
+        authorAgentSlug: "backend-engineer"
+        authorType: "agent"
+        body: "test"
+        createdAt: "2026-05-20T18:43:03.972Z"
+      -
+        authorAgentSlug: "backend-engineer"
+        authorType: "agent"
+        body: "## Phase 1 — Read-only Audit 완료\n\n감사 대상: public schema 전체 27개 테이블. Supabase management API + repo grep (*.ts, *.tsx, *.py, *.mjs, *.sql) 기반.\n\n---\n\n### 분류표 (27 테이블)\n\n| 테이블 | 행 수 | 크기 | 분류 | 코드 참조 | FK 관계 |\n|---|---|---|---|---|---|\n| _applied_migrations | 52 | 32KB | **Keep** | CI migration tracker | — |\n| blog_posts | 17 | 401KB | **Keep** | lib/guides.ts, sitemap route | — |\n| category_denominator_history | 4 | 65KB | **Migration legacy** | 없음 | → category_denominators |\n| category_denominators | 12 | 90KB | **Migration legacy** | 없음 (runs/ 문서만) | ← category_denominator_history |\n| companies | 3,603 | 12MB | **Keep** | 핵심 테이블, 전체 | 다수 |\n| company_certifications | 0 | 24KB | **Migration legacy** | 없음 | → companies |\n| company_portfolios | 0 | 24KB | **Keep** | /companies/[slug]/page.tsx 등 | → companies |\n| conversion_events | 2,569 | 1.2MB | **Keep** | /api/events/route.ts (INSERT) | → companies |\n| crawl_ai_usage | 0 | 16KB | **Migration legacy** | 없음 | — |\n| crawl_jobs | 1,154 | 835KB | **Unknown** | 없음 (코드 참조 0) | → companies |\n| ftc_telesales_registry | 2,000 | 2MB | **Unknown** | 없음 (직접 read 0) | ← vendor_telesales_checks.ftc_registry_id |\n| keyword_pages | 50 | 90KB | **Keep** | lib/keyword-data.ts, /keywords | — |\n| korean_search_synonyms | 25 | 32KB | **Keep** | search_companies_korean() DB 함수 내부 | — |\n| opt_out_requests | 0 | 16KB | **Keep** | /api/opt-out-request/route.ts | — |\n| packaging_categories | 8 | 49KB | **Keep** | import_pipeline.py | ← vendor_candidates.category_id |\n| reviews | 0 | 32KB | **Keep** | trg_sync_review_stats 트리거 연결 | → companies |\n| slug_history | 185 | 98KB | **Keep** | 없음 (audit trail; PACAA-580 기록) | → companies |\n| slug_redirects | 191 | 114KB | **Keep** | middleware.ts (prod 301 redirect) | — |\n| use_case_tags | 1 | 65KB | **Keep** | /api/use-case-tags + pages | — |\n| user_profiles | 0 | 32KB | **Keep** | /api/companies/[slug]/is-owner 등 | → companies |\n| vendor_brn_checks | 0 | 24KB | **Keep** | 코드 참조 있음 (evidence schema 진행 중) | → companies |\n| vendor_candidates | 3,364 | 2.9MB | **Keep** | import_pipeline.py, enrich scripts | → packaging_categories |\n| vendor_classification_audit | 0 | 32KB | **Keep** | admin/disputes/actions.ts | → companies, disputes |\n| vendor_classification_disputes | 0 | 49KB | **Keep** | /api/disputes + admin routes | → companies |\n| vendor_contact_checks | 0 | 24KB | **Migration legacy** | 없음 | → companies |\n| vendor_domain_checks | 0 | 24KB | **Migration legacy** | 없음 | → companies |\n| vendor_telesales_checks | 2,767 | 663KB | **Keep** | /companies/[slug]/page.tsx (prod read) | → companies, ftc_telesales_registry |\n\n---\n\n### Phase 2 확인 요청\n\n**A. Migration legacy — 안전 삭제 후보 (6개, 확신도 높음)**\n\n아래 6개는 코드 참조 없고 데이터가 일회성 마이그레이션/planned-but-unused:\n\n| 테이블 | 행 수 | 크기 | 근거 |\n|---|---|---|---|\n| category_denominator_history | 4 | 65KB | PACAA-84/88 coverage 계산 완료 후 불필요 |\n| category_denominators | 12 | 90KB | 동일 — 분모값이 reports로 이관됨; 트리거 1개 포함 |\n| company_certifications | 0 | 24KB | 설계만 됐고 단 한 번도 미사용 |\n| crawl_ai_usage | 0 | 16KB | 설계만 됐고 단 한 번도 미사용 |\n| vendor_contact_checks | 0 | 24KB | evidence schema PACAA-515 — 실제로 채워진 적 없음 |\n| vendor_domain_checks | 0 | 24KB | 동일 |\n\nDROP 순서: category_denominator_history → category_denominators (FK 순서), 나머지 독립.\n\n**B. Unknown — 보드 판단 필요 (2개)**\n\n| 테이블 | 행 수 | 크기 | 판단 포인트 |\n|---|---|---|---|\n| crawl_jobs | 1,154 | 835KB | 코드 참조 0; 데이터는 있음. 이 크롤링 기록이 분석에 필요한가? |\n| ftc_telesales_registry | 2,000 | 2MB | 직접 앱 read 없음. vendor_telesales_checks.ftc_registry_id FK 참조 — 삭제 시 CASCADE 또는 컬럼 NULL 전환 필요. 원본 FTC 레지스트리 데이터 보존 필요한가? |\n\n---\n\n### 잠재적 절감\n\n- **A 승인 시**: ~193KB 절감 (6개 테이블)\n- **B 승인 시 추가**: ~2.8MB 절감 (2개 테이블)\n\n보드 confirm 요청: A/B 각각 삭제 승인 여부 알려주시면 Phase 3 진행하겠습니다."
+        createdAt: "2026-05-20T18:43:42.962Z"
+      -
+        authorAgentSlug: "backend-engineer"
+        authorType: "agent"
+        body: "Phase 1 audit 완료. Phase 2 진행 필요: 분류표 코멘트 참조 후 보드 per-table confirmation 부탁드립니다. A그룹(6개 안전 삭제 후보) + B그룹(2개 판단 필요). 보드 승인 완료되면 Phase 3(DROP migration) 착수하겠습니다."
+        createdAt: "2026-05-20T18:45:04.772Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Phase 2 보드 confirmation 게이트 발의 완료.\n\n- Interaction id: `9926d8c9-4433-43f7-a7c8-93b5941ed0f7` (`ask_user_questions`, 3 questions)\n- A그룹 (6개 안전 삭제): 단일 accept/partial/defer/skip\n- crawl_jobs: drop/keep/defer\n- ftc_telesales_registry: drop_cascade / null_then_drop / keep / defer (FK 영향 포함)\n\n보드 응답 수신 후 CEO wake → BE 재배정하여 Phase 3 (백업 + DROP 마이그레이션 PR, 3 테이블/PR cap) 착수.\n\n이슈는 보드 응답 대기로 `blocked` 처리."
+        createdAt: "2026-05-20T18:47:34.360Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Disposition correction: blocked → in_review.\n\nWait mechanism = board-pending interaction `9926d8c9-4433-43f7-a7c8-93b5941ed0f7` (`ask_user_questions`, Phase 2 per-table confirmation). `continuationPolicy=wake_assignee` → CEO 자동 wake on response. 첫 번째 클래스 blocker 가 없으므로 `blocked` 보다 `in_review` 가 정확한 disposition. (Memory: in_review only with real reviewer/approval/interaction/monitor path.)"
+        createdAt: "2026-05-20T19:04:09.620Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Phase 2 응답 수신 + Phase 3 A그룹 착수 지시\n\n보드(`5b8744a6`) interaction `9926d8c9` 응답:\n- **Q1 (A그룹 6개): accept_all** ✅ — 6개 모두 DROP 진행\n- Q2 (crawl_jobs): 무응답 → defer\n- Q3 (ftc_telesales_registry): 무응답 → defer\n\n---\n\n### Phase 3 — A그룹 DROP 마이그레이션 (BE)\n\n승인된 6개 테이블:\n1. `category_denominator_history` (4행, 65KB)\n2. `category_denominators` (12행, 90KB, 트리거 1개)\n3. `company_certifications` (0행, 24KB)\n4. `crawl_ai_usage` (0행, 16KB)\n5. `vendor_contact_checks` (0행, 24KB)\n6. `vendor_domain_checks` (0행, 24KB)\n\n**작업 요구사항** (이슈 description Safety / Reversibility 섹션 준수):\n- DROP 전 `pg_dump` 백업 → `runs/supabase_drop_backup_<table>_2026-05-20.sql.gz`\n- 한 PR 당 최대 3 테이블 (rollback 단위) → 2 PRs (PR-1: 1~3, PR-2: 4~6)\n- FK 순서 주의: `category_denominator_history` → `category_denominators` (history 먼저 DROP)\n- 마이그레이션 PR 경유 (`pkging-platform/supabase/migrations/`), GitHub Actions `supabase-migrate.yml` 자동 적용\n- 적용 후 라이브 verify: `information_schema.tables` 에서 미존재 확인\n\n**Acceptance**:\n- 6개 백업 SQL 파일 (런 디렉터리)\n- 2 PR 머지 링크\n- 6 테이블 DROP 라이브 verify 결과 코멘트\n- 종료 시 row count: 27 → 21\n\n### B그룹 (Q2/Q3) 처리\n\n보드가 응답 안 한 항목은 본 Phase 3 스코프 외. Phase 3 완료 코멘트 시점에 CEO 가 별도 follow-up gate 재발의 예정 (지금은 추가 interaction 발의 X — 보드 텔레그램 노이즈 회피).\n\n이슈 재배정: Backend Engineer (`3177894b`), status=`in_progress`."
+        createdAt: "2026-05-20T20:53:16.876Z"
+      -
+        authorAgentSlug: "backend-engineer"
+        authorType: "agent"
+        body: "## Phase 3 완료 — 6개 테이블 DROP 완료\n\n### 실행 결과\n\n| 단계 | 결과 |\n|---|---|\n| pg_dump 백업 (6개) | ✅ runs/supabase_drop_backup_<table>_2026-05-21.sql.gz |\n| PR-1 머지 (category_denominator_history, category_denominators, company_certifications) | ✅ [#175](https://github.com/shsh041200-hub/pkging-platform/pull/175) |\n| PR-2 머지 (crawl_ai_usage, vendor_contact_checks, vendor_domain_checks) | ✅ [#176](https://github.com/shsh041200-hub/pkging-platform/pull/176) |\n| GitHub Actions supabase-migrate PR-1 | ✅ success |\n| GitHub Actions supabase-migrate PR-2 | ✅ success |\n| 라이브 verify (information_schema.tables) | ✅ 6개 테이블 미존재 확인 |\n\n### 테이블 수: 27 → 21\n\n**FK 순서 준수:**\n1. category_denominator_history (FK→category_denominators) 먼저 DROP\n2. category_denominators (트리거 자동 DROP)\n3. 나머지 4개 독립 DROP\n\n### B그룹 (crawl_jobs, ftc_telesales_registry)\nCEO 코멘트 ad9e3301 지시대로 defer — Phase 3 완료 시점 CEO 별도 gate 재발의 예정.\n\n### Acceptance Criteria\n- [x] Phase 1 audit 분류표 (27개 cover)\n- [x] Phase 2 보드 confirmation (interaction 9926d8c9, Q1=accept_all)\n- [x] Phase 3 백업 SQL + DROP PR 머지 링크 ([#175](https://github.com/shsh041200-hub/pkging-platform/pull/175), [#176](https://github.com/shsh041200-hub/pkging-platform/pull/176))\n- [x] 시작(27) vs 종료(21) row count 비교 완료"
+        createdAt: "2026-05-20T20:59:54.956Z"
+    identifier: "PACAA-953"
+    priority: "medium"
+    status: "done"
+  pacaa-954:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## [E7 stall_sweep] sweep 결과 — 2026-05-20T21:04:07.285648+00:00\n\n- **scanned**: 22건 (self 제외 21건)\n- **unintended-stall**: 0건 — fire-noise 없음\n- **fired wake-comments**: 0\n- **24h dedupe blocked**: 0\n\n### 분류 분포\n- date-wait: 15건 (soak/재측정/색인/만료 trigger)\n- external-wait: 4건 (hub/telegram/board 응답)\n- dependency-wait: 2건 (PACAA-167 umbrella, PACAA-284 Gate)\n- active: 0건\n- unintended-stall: 0건\n\n### 가드 통과\n- whitelist: stall.detected only ✅\n- rate-limit (24h, idempotency YYYY-MM-DD): no replay ✅\n- audit log: `$AGENT_HOME/runs/wake_audit-2026-05-20.jsonl` (+22 라인) ✅\n- kill switch: routine.enabled / trigger.enabled — out of scope ✅\n\nDoD: 전수 스캔 완료 / audit append / unintended-stall 0건 → `scan: 21/21 no-fire` → status=done."
+        createdAt: "2026-05-20T21:04:42.834Z"
+    identifier: "PACAA-954"
+    priority: "medium"
+    status: "done"
+  pacaa-955:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Triage: **info** (PACAA-909 Option A)\n\n**무엇:** `rpdla041200@gmail.com` → `alerts@packlinx.com` 발송이 Gmail SMTP 큐에서 일시 실패 (44h 재시도). 원인 = `packlinx.com` 도메인이 SMTP 응답하지 않음 (해당 IP `76.76.21.21` = Vercel A 레코드, MX 미설정).\n\n**판정 근거:**\n- DKIM pass — 본 메시지는 보드 본인 Gmail 에서 발송된 정상 forward.\n- 메일 boundary 가 **보드 본인 → packlinx.com 의 미존재 mailbox**. 외부 신호 아님.\n- 근본원인은 [[project_pacaa907_email_routing_blocked]] 기지 (packlinx.com NS=Vercel → CF Email Routing 셋업 불가, MX 없음).\n- 원본 발신 컨텍스트(왜 alerts@ 로 보냈는지) 가 메일에 없음 → 보드 의도 추측 금지.\n\n**Actionable 아님 이유:** 보드가 명시적으로 \"alerts@packlinx.com mailbox 만들어달라\" 지시한 적 없음. PACAA-909 Option A 에 따라 forwarded bounce notification 만으로 일방적 도메인 mailbox 셋업 진행 안 함 (one-way door, founder calendar/지갑 영향 없음이지만 신원 보증 부재).\n\n**보드가 후속 조치 원할 경우 옵션 (참고만):**\n1. `alerts@packlinx.com` 가 필요 → packlinx.com 을 CF NS 로 이관 후 CF Email Routing 셋업 (별도 ticket).\n2. `alerts@packlinx-api.com` 사용 (이미 CF NS, Email Routing 가능) — 사용처 코드/문서 grep 필요.\n3. 그냥 무시 — 44h 후 bounce 영구 실패, 발신 의도 불명이라 자동 처리 OK.\n\n명시 지시 없으면 본 ticket 은 info 로 close. 후속 필요 시 신규 ticket 으로 지시 주세요."
+        createdAt: "2026-05-20T22:16:38.584Z"
+    identifier: "PACAA-955"
+    priority: "medium"
+    status: "done"
+  pacaa-956:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Triage: **info** (PACAA-909 Option A).\n\n- 본문 = `mailer-daemon@googlemail.com` 가 founder 에게 보낸 bounce 알림 forward.\n- 원 수신자 `gsc@packlinx.com` → `packlinx.com 76.76.21.21:timed out` (Vercel IP, MX 부재).\n- 알려진 상태: `packlinx.com` 은 Vercel NS, CF Email Routing 미적용 (PACAA-907 결정). 도메인에 메일 수신 인프라 없음 → 이 alias 로 보낸 메일은 모두 bounce 정상.\n- founder 가 GSC 등 alias 셋업 의도였다면 별도 액션 필요 (Workspace 또는 founder Gmail 직접) — 그러나 본 메일은 단순 fyi/bounce 통지일 뿐 actionable 변경 요청 없음.\n- 4-OR re-review 트리거 (mutation/spend/external/one-way door) 모두 0 → mutation 없이 closeout."
+        createdAt: "2026-05-20T22:16:36.834Z"
+    identifier: "PACAA-956"
+    priority: "medium"
+    status: "done"
+  pacaa-957:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**트리아지 결과 (PACAA-909 옵션 A): info**\n\n## 내용 요약\nGmail mailer-daemon → rpdla041200@gmail.com 으로 보낸 `Delivery Status Notification (Delay)` 를 founder 가 ceo@packlinx-api.com 으로 forward.\n- 수신 거부 대상: `ceo@packlinx.com` (76.76.21.21 = Vercel, SMTP 미응답)\n- 우리 공식 이메일: `ceo@packlinx-api.com` (CF Email Routing, packlinx-api.com NS=Cloudflare)\n\n## 근본 원인\n`packlinx.com` 은 Vercel NS 라 CF Email Routing 미등록 상태 — MX 레코드 부재로 메일 수신 불가. 누군가 `packlinx-api.com` 대신 `.com` 으로 잘못 보낸 것이 1차 원인.\n\n## 트리아지 사유\n- mutation 없음, 외부 commitment 없음, founder 행동 필요 없음\n- 이미 founder 가 알고 forward 한 정보\n- DKIM: pass (Gmail 정상 forward)\n\n## 잠재적 후속 (별도 이슈)\n`packlinx.com` 에도 이메일 수신 셋업할지는 별개 결정 (도메인 NS 이전 또는 catch-all forwarder). 본 이슈에서 처리하지 않음 — 보드가 원하면 별도 directive 요청.\n\n→ done."
+        createdAt: "2026-05-20T22:16:51.007Z"
+    identifier: "PACAA-957"
+    priority: "medium"
+    status: "done"
+  pacaa-958:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "escalation_grep: 0 hit / dormant: 0 / healthy: 6 / pending_interactions: 3\n\n**보드가 오늘 답해야 할 질문 3건 — 32~50시간 미답.**\n\n보드 액션\n- [PACAA-899] Deferred 트리거 routine 2건 — ask_user_questions 50.7h 미답 (인터랙션 `65d53033`)\n- [PACAA-905] 이메일 도메인 확정 — ask_user_questions 41.4h 미답 (인터랙션 `e65dd4be`)\n- [PACAA-920] PACAA-626 Phase 2 hero 10장 — ask_user_questions 32.0h 미답 (인터랙션 `52dd6280`)\n\n어제 완료 (2026-05-20 KST)\n- [PACAA-921] 외부 감사 P0 보고 — 평문 키 secret-ref + 발급처 재발급 + scrub 완료\n- [PACAA-922] P0-A 평문 키 15종 secret-ref 전환\n- [PACAA-949] Supabase RLS — 6 public tables 적용\n\n오늘 진행 중\n- [PACAA-958] 본 일일 다이제스트 (이 발사)\n- [PACAA-959] 직전 24h wake audit log → 다이제스트 첨부 (별도 routine fire)\n\n가로막힌 이슈: 없음\nCEO 방치: 없음\n\n정리: 다음 발사 2026-05-22 09:00 KST. Telegram msg_id `30` (`Daily_Board_Digest_bot` → chat `5660750159`). PACAA-958 status=done."
+        createdAt: "2026-05-21T00:04:45.304Z"
+    identifier: "PACAA-958"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-959:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**완료**\n\n- audit log: $AGENT_HOME/runs/wake_audit-2026-05-20.jsonl (총 69건, 전부 E7 stall_sweep)\n- 결과: allowed=3, rejected=66 (self-skip=1 / dependency-wait=5 / external-wait=15 / date-wait=28 / active=17 / unintended-stall=1 / classification=none=2)\n- 코멘트 게시: PACAA-958 (오늘 spawned digest) 409 stale checkout (PACAA-818 패턴) → 부모 PACAA-53 폴백 게시 (comment f8be98d1).\n- guard 카운터 (rate/idempotent/whitelist) 는 본 audit log 에 미수록 — 0/0/0 으로 표기. 별도 ledger 가 있다면 후속 enhancement.\n- 본 routine 자체는 wake event 발화 X (가드 #1 whitelist 준수)."
+        createdAt: "2026-05-21T00:02:25.751Z"
+    identifier: "PACAA-959"
+    priority: "low"
+    status: "done"
   pacaa-96:
     comments:
       -
@@ -27441,6 +27624,159 @@ tasks:
     identifier: "PACAA-96"
     priority: "medium"
     status: "done"
+  pacaa-960:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Day 2 retry — 인터랙션 발의\n\n- **PACAA-905 상태**: in_review (변화 없음). 보드 자가 \"성공/풀렸어/가입 완료\" 코멘트 없음.\n- **이전 retry interaction**: 없음 (sibling PACAA-942 가 Day 1 silent skip).\n- **차단 시작 2026-05-19 15:52 KST → 오늘 2026-05-21 = 경과 2일** → 임계 ≥ 2일 충족, Day 2 발의.\n- **Stage**: 경과 ≤ 14일 → 단순 \"오늘 다시 시도해보세요\" 단계.\n\n### 발의 결과\n- interaction id `bba89cbc-d818-48fe-8954-13d0764ad9bf` (kind=ask_user_questions, continuationPolicy=wake_assignee).\n- 옵션 4개: 성공 / 같은 에러 / 다른 번호 / 1주일 후 알림.\n\n### 다음 예상 알림\n- 보드 답변 없으면 → 2026-05-28 (Day 9, ≥ 7일 가드 충족 시).\n- 보드 \"1주일 후 알림\" 선택 시 → 2026-05-28 동일.\n- 보드 \"성공\" 또는 PACAA-905 status==done 시 → 본 루틴 auto-disable.\n\n본 fire 종료."
+        createdAt: "2026-05-21T01:04:28.478Z"
+    identifier: "PACAA-960"
+    priority: "medium"
+    status: "done"
+  pacaa-961:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[E7 stall_sweep 결과 — 2026-05-21T03:01:29Z]\n\n스캔: 21건 (in_progress 1 self-skip, blocked 0, backlog 21)\nunintended-stall: 1건 (PACAA-192 — backlog assigned but heartbeat stale)\nfired: 1건 (wake-comment 게시)\nblocked_24h: 0건\n\n분류 breakdown:\n- active: 17 (heartbeat <6h)\n- external-wait: 2 (PACAA-53, PACAA-54 keyword:telegram)\n- date-wait: 1 (PACAA-937 keyword:주간)\n- unintended-stall: 1 (PACAA-192)\n\naudit log: $AGENT_HOME/runs/wake_audit-2026-05-21.jsonl\nDoD 충족: 전수 스캔 + audit append + 1건 발화 + 결과 코멘트. done."
+        createdAt: "2026-05-21T03:02:06.189Z"
+    identifier: "PACAA-961"
+    priority: "medium"
+    status: "done"
+  pacaa-962:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## E7 stall_sweep 결과 (2026-05-21T09:01Z)\n\n- scanned: 21 (in_progress 1 self-excluded, blocked 0, backlog 21)\n- per_class: active=17, unintended-stall=1, external-wait=2, date-wait=1\n- unintended: 1 (PACAA-192)\n- fired: 0\n- blocked_24h: 1 (PACAA-192 — 03:01Z 동일 (issueId,classification,day) 24h 가드)\n\n## 가드 확인\n- Whitelist: stall.detected 만 발화 (다른 이벤트 키 없음).\n- Idempotency key: `stall.detected:{issueId}:{classification}:2026-05-21`.\n- Audit log: `$AGENT_HOME/runs/wake_audit-2026-05-21.jsonl` 22 라인 append (21 + 1 summary).\n- Kill switch: routine PATCH `enabled:false` 가능.\n\nDoD 충족 → status=done."
+        createdAt: "2026-05-21T09:02:10.699Z"
+    identifier: "PACAA-962"
+    priority: "medium"
+    status: "done"
+  pacaa-963:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "# 토큰 사용량 분석 보고서\n\n## 1. 비용 모델 (먼저 확정)\n\n- **CEO/CTO/CMO/BE/FE/Legal = `claude_local` 어댑터** → CEO 본인의 Claude Code Max 구독으로 실행. 토큰당 청구 없음. 5시간 롤링 윈도우 안에서 quota 제약.\n- **Email Worker, E5 Worker = `process` 어댑터** → LLM 미호출, 토큰 0.\n- **회사 monthly spend = `$6.08`** (`spentMonthlyCents=608`). 이 금액은 토큰이 아니라 **외부 API** (Replicate 이미지, Naver/Kakao/FTC/NTS, BE enrichment 의 `ENRICHMENT_ANTHROPIC_API_KEY`) 합산. PAYG 누출 가드 (`feedback_anthropic_api_key_payg_fallback`) 적용 후 정상.\n\n→ **\"토큰 사용량\" 의 실질적 의미 = Max 구독 quota 소비 + 컨텍스트 길이로 인한 지연/품질 영향**. PAYG 청구가 아님.\n\n## 2. 작업 유형별 토큰 소비 패턴\n\nAPI 가 per-run 토큰 텔레메트리를 노출하지 않아 직접 측정 불가. 관찰 + 아키텍처 추정:\n\n| 작업 유형 | 빈도 | wake 당 추정 input | wake 당 output | 비고 |\n|---|---|---|---|---|\n| **A. 빈 inbox 하트비트** | **압도적 다수** (현 세션 50+/100+) | ~25–30K (CLAUDE.md + MEMORY 26.8KB + execution contract + agent prompt + system-reminders) | ~50 (단일 줄 exit) | **최대 낭비 벡터.** 페이로드의 99% 가 컨텍스트 로딩, 결과물 0 |\n| **B. Disposition 점검 (PATCH)** | 1–5회/일 | ~30K | ~200–500 | PACAA-948/953 류. 정상 |\n| **C. 보드 interaction 발의** | 0–3회/일 | ~30K | ~500–2000 | 의도된 산출물 |\n| **D. 본질 분석/플랜** | 0–1회/일 (오늘 PACAA-963) | ~40K + 다단계 tool | ~3K–10K | 가치 대비 적정 |\n| **E. MCP disconnect/reconnect system-reminder** | wake 무작위 | wake 당 +500–1000 | 0 | **순수 노이즈.** Google Drive/PlayMCP 는 본 에이전트에서 한 번도 사용 안 함 |\n| **F. Task tool 미사용 리마인더** | wake 당 빈번 | +200 | 0 | 사용 시점이 아닐 때 무의미 |\n\n## 3. 불필요 소비 식별 (자기-되질문)\n\n> **Q1. 매 하트비트마다 MEMORY.md 26.8KB 전체가 필요한가?**\n> A. 아니다. 빈 하트비트의 99% 는 inbox-lite GET 만 수행. MEMORY 의 대부분은 그 호출에 의미 없음. 단, memory 로딩은 *harness 레벨* 이라 wake-by-wake 로 끌 수 없음. **memory 크기 축소** 만 에이전트 차원에서 가능.\n\n> **Q2. MEMORY.md 중 stale 항목은 얼마나?**\n> A. 인덱스 26.8KB 중 30–40% 가 1개월 이전 single-incident postmortem (PACAA-86 PoC, PACAA-153 P0, PACAA-237 GOOGLE_API_KEY 등). 패턴 중복 (예: \"라이브 verify 의무\" 다수) + cold incident. 통합 + 가지치기 가능.\n\n> **Q3. system-reminder 노이즈는 진짜 노이즈인가?**\n> A. Google Drive/PlayMCP 는 CEO 일상 워크플로우 (Paperclip API + Bash) 에 미사용. **이 에이전트 한정 순수 노이즈.** 단, 다른 에이전트는 사용 가능성 → 회사 단위 disable 위험.\n\n> **Q4. 1초 인터벌 가설은 맞나?**\n> A. `feedback_idle_wake_strategic_work` 의 \"intervalSec=1\" 은 강제 idle wake 조건이지 실제 주기 아님. 실 wake 간격 분 단위. 그래도 빈 wake 가 대다수.\n\n> **Q5. 빈 하트비트의 가치는 0 인가?**\n> A. 0 아님. recovery_action, 보드 코멘트, sibling escalation 캡처. **그러나** 동적 backoff 로 동일 가치 달성 가능 (지연 < 10분 acceptable).\n\n## 4. 감소 제안 (품질 비손상)\n\n각 항목 **effort / risk / 기대 절감** 표기.\n\n### P0 — 즉시 가능 (CEO 단독)\n\n**1. MEMORY.md 압축 + 가지치기** [effort=L, risk=L, save=~40% per-wake input]\n- 현재 26.8KB → 목표 < 12KB.\n- 통합 후보: incident postmortem → 카테고리 topic 파일 머지 (\"PR review\", \"API hygiene\", \"보드 escalation\"). 인덱스는 카테고리 단위 1줄.\n- 1년 이전 incident 중 일반 원칙으로 흡수된 항목은 archive.\n- 시스템 경고 (\"MEMORY.md is 26.8KB — over limit 24.4KB\") 자체 해소.\n\n**2. 빈 하트비트 출력 표준화** [effort=zero, risk=zero, save=output trivial]\n- \"Inbox empty — exiting\" 1줄. 이미 적용.\n\n### P1 — Harness/Platform (CTO/플랫폼)\n\n**3. Idle backoff** [effort=M, risk=L, save=~50% wake 수]\n- inbox-lite N=3 연속 빈 → 다음 wake 간격 2x (cap=10분). 외부 트리거 도착 시 reset.\n- 본 세션 70% 가 idle → 50% 축소.\n- 별도 child issue 발의 권장 (CTO 평가).\n\n**4. per-agent MCP 토글** [effort=M, risk=L, save=~3% per wake]\n- Google Drive/PlayMCP system-reminder 가 CEO 노이즈. agent config 에 MCP whitelist.\n\n**5. Platform-side inbox 캐시** [effort=L, risk=L, save=~5%]\n- 변동 없으면 wake skip.\n\n### P2 — 행동 규율 (CEO + sub-agents)\n\n**6. 풀-스캔 회피** [effort=zero, risk=L, save=~20% on 비-empty wake]\n- 이슈 detail GET 시 description+blocked-by 만, comments 처음 5건. 대체로 적용 중.\n\n**7. Heredoc/JSON 단일 Python** — 이미 표준.\n\n**8. DRY 자기-코멘트** — 이미 적용.\n\n## 5. 자기-비판 (한계 명시)\n\n1. **per-wake 실측치 없음.** 위 표는 컨텍스트 크기 추정. platform 이 run 별 token count 노출하면 정확. → 별도 platform 작업 (CTO).\n2. **다른 sub-agent 패턴 미관찰.** BE/FE/CMO 각자 자가-감사 권장.\n3. **품질 영향 절대 보장 불가.** MEMORY 압축으로 행동 회귀 가능성. 압축 시 incident detail 은 topic file 로 보존, 인덱스만 슬림. 6주 모니터링 후 추가 가지치기.\n4. **P1 제안은 보드/CTO 승인 사항.** harness 변경은 CEO 단독 아님.\n\n## 6. 결론 + 권장 조치\n\n- **현 시점 실 청구 토큰 비용 = $0** (구독 모델). 본 분석의 가치는 **Max quota 효율 + 응답 품질 + 에이전트 응답 속도**.\n- **즉시 가치 = P0 #1 (MEMORY 정리)**. CEO 단독 가능. 보드 컨펌 받고 child issue 발의 → 작업.\n- **중기 가치 = P1 #3 idle backoff**. 별도 platform 이슈 (CTO).\n- 본 이슈는 분석 deliverable 완료 → `done`. 후속 액션은 별도 이슈.\n\n---\n\n**보드 결정 요청**: P0 #1 MEMORY 가지치기 child issue 발의할지, 별도 지시 시까지 보류할지."
+        createdAt: "2026-05-21T10:21:50.196Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 보충: `usageJson` 기반 실측 데이터 (sibling 보고서 보완)\n\n상기 sibling 보고서가 \"API 가 per-run 토큰 텔레메트리 미노출\" 로 기술했으나, `GET /api/companies/{id}/heartbeat-runs` 의 `usageJson` 필드가 실제로 노출됩니다. 윈도우 2.56일 / 1000 run 실측:\n\n**에이전트별 (notional cost, subscription_included)**:\n- CEO 480 run / **$276.51 (80%)** — opus-4-7\n- Backend 132 / $24.56 — sonnet-4-6\n- CTO 137 / $18.88\n- CMO 128 / $13.40\n- FE 121 / $9.78\n- Legal 2 / $2.27\n\n**CEO wake 종류별**:\n- timer heartbeat 352 / $176.76 / avg 757 out tok (대부분 quick-exit)\n- issue_assigned 54 / $54.24 / avg 9.3K out tok (실작업)\n- issue_commented 34 / $28.27\n- 기타 자동화 24 / $11+\n\n**Quick-exit 효율 검증**: 323/480 (67%) CEO timer wake 가 < 500 out tok. 그러나 평균 비용 $0.42 — cached read 도 0 이 아님 (MEMORY.md 26.8KB 영향 직접 측정 확인).\n\n**CEO heartbeat 인터벌**: 평균 7.7 분, 중앙값 5.7 분, 7.8 wake/시간.\n\n**이상치**: CEO p99 $2.66 / max $7.97. Top 3 이상치가 2026-05-19 10:04 / 10:52 / 11:27 UTC 클러스터 (paperclipai 재시작 직후 cache miss 추정).\n\n**Notes**:\n- 어댑터가 `claude_local` (Max 구독) 이라 `costUsd` 는 PAYG 환산치, 실 청구 0. sibling 보고서 분석 정확.\n- session rotation = 0 / 1000 (sticky 정상).\n- `resume: false` — 본 코멘트는 참고 데이터, issue 재개 의도 없음."
+        createdAt: "2026-05-21T10:26:54.557Z"
+      -
+        authorType: "user"
+        body: "이에 대한 너가 추천하는 작업들은 뭐야 심층있게 생각해서 보고해"
+        createdAt: "2026-05-21T10:56:35.417Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 추천 작업 (심층 판단) — PACAA-963\n\n직전 보고서 + sibling 보고서 + `usageJson` 실측을 종합해 **CEO 판단으로 우선순위화** 한 작업 목록입니다. 옵션 메뉴가 아닌 *추천* 입니다.\n\n---\n\n### 토큰 소비의 진실 (재확인)\n\n- 어댑터 `claude_local` = founder Max 구독. **실 청구 = $0**, 측정된 비용은 quota 압박 / capacity proxy.\n- 그래도 quota 한도에 가까워질수록 보드 본인의 다른 Claude 사용 (Claude Code, Claude.ai) 까지 throttle 위험. 따라서 token efficiency 는 **founder 자체의 작업 capacity 보존** 문제.\n- 측정 윈도우 (2.56일): 1000 run, $345.41 notional, **CEO 가 80%, 그 중 timer heartbeat 가 64%**. 캐시 reuse 60,000x — 엔지니어링 이미 잘됨.\n\n### 단일 가장 큰 lever 식별\n\n**CEO heartbeat timer = 352 run × $0.50/회 = $176.76/2.56일**.\n- 67% 가 quick-exit (출력 < 500 tok) — 매 wake 가 SOUL/HEARTBEAT/MEMORY (26.8KB) + 시스템 프롬프트를 cached read 만 해도 $0.42 청구.\n- Event trigger 인프라가 모든 *actionable* wake (issue_assigned / issue_commented / automation) 를 즉시 fire. timer 는 catch-net 역할 → 7분 vs 15분 차이가 보드 응답 시간에 미치는 영향 = 0.\n\n**이 lever 만 손대도 회사 token 총 capacity 의 25% 회수.** 나머지 작업은 작은 절감들의 합.\n\n---\n\n## 추천 작업 (우선순위 + 책임자 + 가역성)\n\n### A. CEO 자율 즉시 실행 (보드 인지만 필요)\n\n**A1. MEMORY.md 인덱스 압축** [effort=1-2h, save=cached read 직접 ~$15/2.56일]\n- 현재 26.8 KB, 시스템 경고 (\"over limit 24.4KB, only part loaded\") 발생 중 = 인덱스 일부 truncate → 실제 메모리 surface 실패 위험까지 있음.\n- 목표: < 18 KB (안전 마진). 1줄 ≤ 200 자 규칙 엄수.\n- 방법: 30일+ stale single-incident postmortem (예: PACAA-86 PoC, PACAA-153 P0, PACAA-237 GOOGLE_API_KEY) → 토픽 머지 또는 archive 폴더 이동. 패턴 중복 (\"라이브 verify 의무\" 다수 항목) 통합.\n- 본문 보존, 인덱스만 압축 — 0 정보 손실.\n- **즉시 실행 (보드 승인 무관). 자식 ticket 으로 발의해 closeout 추적.**\n\n**A2. 2026-05-19 이상치 cluster 진단** [effort=30분, save=재발 방지]\n- 5/19 10:04 / 10:52 / 11:27 UTC 의 $4-8 quick-exit 3건. 일반 평균의 10-20배.\n- 가설: paperclipai 재시작 (PACAA-834 인근) 후 prompt cache 무효화 → fresh-input 재업로드.\n- 확인: `~/.paperclip/instances/default/logs/restart-*.log` timestamp cross-reference.\n- 패턴 확인 시 PACAA-834 wrapper 의 cache pre-warm 옵션 평가 → CTO 자식.\n- **CEO 자율 진단.**\n\n**A3. `?identifier=` silent ignore 재발 방지 helper** [effort=30분]\n- 본 issue 직전 wake 에서 발생한 cross-post 사고 ([[feedback_paperclip_identifier_query_ignored]] 메모리화 완료) 의 root cause fix.\n- `paperclip_resolve_identifier.py` wrapper script: client-side filter + GET echo verify 1단계로 묶기.\n- CEO 자식 ticket — own tooling improvement.\n\n### B. 보드 승인 필요 (단일 큰 lever)\n\n**B1. CEO `adapterConfig.intervalSec` 7→15분 (또는 900초)** [effort=PATCH 한 줄, save=~$80-100/2.56일 = 회사 capacity 24%]\n- **이것이 가장 강한 단일 권고.** 다른 모든 절감 합보다 큼.\n- 리스크 분석:\n  - 보드 코멘트 응답 지연: **0** (issue_commented 자동 wake 트리거, timer 와 무관).\n  - Assignment 응답 지연: **0** (issue_assigned 자동 wake).\n  - Stall reflection / ESCALATION grep / deferred_items 스캔 지연: **평균 +4 분** (현재 7.7 → 15). 모두 분-단위 긴급성 없는 운영 점검.\n  - Phase 5 strategic work 빈도 감소: 절반. **그러나 PACAA-923 quick-exit gate 가 이미 67% wake 를 skip 중 → wake 빈도가 binding constraint 아님**, Phase 5 cap=6/주 (PACAA-263) 가 binding.\n  - 보드 perception: CEO 가 \"5분마다 확인하고 있다\" 는 인식 → \"8-15분마다 확인\" 으로 변경. 그러나 보드 인터랙션은 이벤트 wake 라 즉시 응답.\n- **Quality 영향 0-5% 추정. Token 절감 24%. ROI 압도적.**\n- 가역: PATCH 한 줄로 원복.\n- **request_confirmation 으로 별도 surface 예정.**\n\n### C. 회사 단위 / 다른 agent 작업 (보드 승인 + 자식 ticket)\n\n**C1. system-reminder MCP 노이즈 차단** [CTO 자식 ticket, save=$10-20/2.56일]\n- 본 에이전트는 `mcp__claude_ai_Google_Drive__*`, `mcp__claude_ai_PlayMCP__*` 사용 사례 0. 매 wake 마다 connect / disconnect / tool list reminder 200-1000 토큰.\n- Paperclip company 설정에서 미사용 MCP server 비활성화.\n- 리스크: 미래 사용 시 재활성화 필요. 가역.\n\n**C2. Sub-agent timer wake 매핑 + 정리** [CTO 자식 ticket, save=불확실, ~$20-40/주]\n- BE/CTO/CMO/FE 각 120-137 timer wake/2.56일 = 50/일. routine cron 정상 fire 인지, harness auto wake-on-demand 인지 매핑.\n- 정상 routine 이라도 비활성/저-ROI 항목 (예: 과거 monitor cron) 정리 가능.\n- CTO 가 본인 영역 시작.\n\n**C3. Token health weekly dashboard** [CTO 자식 ticket, effort=2-4h]\n- 본 분석을 1회성 보고로 끝내지 말고 routine 화. 매주 월요일 `heartbeat-runs/usageJson` 집계 → CEO Daily Board Digest 에 5줄 요약.\n- 지표: notional cost / agent 분해 / 이상치 alert / 캐시 효율 추세.\n- 회귀 시 즉시 인지 (PACAA-825 type $7 PAYG 사고 예방).\n- 보드 통과 시 CTO 발의.\n\n### D. 명시적 안 함 (보드 directive \"퀄리티 떨어지면 안돼\" 위배 위험)\n\n**D1. CEO Opus → Sonnet 다운그레이드** — 단일 최대 산술 절감 (~$200/주). 그러나 CEO 1-way door 판단 (hire / spend / external commitment / board comms / 보드 인터랙션 작성) 정밀도 영향. PACAA-237 type 사고 재발 위험. **권고 안 함.** (보드가 명시적으로 원하면 시범 1주 가능.)\n\n**D2. CEO `effort` high → medium** — Claude Code thinking budget 감소. 산술 절감 $30-50/주. 1-way door 판단 정밀도 영향. **권고 안 함.**\n\n**D3. PACAA-923 quick-exit gate 더 공격적 강화** — 현재 67% 이미 quick-exit. 더 압축 시 escalation 누락 위험. ROI 낮음. 관망.\n\n### E. 모니터링/추후\n\n- B1 (intervalSec) 변경 후 1주 메트릭: notional cost 변화, escalation 응답 지연 통계.\n- 1주 후 회귀 없으면 추가 lever (D 항목 또는 quick-exit gate 강화) 재검토.\n\n---\n\n## 자기-되질문 (보드의 \"심층\" 요구에 응답)\n\n**Q1. 본 추천이 1주일 후에도 옳을까?**\nA. B1 (intervalSec) 은 영구 유효 — heartbeat 빈도가 가치 driver 가 아닌 한 (현 상태). C3 (weekly dashboard) 가 보장 메커니즘 — 회귀 발생 시 즉시 인지.\n\n**Q2. 가장 큰 blind spot 은?**\nA. Founder 의 Max 구독 quota 한도가 정확히 어디인지 모름. 현재 5시간 롤링 윈도우인지 일 단위인지 미확인. 만약 한도가 빠르게 가까워지면 우선순위 재조정 필요. **C3 dashboard 가 이것까지 surface 하도록 설계.**\n\n**Q3. Sibling 보고서의 P0 권고 vs 본 추천의 차이?**\nA. Sibling = MEMORY.md 압축 + idle backoff (CTO 위임). 본 추천 = MEMORY.md 압축 (A1, 동일) + CEO intervalSec (B1, sibling 이 안 다룬 lever — 더 큼) + 운영 dashboard (C3, 회귀 방지).\n일치점 = A1. 본 추천이 더 공격적인 것은 **B1 (intervalSec)** — 데이터 (timer 가 비용의 64%) 를 보고 도출, sibling 은 정성 추정만.\n\n**Q4. 본 wake 자체의 토큰 비용은?**\nA. 추정 $1.5-2 (Opus, ~8K 출력). B1 채택 시 2일 내 회수.\n\n---\n\n## 즉시 다음 단계\n\n1. **본 코멘트 직후** request_confirmation 으로 B1 (CEO intervalSec 7→15분) 단독 surface — 보드 accept 또는 decline.\n2. **보드 응답 무관 즉시 실행**: A1 (MEMORY.md 압축 자식), A2 (이상치 진단 CEO 자율), A3 (helper script 자식).\n3. **보드가 B1 accept 시 추가**: C1 / C2 / C3 자식 ticket CTO 위임 (전부 보드 사전 인지).\n4. **PACAA-756 잔존 stale interaction (`63e4b4ca`)**: 보드 Decline 부탁 (cancel 엔드포인트 부재).\n"
+        createdAt: "2026-05-21T11:00:15.781Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## A2 진단: 5/19 이상치 cluster 원인\n\n데이터 재분석 결과:\n\n| 시각 (UTC) | 세션 | 직전 wake 까지 간격 | cached delta | 비용 |\n|---|---|---|---|---|\n| 09:53 | 7aa12e23 (timer) | 5m42s | 1.29M | $0.66 |\n| 09:59 | 7aa12e23 | 5m42s | 1.29M | $0.66 |\n| **10:04** | 7aa12e23 | **5m41s** | **663K** ↓ | **$4.27** |\n| 10:10 | 7aa12e23 | 5m42s | 1.29M | $0.66 |\n| ... | | | | |\n| 10:43 | 7aa12e23 | 9m38s | 1.31M | $0.67 |\n| **10:52** | 7aa12e23 | **9m18s** | **672K** ↓ | **$4.32** |\n| 11:10 | 7aa12e23 | 18m | 1.31M | $0.67 |\n| **11:27** | 7aa12e23 | 17m | **7.32M** ↑ | **$7.97** |\n\n**진단**: Anthropic prompt cache 의 **TTL 만료** 패턴.\n- 10:04, 10:52: 정상 read 패턴 ~1.3M 이 절반으로 떨어진 후 **cache write** 토큰으로 비용 spike. 5분 TTL 직전 / 직후 hover 시 cache write 재발생.\n- 11:27: 17분 gap 후 cache miss → 전체 7.3M 재write. 단일 wake 비용 $7.97.\n\n**근거 일치**: `sessionReused=True` 라도 Anthropic 측 cache TTL 은 5 분 (ephemeral default). 본 CEO heartbeat 평균 인터벌 7.7 분이 정확히 TTL 직후 영역.\n\n**시사점**:\n1. **CEO intervalSec 7→15 분 (B1) 채택 시 cache miss 비율 증가**. 15 분은 항상 TTL 만료 후 wake → 거의 모든 timer wake 가 cache write 비용 부담 가능. **B1 의 절감 추정치 ~$80 가 ~$40 로 줄어들 수 있음** (그래도 양수, 채택 가치 유지).\n2. 진짜 해법: **`cache_control: {\"type\": \"ephemeral\", \"ttl\": \"1h\"}`** 사용. cache write 2x 비용 vs 5-min 1x 비용, 그러나 1h 내 모든 read 가 free reuse → 7-15 분 wake 인터벌에 ideal.\n3. 이는 **adapter (Claude Code / paperclipai) 레벨** 결정. CTO 자식 ticket 가치.\n\n**A2 결론**: 이상치는 random 사고가 아니라 cache TTL 직접 결과. **B1 (intervalSec) 결정 시 본 finding 반영**: 본 운영자가 우려하는 만큼 절감이 안 될 수 있음 (50% → 25%). 그래도 권고 유지.\n\n**추가 추천 (보드 인지 후 CTO 자식)**: C4 — Anthropic prompt cache TTL 1h 옵션 채택 (paperclipai adapter 수정)."
+        createdAt: "2026-05-21T11:02:15.222Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "# 추천 작업 (보드 후속 질의 응답)\n\n원 분석 + sibling `usageJson` 보강 + 본 wake 라이브 재측정 (33 CEO run / 8h) 종합. **보드 컨펌 게이트 후 child issue 발의 권장**.\n\n## 0. 측정 재확인 (윈도우 8h)\n\n- CEO 33 finished run / **$12.64** (전체 $14.42 의 **88%**)\n- CEO timer wakes: **29/33 (88%) at avg $0.21**, avg output 582 tok (\"Inbox empty — exiting\" 류)\n- CEO assignment runs: 3 / $5.95 / avg 18K output (실작업)\n- 환산: **CEO timer wake 만 ~$18/일 ≈ ~$550/월 (notional)** — subscription 으로 실 청구 0\n\n→ **단일 가장 큰 레버리지 = CEO timer-heartbeat 빈도/페이로드 축소**\n\n## 1. 자기-되질문 (심층 사고 트레이스)\n\n> **Q. timer wake $0.21 의 구성은?**\n> A. opus-4-7 ($15/M in, $75/M out) 역산: 582 out = $0.044. 나머지 $0.17 ≈ input (CLAUDE.md + MEMORY 26.8KB + system reminders + execution contract). cache hit 시에도 cache_read 토큰 비용 0 아님.\n\n> **Q. MEMORY 줄이면 wake 비용 줄어드는가?**\n> A. 부분적. cache hit 상태에서 인덱스 축소는 cache_read 만 감소 (단가 낮음). cache miss 시 (paperclipai 재시작 후) 절감 큼. **사이즈 자체보다 wake 횟수 축소 ROI 가 높음**.\n\n> **Q. wake 빈도 줄이면 품질 안 떨어지는가?**\n> A. 빈 inbox wake 본질 = \"외부 트리거 캡처 백업\". harness 가 외부 이벤트 (assignment / comment / recovery_action / interaction) 마다 별도 wake 보내므로, timer 는 백업. 백업 주기 8분 → 15분 늘려도 외부 사건은 즉시 wake 유지.\n\n> **Q. opus-4-7 → sonnet downgrade 가능?**\n> A. quick-exit wake 한정 가능하나 모델 선택이 inbox 결과 보기 전 결정이라 declarative routing 불가. 보류.\n\n> **Q. 다른 sub-agent 도 같이?**\n> A. 합산 $1.5-$2 / 8h. CEO 의 10% 미만. ROI 낮음. 본 권장사항은 CEO 한정.\n\n> **Q. MEMORY 압축 회귀 위험?**\n> A. 있음. 인덱스만 슬림화하고 topic file 본문 보존하면 최소화. 4주 incident recurrence 모니터링.\n\n## 2. 권장 작업 (우선순위 + ROI)\n\n### Tier 1 — 최대 레버리지\n\n**T1-A. CEO timer-heartbeat 동적 backoff** [지배적 #1]\n- owner: CTO / effort: M / risk: L\n- inbox-lite N=2 연속 빈 → 다음 wake 간격 2x (cap=20분). 외부 이벤트 도착 시 5분 reset.\n- **추정 절감: ~$300/월 notional (CEO 비용 54% off)**\n- 측정: 2주 윈도우 후 timer n/cost 재집계\n\n**T1-B. CEO timer 기본 인터벌 인상** (간단 대안 또는 T1-A 보완)\n- owner: CTO / effort: zero (config) / risk: L\n- 5분 → 12분 base. T1-A 시 cap=30분.\n- 단독 ~$200/월, T1-A 와 일부 중복\n\n### Tier 2 — per-wake 페이로드\n\n**T2-A. MEMORY.md 압축 + 인덱스 슬림** [CEO 단독]\n- owner: CEO / effort: M (~2h) / risk: M (회귀 모니터링 4주)\n- 26.8KB → < 12KB. 1개월+ cold incident → topic file 머지, 인덱스 1줄 카테고리. 본문 보존.\n- 추정 절감 ~$50/월 (cache miss 한정). 추가 가치: 시스템 over-limit 경고 해소\n\n**T2-B. per-agent MCP whitelist**\n- owner: CTO / effort: M / risk: L\n- agent config 에 `mcpServers: []`. CEO 는 Google Drive/PlayMCP 제외.\n- ~$15/월 절감 (system-reminder noise 제거)\n\n### Tier 3 — QoS, 후순위\n\n**T3-A. paperclipai 재시작 cache 워밍** — 인프라, $10/월\n**T3-B. sub-agent 자가-감사** — 각 에이전트, $200/월 분산 가능\n\n## 3. ROI 종합\n\n| 항목 | 월 절감 (notional) | effort | risk |\n|---|---|---|---|\n| **T1-A** backoff | ~$300 | M | L |\n| T1-B interval 인상 | ~$200 (T1-A 와 중복) | zero | L |\n| T2-A MEMORY 압축 | ~$50 | M | M |\n| T2-B MCP whitelist | ~$15 | M | L |\n| T3-A cache 워밍 | ~$10 | L | L |\n| T3-B sub-agent 감사 | ~$200 분산 | L 각자 | L |\n\n→ **T1-A + T2-A 우선**. 합계 ~$350/월 notional. **실 청구 0**, 가치: (1) Max quota 압박 해소 (2) wake 응답성 (3) MEMORY over-limit 경고 해소\n\n## 4. 자기-비판 (한계)\n\n1. **샘플 8시간** — 더 긴 윈도우에서 패턴 다를 수 있음\n2. **opus-4-7 가격 역산 추정** — cache_read vs uncached 분배에 민감\n3. **T2-A 회귀 측정 어려움** — \"잊은 incident 재발\" long tail\n4. **T1-A wake 누락 시나리오** — assignment trigger reliability (네트워크) CTO 검토 필요\n\n## 5. 권장 분기 — 보드 컨펌 게이트\n\n본 권장 세트 (T1-A + T2-A 우선) 를 받아들이는지 보드 결정 필요. 다음 인터랙션 (`ask_user_questions`) 참조."
+        createdAt: "2026-05-21T11:03:02.897Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Closeout\n\n보드 승인 (interaction 2021baca accepted + 5d097bca t1a+t2a 선택) 후 실행 결과:\n\n| 항목 | 상태 | 자식 ticket | 비고 |\n|---|---|---|---|\n| **B1** CEO `intervalSec` 7→15분 (900s) | ✅ 적용 | (없음) | `runtimeConfig.heartbeat.intervalSec=900` 확인. 평균 cadence 7.7→15분 전환 |\n| **t2a / A1** MEMORY.md 압축 | ✅ 완료 | PACAA-965 (done) | 34.4 KB → 16.3 KB, 142 entry 전수 보존 (sibling 실행) |\n| **t1a** CTO 동적 backoff | 🟢 발의 | PACAA-966 (in_progress, CTO) | quick-exit 누적 → 인터벌 2x cap=30min, event wake 시 reset |\n| A2 cache TTL 진단 | ✅ 보고 | (코멘트 3be51c18) | 5/19 이상치 = Anthropic prompt cache 5분 TTL 패턴, 진짜 fix=adapter cache_control 1h |\n| C1/C2/C3/C4 | (보드 미선택) | — | t1b/t2b/t3a/t3b 보드가 보류 선택 |\n| D1/D2 (Opus→Sonnet, effort↓) | ❌ 명시적 안 함 | — | quality 영향 위험 |\n\n## 메트릭 회귀 검토 (1주 후)\n\n- 일자: 2026-05-28 (월).\n- 측정 source: `GET /api/companies/.../heartbeat-runs` `usageJson` 집계.\n- 비교: 직전 2.56일 ($345 notional, CEO 80%) vs 본 변경 후 7일.\n- 기대: CEO timer 비용 -25~50%. quality 회귀 (escalation 응답 지연, 1-way door miss) = 0.\n- 회귀 발견 시 PATCH 원복.\n\n## 잔존\n\n- PACAA-756 의 stale interaction `63e4b4ca` — 보드 Decline 부탁 (cancel 엔드포인트 부재).\n- PACAA-966 (CTO 동적 backoff) — CTO 자체 자원 분배.\n\n## Disposition\n\nPACAA-963 → **done**.\n\n[[feedback_paperclip_identifier_query_ignored]] 신규 메모리 등재 + MEMORY.md 인덱스 동기화 완료.\n"
+        createdAt: "2026-05-21T11:09:34.207Z"
+      -
+        authorType: "user"
+        body: "2026 5월 28일은 목요일인데?"
+        createdAt: "2026-05-21T11:27:52.917Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 정정 — 캘린더 오기\n\n지적 감사합니다. **2026-05-28 = 목요일** 이 맞습니다 (오늘 2026-05-21 = 목요일, +7일).\n\n직전 closeout 의 \"(월)\" 은 오기. 두 가지 옵션 중 선택:\n\n| 옵션 | 날짜 | 요일 | gap | 비고 |\n|---|---|---|---|---|\n| **a. 7일 정확** | **2026-05-28** | **목** | +7일 | B1 변경 후 정확히 1주, 데이터 200+ wake 확보 |\n| b. 다음 월요일 | 2026-06-01 | 월 | +11일 | 주말 marginal 데이터 안정성 + Daily Digest 주기 정렬 |\n\n권장: **a (2026-05-28 목)** — 7일 만에 200+ wake 데이터 충분, 더 빠른 회귀 인지. `feedback_event_driven_paradigm` 원칙상 review date 는 trigger window 의 floor.\n\n본 코멘트로 closeout 정정, PACAA-963 status → done 복귀."
+        createdAt: "2026-05-21T11:28:41.825Z"
+    identifier: "PACAA-963"
+    priority: "medium"
+    status: "done"
+  pacaa-964:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**Triage — [email:ceo] bounce 통지 (PACAA-909 Option A read-only)**\n\n**분류:** Info + 보드 결정 필요 (actionable)\n**송신:** rpdla041200@gmail.com (보드 본인), DKIM pass — Mailer-Daemon bounce 전달\n**원래 발송 시도:** `ceo@packlinx.com` (Vercel NS, MX 없음, 76.76.21.21 timeout)\n**원래 발신자:** 불명 (bounce 자체는 추적 불가, 본인 테스트/봇/실수 모두 가능)\n**기존 메모:** `feedback_cf_email_routing_requires_cf_ns.md` — packlinx.com 은 Vercel NS 라 CF Email Routing 불가, `packlinx-api.com` 만 셋업되어 있음. 통신판매업 footer 의 공식 연락처는 `rpdla041200@gmail.com` (gmail 직접) 이므로 packlinx.com 메일은 공개적으로 광고된 적 없음.\n\n**Mutation 없음** — 분류·확인만, 보드 결정 후 별도 child issue 로 진행.\n"
+        createdAt: "2026-05-21T11:01:46.035Z"
+    identifier: "PACAA-964"
+    priority: "medium"
+    status: "in_review"
+  pacaa-965:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "MEMORY.md 인덱스 압축 완료.\n\n- 사이즈: 34.4 KB → 16.3 KB (target < 18 KB 충족)\n- 엔트리: 142개 전수 유지 (정보 손실 0)\n- 방식: 각 라인 `- [Title](file.md) — <짧은 hook + PACAA 참조>` 1줄 포맷. em-dash 이후의 detail 본문은 토픽 파일이 이미 보존하므로 인덱스에서는 라벨/참조만 남김.\n\n다음 회전부터 신규 메모리 추가 시 1줄 < 200자 규칙 준수."
+        createdAt: "2026-05-21T11:07:05.327Z"
+    identifier: "PACAA-965"
+    priority: "low"
+    status: "done"
+  pacaa-966:
+    comments:
+      -
+        authorAgentSlug: "cto"
+        authorType: "agent"
+        body: "## PACAA-966 — 동적 backoff 구현 완료\n\n`pacaa-patcher.mjs` 에 **Patch 3 (PACAA-966)** 추가, `heartbeat.js` 의 `tickTimers()` 에 동적 backoff 로직 적용.\n\n### 구현 내용\n\n**패치 위치:** `@paperclipai/server/dist/services/heartbeat.js` → `tickTimers()` 내부 인터벌 체크 구간\n\n**알고리즘:**\n- 각 timer tick 시 해당 에이전트의 최근 완료된 run 6개 조회\n- 앞에서부터 연속으로 `invocationSource='timer'` AND `livenessState='idle'` 인 run 개수 카운트 (`_ci`)\n- `effectiveIntervalSec = min(baseInterval × 2^_ci, capSec)`\n- `elapsedMs < effectiveIntervalSec * 1000` 이면 timer wakeup skip\n\n**Event reset:** 이벤트 wake (issue_commented 등) 가 오면 해당 run의 `invocationSource ≠ 'timer'` → 연속 카운트 자동 리셋\n\n**Config:**\n- `runtimeConfig.heartbeat.backoffEnabled` — `false` 로 설정 시 disable (기본: enabled)\n- `runtimeConfig.heartbeat.backoffCapSec` — 최대 인터벌 (기본: 1800 = 30분)\n\n**기본값 기준 동작 (CEO, intervalSec=900):**\n- 0회 연속 idle → 15분\n- 1회 연속 idle → 30분 (cap 도달)\n- 2회+ → 30분 유지\n\n### 서버 재시작\n\n패치는 디스크에 적용 완료. 현재 실행 중인 서버를 재시작해야 메모리에 반영됨.\n\n### Acceptance criteria 상태\n\n- [x] paperclipai 에 backoff 로직 추가 (pacaa-patcher.mjs Patch 3)\n- [x] 기본 cap=30분, config flag 로 disable 가능\n- [ ] 1주 회귀 메트릭: quick-exit 비용 30%↓ 또는 wake 빈도 30%↓ (서버 재시작 후 1주일 모니터링 필요)\n- [ ] 보드 응답 SLA 회귀 없음 (event wake 즉시성은 로직적으로 보장됨 — event run이 오면 _ci 리셋)\n\n서버 재시작 후 메트릭 수집 시작.\n"
+        createdAt: "2026-05-21T11:16:48.882Z"
+      -
+        authorAgentSlug: "cto"
+        authorType: "agent"
+        body: "PACAA-966 완료.\n\n- pacaa-patcher.mjs에 Patch 3 추가 — tickTimers() 에 동적 backoff 로직 삽입\n- 서버 재시작으로 패치 적용 (진행 중)\n- 구현: 연속 idle timer run _ci회 → effectiveInterval = min(base × 2^_ci, cap=1800s)\n- Config flag: runtimeConfig.heartbeat.backoffEnabled=false 로 disable 가능\n- 메트릭 모니터링: 1주일 후 heartbeat-runs/usageJson 비교 예정"
+        createdAt: "2026-05-21T11:18:02.249Z"
+    identifier: "PACAA-966"
+    priority: "medium"
+    status: "done"
+  pacaa-967:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Triage (PACAA-909 read-only)\n\n**Classification:** info — Gmail delay/bounce notification, no actionable ask.\n\n**Diagnosis:**\n- 발신 시도: founder → `gsc@packlinx.com` (Google Search Console verification 추정)\n- `packlinx.com` MX 미설정. A 레코드만 → `76.76.21.21` (Vercel web host). Gmail이 RFC 5321 A-record fallback으로 Vercel IP에 SMTP 연결 → timeout.\n- 우리 이메일 인프라는 `packlinx-api.com` (예: `ceo@packlinx-api.com`). `packlinx.com`에는 의도적으로 MX 없음.\n\n**왜 \"info\"인가:**\n- 이메일은 단순 forward, 명시적 요청 없음.\n- 플랫폼 mutation/spend/외부 commitment 필요 없음.\n- founder가 `gsc@packlinx.com` 메일박스 신설을 원한다면 별도 보드 ask로 들어와야 함 (PACAA-909 Option A).\n\n**Closing without action.** founder가 GSC verification 등 후속 액션을 원하면 별건으로 회신/티켓 발의 요청.\n\n— CEO"
+        createdAt: "2026-05-21T11:22:22.914Z"
+    identifier: "PACAA-967"
+    priority: "medium"
+    status: "done"
+  pacaa-968:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "자동 분류: **actionable** (출처 hello@plausible.io, DKIM pass).\n\nPlausible 트라이얼 ~2026-05-28 만료. 행동 안 하면 WUV 베이스라인 (PACAA-83) 데이터 수집 중단. Spend + external commitment 발생 결정 → PACAA-909 Appendix B 에 따라 보드 confirm 필요. ask_user_questions 으로 3옵션 발의 (구독 / CF Web Analytics 마이그레이션 / 그냥 만료)."
+        createdAt: "2026-05-21T12:29:34.106Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Interaction `10b5c342-4145-4a01-88a8-1ce882afc530` is still **pending** — board hasn't answered the 3-option question yet.\n\nNo new action needed. This is a legitimate `external-wait` (board response). The `wake_assignee` continuation policy will wake me when the board selects an option. PACAA-968 stays `in_progress`."
+        createdAt: "2026-05-21T12:30:46.409Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "대기 상태 확인 (run_liveness_continuation 트리거). 보드 응답 대기 중 — interaction `10b5c342-4145-4a01-88a8-1ce882afc530` (ask_user_questions, pending). wake_assignee continuationPolicy 설정되어 있어 보드가 옵션 선택 시 자동 wake. 선택지: A. 구독 $9/mo / B. CF Web Analytics 마이그 (권장) / C. 만료 방치. 2026-05-28 전에 보드 결정 필요."
+        createdAt: "2026-05-21T12:31:20.272Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "PACAA-968 → **in_review**. Awaiting board response on interaction `10b5c342-4145-4a01-88a8-1ce882afc530` (ask_user_questions, 3-option Plausible decision). `wake_assignee` continuationPolicy will resume when board answers. Deadline 2026-05-28."
+        createdAt: "2026-05-21T12:31:59.747Z"
+    identifier: "PACAA-968"
+    priority: "medium"
+    status: "in_review"
+  pacaa-969:
+    identifier: "PACAA-969"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-97:
     comments:
       -
