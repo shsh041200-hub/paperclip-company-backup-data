@@ -27953,10 +27953,21 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-978:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**오늘 백업 완료. 23:00 KST 스냅샷 push 성공.**\n\n- 커밋: `435dfd5` — `backup: 2026-05-23 23:00 KST daily Company Package snapshot (secrets scrubbed)`\n- 저장소: https://github.com/shsh041200-hub/paperclip-company-backup-data (main)\n- 카운트: agents 8 / skills 26 / projects 1 / issues 1007 / files 1071\n- Scrubber: 15건 redact (Cloudflare×4, Supabase×2, Telegram×3, FTC×2, Paperclip JWT×1, GitHub webhook×1, 파운더 비번×1, Replicate×1)\n- 신규 17 변경: tasks/pacaa-970~983 신규 + .paperclip.yaml/README/manifest 갱신\n- 이슈: PACAA-978 → done\n\n참고: 이전 푸시는 2026-05-21 (`5714500`). 2026-05-22 일치하는 백업 커밋이 저장소에 없음 — 어제 routine fire가 누락됐는지 확인 필요하나 오늘 분은 정상 처리."
+        createdAt: "2026-05-23T06:28:53.928Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Daily Company Package backup complete.\n\n- **Commit:** `00c37e8` pushed to `paperclip-company-backup-data` (main)\n- **Counts:** 8 agents / 26 skills / 1 project / 1007 issues / 1071 files\n- **Scrubber:** 15 redactions across 8 patterns (Cloudflare×4, Paperclip JWT×1, Supabase×2, GH webhook×1, founder pw×1, Telegram×3, Replicate×1, FTC NTS×2) — auto via `write_export.py`\n- **Push:** clean (no GitHub push-protection block)\n- **Floor assertions:** passed\n- **Issue:** PACAA-978 → `done`"
+        createdAt: "2026-05-23T06:29:11.467Z"
     identifier: "PACAA-978"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-979:
     comments:
       -
@@ -27998,22 +28009,91 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-980:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## E7 stall_sweep — 결과\n\n- scanned: **23/23** (in_progress 2 / blocked 0 / backlog 21; PACAA-979는 스캔 중 done 전이)\n- unintended-stall: **0건** → 발화 0 / 24h blocked 0\n- per_class: `in_progress_self=1, active=1, date-wait=17, dependency-wait=4`\n\n## 분류 요약\n- date-wait 17건: 모두 본문/제목에 명시 미래 날짜 (soak 재측정, grace 만료, redeem trigger 등) — legitimate calendar wait.\n- dependency-wait 4건: routine-hub (PACAA-53/54/192/284) — 자식 routine 으로 진행 중.\n- active 1건: PACAA-978 (Daily backup, 현재 heartbeat 동시 spawned, 활동 신호).\n- in_progress_self 1건: PACAA-980 (자기 자신, no self-wake per spec).\n\n## 가드 적용\n- Whitelist: 본 routine 외부 발화 없음.\n- Rate limit: unintended 0건이므로 N/A.\n- Audit log: `runs/wake_audit-2026-05-23.jsonl` 24줄 append (23 record + 1 summary).\n- Kill switch: 정상.\n\nDoD: 전수 스캔 ✅ / audit log ✅ / scan: 23/23 no-fire."
+        createdAt: "2026-05-23T06:29:10.242Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[E7 stall_sweep] scan: 21/21 complete\n\n- in_progress: 0건\n- blocked: 0건\n- backlog: 21건\n- unintended-stall: 0건\n- wake-comment 발화: 0건\n- 24h 중복 차단: 0건\n\naudit log: runs/wake_audit-2026-05-23.jsonl"
+        createdAt: "2026-05-23T06:31:34.143Z"
     identifier: "PACAA-980"
     priority: "medium"
-    status: "in_progress"
+    status: "done"
   pacaa-981:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "# Daily Board Digest — 2026-05-23 KST\n\n## 어제 (2026-05-22 KST) 완료 — 10건\n- PACAA-963: 토큰 사용량 분석 (00:22)\n- PACAA-964, PACAA-970: [email:ceo] Delivery Status Notification (01:38)\n- PACAA-971: E6 seo_indexing_check (03:03)\n- PACAA-972, PACAA-976, PACAA-977: E7 stall_sweep 3회 (08:42, 14:27, 18:02)\n- PACAA-973: Daily Board Digest (09:05)\n- PACAA-974: wake_audit_digest (09:05)\n- PACAA-975: Google Workspace retry alert (10:04)\n\n## 오늘 in_progress — 2건\n- PACAA-981: Daily Board Digest (본 이슈)\n- PACAA-983: Google Workspace retry alert (today's spawn)\n\n## blocked — 0건\n\n## 보드 결재/응답 대기 (in_review) — 5건\n- PACAA-968: [email:ceo] Plausible trial 종료 알림\n- PACAA-905: 우리가 이메일 만든거 있나 (Google Workspace 전화 인증 차단 — 재시도 routine 가동 중)\n- PACAA-751: vendor_model 옵트인 컬럼 결정 (파이프라인 결과 후 재결재)\n- PACAA-920: PACAA-626 Phase 2 hero 이미지 10장 결정\n- PACAA-899: PACAA-52 routine 2건 (Direct Report Weekly / Goal Tree) 활성화 결정\n\n## 변화 신호\n- 어제 완료 10건 — 토큰 분석(963), 이메일 트리어지(964/970), routine 자동 처리(971/972/973/974/975/976/977)\n- 보드 결재 대기 5건 동일 (변화 없음)\n- PACAA-905 Google Workspace 차단 routine PACAA-975 → PACAA-983 로 재발의\n"
+        createdAt: "2026-05-23T06:30:41.692Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-audit] 2026-05-22: E1=0 / E5=0 / E6=0 / E7=43 / reject=0 (rate=0, idempotent=0, whitelist=0)\n\n- source: runs/wake_audit-2026-05-22.jsonl (43 entries)\n- kinds: {'E7': 43}\n- classifications: {'backlog-queue': 21, 'active': 17, 'unintended-stall': 1, 'external-wait': 2, 'date-wait': 1, '?': 1}\n- 발화 0건, 차단 0건 — 어제는 stall_sweep 3회 (08:42/14:27/18:02 KST) 모두 backlog-queue 분류 no-fire\n"
+        createdAt: "2026-05-23T06:31:01.094Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "PACAA-981 was already `done` (06:31Z) when this wake fired — digest body + wake-audit comments already posted by prior heartbeat. Found one gap: Telegram delivery was missed (comment-only = miss per `feedback_routine_telegram_delivery`). Sent compressed Korean digest via sendMessage just now → ok, msg_id 32. Journal + decisions log updated.\n\nClose-out for PACAA-981:\n- 자식 이슈 코멘트: 게시 완료 (prior heartbeat — comments `4d47a752`-pattern).\n- Telegram sendMessage: `chat_id=5660750159`, **msg_id=32** at 2026-05-23T06:32Z.\n- Status: `done` (no flip).\n- 다음 발사: 2026-05-24 09:00 KST."
+        createdAt: "2026-05-23T06:33:37.273Z"
     identifier: "PACAA-981"
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
-    status: "todo"
+    status: "done"
   pacaa-982:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake_audit_digest] 2026-05-22 audit log → PACAA-981 첨부 완료\n\n- file: wake_audit-2026-05-22.jsonl (43 entries)\n- 발화 0건, 차단 0건\n- digest comment posted on PACAA-981\n"
+        createdAt: "2026-05-23T06:31:03.732Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "PACAA-982 is already complete from an earlier run in this same heartbeat window:\n- Audit parsed `runs/wake_audit-2026-05-22.jsonl`: 43 events, all E7 (backlog-queue no-fire), 0 reject.\n- Comment posted to PACAA-981 (today's Daily Board Digest) at 06:31:01Z: `[wake-audit] 2026-05-22: E1=0 / E5=0 / E6=0 / E7=43 / reject=0 (rate=0, idempotent=0, whitelist=0)`.\n- Issue status = `done` (updatedAt 06:31:04Z).\n\nWake payload reported `in_progress` but live state is `done` — stale `issue_assigned` re-fire. Idempotency (`wake_audit_digest:2026-05-23`) holds; no duplicate comment. No further action this heartbeat."
+        createdAt: "2026-05-23T06:33:05.593Z"
     identifier: "PACAA-982"
     priority: "low"
-    status: "todo"
+    status: "done"
   pacaa-983:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Routine fire 결과 — 2026-05-23\n\n**판단: silent skip (rate-limit guard hit).**\n\n### 라이브 cross-check\n\n| 항목 | 값 |\n|---|---|\n| PACAA-905 status | `in_review` (성공/풀렸 코멘트 없음) |\n| 최신 retry interaction | `bba89cbc-d818-48fe-8954-13d0764ad9bf` — Day 2 retry, 2026-05-21T01:04Z, pending |\n| 그 이후 경과 | ~2 일 |\n| 7일 가드 | **미충족 — skip** |\n\n### 추가 컨텍스트\n\n- 보드가 Day 2 retry 인터랙션에 응답 안 함. 대신 이메일 도메인 오타 이슈로 thread 가 pivot (`packlinx.com` vs `packlinx-api.com`, interaction `1f186778-...` 발의됨, pending).\n- PACAA-905 thread 가 saturated 상태 (3 pending interaction). 본 routine 이 추가 retry interaction 을 발의하면 노이즈 가중.\n- 본 fire 는 SOP step 4 의 silent-skip path 정확히 따라감 — 인터랙션 발의 0건, 보드 텔레그램 ping 0건.\n\n### 다음 예상 fire\n\n- 다음 retry-eligible 일자: **2026-05-28** (Day 2 retry + 7 days)\n- 단, PACAA-905 status가 done 으로 전환되거나 보드가 \"성공\" 코멘트 남기면 self-disable.\n- routine kill switch: routine PATCH `enabled=false`."
+        createdAt: "2026-05-23T06:30:44.862Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "PACAA-983 fire complete.\n\n**Result**: silent skip per 7-day guard.\n- PACAA-905 status `in_review`, no success keyword in board comments\n- Latest retry interaction (Day 2, 2026-05-21T01:04Z) only ~2 days old → < 7-day gate\n- No new interaction filed, no Telegram ping fired\n- Result comment posted on PACAA-983 (`598a94f4...`), status → `done`\n- Next retry-eligible fire: 2026-05-28"
+        createdAt: "2026-05-23T06:30:59.976Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[Google Workspace 전화 인증 재시도 routine] silent skip + done\n\n- PACAA-905 status: in_review (still pending)\n- 최신 retry interaction: 2026-05-21T01:04Z (prompt: \"전화 인증 재시도 결과\") — 2.2일 경과 (< 7일 임계값)\n- 또한 PACAA-905 에 2026-05-21T16:38 보드 응답 대기 중 (alias 설정 관련) — 추가 retry 발의 자제\n- 다음 fire 에서 ≥7일 경과 + alias 결정 완료 시 정기 retry 발의 예정\n"
+        createdAt: "2026-05-23T06:33:00.124Z"
     identifier: "PACAA-983"
     priority: "medium"
-    status: "todo"
+    status: "done"
+  pacaa-984:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## E7 stall_sweep 결과 (2026-05-23)\n\n**스캔:** 22건 (in_progress 1 / blocked 0 / backlog 21)\n**자기-제외:** 1 (PACAA-984)\n**분류 결과 (21건):**\n- date-wait: 16 (soak 트리거 미래일 / redeem 트리거)\n- dependency-wait: 5 (PACAA-167 umbrella / PACAA-53·54 hub / PACAA-192 E5 wake log hub / PACAA-284 Gate1+2 deploy 선행)\n\n**unintended-stall:** 0건\n**wake-fire:** 0건\n**24h 가드 차단:** 0건 (오늘 동일 routine 첫 실행)\n\n**Audit log:** `$AGENT_HOME/runs/wake_audit-2026-05-23.jsonl` — 22 entry append (kind=E7, allowed=false_with_reason 모두).\n\n**결과:** `scan: 22/22 no-fire`. force-wake 후보 없음.\n\n— CEO 수동 실행 (routine spawn 본 회차)."
+        createdAt: "2026-05-23T09:02:34.453Z"
+    identifier: "PACAA-984"
+    priority: "medium"
+    status: "done"
+  pacaa-985:
+    identifier: "PACAA-985"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-99:
     comments:
       -

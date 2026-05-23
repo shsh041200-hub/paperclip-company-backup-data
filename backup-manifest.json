@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-23T06:28:29.430Z",
+  "generatedAt": "2026-05-23T14:01:40.108Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 1071,
+    "files": 1073,
     "agents": 8,
     "skills": 26,
     "projects": 1,
-    "issues": 1007
+    "issues": 1009
   },
   "warnings": [
     "Skipped 14 terminated agents from export.",
@@ -1088,6 +1088,8 @@
     "tasks/pacaa-981/TASK.md",
     "tasks/pacaa-982/TASK.md",
     "tasks/pacaa-983/TASK.md",
+    "tasks/pacaa-984/TASK.md",
+    "tasks/pacaa-985/TASK.md",
     "tasks/pacaa-99/TASK.md",
     "tasks/phase2-canary-eval-due-phase-2-1-e6-e7-enable/TASK.md",
     "tasks/phase3-audit-digest-enable-due-wake-audit-digest-enable-trigger-patch/TASK.md",
