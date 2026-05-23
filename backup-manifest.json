@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-21T14:01:14.553Z",
+  "generatedAt": "2026-05-23T06:28:01.579Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 1057,
+    "files": 1071,
     "agents": 8,
     "skills": 26,
     "projects": 1,
-    "issues": 993
+    "issues": 1007
   },
   "warnings": [
     "Skipped 14 terminated agents from export.",
@@ -1073,7 +1073,21 @@
     "tasks/pacaa-968/TASK.md",
     "tasks/pacaa-969/TASK.md",
     "tasks/pacaa-97/TASK.md",
+    "tasks/pacaa-970/TASK.md",
+    "tasks/pacaa-971/TASK.md",
+    "tasks/pacaa-972/TASK.md",
+    "tasks/pacaa-973/TASK.md",
+    "tasks/pacaa-974/TASK.md",
+    "tasks/pacaa-975/TASK.md",
+    "tasks/pacaa-976/TASK.md",
+    "tasks/pacaa-977/TASK.md",
+    "tasks/pacaa-978/TASK.md",
+    "tasks/pacaa-979/TASK.md",
     "tasks/pacaa-98/TASK.md",
+    "tasks/pacaa-980/TASK.md",
+    "tasks/pacaa-981/TASK.md",
+    "tasks/pacaa-982/TASK.md",
+    "tasks/pacaa-983/TASK.md",
     "tasks/pacaa-99/TASK.md",
     "tasks/phase2-canary-eval-due-phase-2-1-e6-e7-enable/TASK.md",
     "tasks/phase3-audit-digest-enable-due-wake-audit-digest-enable-trigger-patch/TASK.md",

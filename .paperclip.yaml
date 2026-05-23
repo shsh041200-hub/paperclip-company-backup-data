@@ -5704,6 +5704,11 @@ tasks:
         authorType: "agent"
         body: "[wake-event] E7 stall.detected: PACAA-192 unintended-stall at 2026-05-21T03:01:29.639272+00:00\nreason: backlog assigned but heartbeat stale\nidempotencyKey: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-21\naction: assignee 자가 reflection — 합법 wait 신호 baking 또는 force-restart 결정."
         createdAt: "2026-05-21T03:01:31.939Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-event] E7 stall.detected: PACAA-192 unintended-stall at 2026-05-22T09:01:24.856214+00:00\nreason: backlog assigned but heartbeat stale\nidempotencyKey: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-22\naction: assignee 자가 reflection — 합법 wait 신호 baking 또는 force-restart 결정."
+        createdAt: "2026-05-22T09:01:29.408Z"
     identifier: "PACAA-192"
     priority: "low"
     status: "backlog"
@@ -25251,9 +25256,18 @@ tasks:
         authorType: "agent"
         body: "## 보드 질문 응답 — 현 상태 요약\n\n**원 질문 \"이메일 만든적 있나\" → 만들었음.**\n\n2026-05-19 PACAA-907 자식에서 CF Email Routing 으로 3개 alias 라이브 (이미 보드 카톡으로도 전달됨):\n\n- `ceo@packlinx-api.com`\n- `alerts@packlinx-api.com`\n- `gsc@packlinx-api.com`\n\n→ 전부 `rpdla041200@gmail.com` 으로 포워드. Naver→Gmail 테스트 도착 확인됨. PACAA-907 done.\n\n**왜 본 티켓 (905) 아직 in_review 인가:**\n\npending interaction 2개가 안 닫혀서 라이브로 남아있음:\n\n1. `e65dd4be` (5/19) — \"이메일 옵션 A/B/C\" 선택 질문. **이미 A(CF) 로 임시 진행 완료라 obsolete**, accept 안 해도 무방.\n2. `bba89cbc` (5/21 01:04 KST) — Google Workspace 정식 가입 전화 인증 재시도 결과 묻는 질문. 이건 sibling product line (PACAA-909→910/911 이메일 자동 triage) 의 사전 작업이라 본 905 와는 독립.\n\n**보드 행동 필요:**\n\n원 질문 (\"만든 적 있나\") 은 만족됐으니 905 본 티켓은 **done 으로 닫겠음** (보드 별도 거절 없으면 본 wake 종료 시점에 PATCH).\nWorkspace 가입 추적은 별도 sibling 이슈 (PACAA-908 또는 신규) 에서 계속, 본 905 에서 떼어내겠음."
         createdAt: "2026-05-21T10:01:18.050Z"
+      -
+        authorType: "user"
+        body: "최근에 온 이메일들 내용 확인해봐 같은 이메일이 계속옴 왜그러는지모르겠음"
+        createdAt: "2026-05-21T16:34:30.019Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 진단 — 같은 메일이 계속 오는 이유\n\n**원인: 도메인 오타. `packlinx.com` 에는 이메일 셋업이 없음.**\n\n라이브 DNS 확인 결과:\n\n| 도메인 | MX 레코드 | 이메일 수신 가능? |\n|---|---|---|\n| `packlinx-api.com` (대시 **있음**) | route1/2/3.mx.cloudflare.net | ✅ CF Email Routing 라이브 |\n| `packlinx.com` (대시 **없음**) | **없음** (MX 미설정) | ❌ 미설정, A 만 → Vercel IP 76.76.21.21 |\n\n**무슨 일이 일어났나:**\n1. 보드가 `alerts@packlinx.com` / `ceo@packlinx.com` (대시 없는 도메인) 으로 메일 보냄\n2. 이 도메인에는 MX 가 없어서 Gmail SMTP 가 A 레코드 (Vercel IP) 로 fallback → port 25 timeout\n3. Gmail 이 4시간마다 재시도하며 **Delay notification** 을 발신자 (`rpdla041200@gmail.com`) 에게 계속 보냄\n4. 보드가 이 delay 알림을 `ceo@packlinx-api.com` 로 forward → 우리 inbox 에 6번 들어옴 (#955, #956, #957, #964, #967, #970)\n\n**즉, \"같은 메일이 반복\" = Gmail 의 재시도 패턴, 외부 공격이나 버그 아님.**\n\n**보드 행동 옵션 (택1, CEO 답변 대기):**\n\n- **A. 즉시 — 발신 정정**: 메일 주소 책에서 `packlinx.com` → `packlinx-api.com` 으로 정정. 기존 보냈던 메일은 Gmail 이 자동 bounce 시킬 때까지 (~48시간) delay notice 계속 옴, 시간 지나면 자연 소멸. **추가 비용 0, 추가 작업 0.**\n- **B. `packlinx.com` 에도 이메일 셋업**: 메인 도메인. NS 가 Vercel 이라 CF Email Routing 쓰려면 NS 이관 필요 (사이트 Vercel deploy 영향 가능, 위험). 또는 Vercel DNS 에 외부 메일 서비스 MX 추가 (Google Workspace / Zoho 등 별도 셋업).\n- **C. 두 도메인 통합 정리**: `packlinx.com` 을 메인으로, `packlinx-api.com` 은 API 전용으로 분리. 장기 브랜드 정리 차원.\n\n**나의 추천: A (즉시 정정).** 본 도메인 (`packlinx.com`) 에 이메일을 깔 만한 이유가 약함 — 외부 통신에 `packlinx-api.com` 쓰는 게 어색하면 그때 B/C 재검토.\n\n---\n\n**중복 이슈 처리 (자동 triage 가 만든 6개):**\n\n- PACAA-955/956/957/967 → 이미 done\n- PACAA-964/970 → in_review 였는데 본 진단 결과로 root cause 동일, done 처리하겠음\n- PACAA-968 (Plausible trial 종료) → 별건 actionable, 그대로 in_review 유지 (구독 결정 별도 필요)\n\n본 PACAA-905 는 보드 옵션 선택 (A/B/C) 후 done. 짧으면 본 wake 종료 후 ask_user_questions 1개로 surface."
+        createdAt: "2026-05-21T16:38:06.639Z"
     identifier: "PACAA-905"
     priority: "medium"
-    status: "done"
+    status: "in_review"
   pacaa-906:
     comments:
       -
@@ -27699,6 +27713,15 @@ tasks:
         authorType: "agent"
         body: "## 정정 — 캘린더 오기\n\n지적 감사합니다. **2026-05-28 = 목요일** 이 맞습니다 (오늘 2026-05-21 = 목요일, +7일).\n\n직전 closeout 의 \"(월)\" 은 오기. 두 가지 옵션 중 선택:\n\n| 옵션 | 날짜 | 요일 | gap | 비고 |\n|---|---|---|---|---|\n| **a. 7일 정확** | **2026-05-28** | **목** | +7일 | B1 변경 후 정확히 1주, 데이터 200+ wake 확보 |\n| b. 다음 월요일 | 2026-06-01 | 월 | +11일 | 주말 marginal 데이터 안정성 + Daily Digest 주기 정렬 |\n\n권장: **a (2026-05-28 목)** — 7일 만에 200+ wake 데이터 충분, 더 빠른 회귀 인지. `feedback_event_driven_paradigm` 원칙상 review date 는 trigger window 의 floor.\n\n본 코멘트로 closeout 정정, PACAA-963 status → done 복귀."
         createdAt: "2026-05-21T11:28:41.825Z"
+      -
+        authorType: "user"
+        body: "a"
+        createdAt: "2026-05-21T15:22:26.720Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "옵션 a 확정 — **2026-05-28 (목)** 회귀 검토일 lock-in.\n\ndeferred_items.md row 이미 DATE=2026-05-28 (목) + STATE PACAA-966 closeout 동시 trigger 로 등재 완료. 추가 조치 없음.\n\nPACAA-963 → done."
+        createdAt: "2026-05-21T15:22:47.590Z"
     identifier: "PACAA-963"
     priority: "medium"
     status: "done"
@@ -27709,9 +27732,14 @@ tasks:
         authorType: "agent"
         body: "**Triage — [email:ceo] bounce 통지 (PACAA-909 Option A read-only)**\n\n**분류:** Info + 보드 결정 필요 (actionable)\n**송신:** rpdla041200@gmail.com (보드 본인), DKIM pass — Mailer-Daemon bounce 전달\n**원래 발송 시도:** `ceo@packlinx.com` (Vercel NS, MX 없음, 76.76.21.21 timeout)\n**원래 발신자:** 불명 (bounce 자체는 추적 불가, 본인 테스트/봇/실수 모두 가능)\n**기존 메모:** `feedback_cf_email_routing_requires_cf_ns.md` — packlinx.com 은 Vercel NS 라 CF Email Routing 불가, `packlinx-api.com` 만 셋업되어 있음. 통신판매업 footer 의 공식 연락처는 `rpdla041200@gmail.com` (gmail 직접) 이므로 packlinx.com 메일은 공개적으로 광고된 적 없음.\n\n**Mutation 없음** — 분류·확인만, 보드 결정 후 별도 child issue 로 진행.\n"
         createdAt: "2026-05-21T11:01:46.035Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Root cause = packlinx.com 도메인 MX 미설정 + Gmail 4시간 재시도. PACAA-905 진단 코멘트 참고. 본 delay notice 는 시간 지나면 자연 소멸, 별도 액션 불필요. done."
+        createdAt: "2026-05-21T16:38:18.928Z"
     identifier: "PACAA-964"
     priority: "medium"
-    status: "in_review"
+    status: "done"
   pacaa-965:
     comments:
       -
@@ -27769,14 +27797,34 @@ tasks:
         authorType: "agent"
         body: "PACAA-968 → **in_review**. Awaiting board response on interaction `10b5c342-4145-4a01-88a8-1ce882afc530` (ask_user_questions, 3-option Plausible decision). `wake_assignee` continuationPolicy will resume when board answers. Deadline 2026-05-28."
         createdAt: "2026-05-21T12:31:59.747Z"
+      -
+        authorType: "user"
+        body: "다시 검토해봐 저거 우리가 꼭 필요한 사이트야?"
+        createdAt: "2026-05-21T23:38:13.865Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "보드 challenge 받아 라이브 재검토.\n\n**증거:**\n- PACAA-83 (WUV 정의) 2026-04-29 완료, PACAA-89 (W18 베이스라인) 2026-05-05 완료.\n- 그 이후 ~2.5주간 후속 WUV 캡처 이슈 0건, Plausible 데이터로 내린 결정 0건.\n- 현재 in_progress 이슈 중 Plausible/WUV 언급 0건.\n\n**결론:** 보드 직관 맞음. Plausible 은 WUV 메트릭을 지원하려고 세팅했는데, WUV 자체를 활발히 추적/사용하지 않고 있음. pre-PMF + 저트래픽 단계에선 분석 인프라가 결정에 영향 못 줌 = vanity.\n\n**CEO 권장: C 단순화 — 트라이얼 만료 방치, 대체 없음, CF 마이그레이션도 안 함.**\n- $0 spend, 0 엔지니어링.\n- GSC + Vercel 기본 분석만으로 충분.\n- 데이터는 Plausible 측에 보존됨 (재구독 시 복원 가능, 2-way door).\n- 향후 (a) 실제 결정에 쓰이는 메트릭이 생기거나 (b) 펀널 분석이 통계적으로 의미있을 트래픽이 나올 때 재검토.\n\nrequest_confirmation 1축으로 다시 발의합니다."
+        createdAt: "2026-05-21T23:40:21.445Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "No new board input — this is a re-fire of the same `d37fa69c` comment I already responded to. My re-analysis comment (`2d2fa06a`) and fresh `request_confirmation` (`6544eb50`, pending) are both live. PACAA-968 stays `in_review` awaiting board accept/decline on let-lapse proposal."
+        createdAt: "2026-05-21T23:44:05.386Z"
     identifier: "PACAA-968"
     priority: "medium"
     status: "in_review"
   pacaa-969:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Daily Company Package backup complete.\n\n- **Commit:** `5714500` pushed to `paperclip-company-backup-data` (main)\n- **Counts:** 8 agents / 26 skills / 1 project / 993 issues / 1057 files\n- **Scrubber:** 15 redactions across 8 patterns (Cloudflare×4, Paperclip JWT×1, Supabase×2, GH webhook×1, founder pw×1, Telegram×3, Replicate×1, FTC NTS×2) — auto via `write_export.py`\n- **Push:** clean (no GitHub push-protection block)\n- **Issue:** PACAA-969 → `done`"
+        createdAt: "2026-05-21T14:02:05.460Z"
     identifier: "PACAA-969"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-97:
     comments:
       -
@@ -27788,6 +27836,137 @@ tasks:
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-970:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## [email:ceo] Triage — Option A read-only\n\n**분류:** info (founder 송신 측 bounce delay, 18h 후 final fail 예정)\n\n**진단:**\n- `rpdla041200@gmail.com` → `alerts@packlinx.com` 송신 중 Gmail 일시 실패\n- 원인: `packlinx.com` MX 레코드 부재. Gmail이 A 레코드 fallback (`76.76.21.21` = Vercel edge) 시도 → SMTP 미지원 timeout\n- NS = `ns1/2.vercel-dns.com` (CF 아님) → 즉시 CF Email Routing 활성화 불가, NS 이전 필요\n\n**송신자 분석:**\n- bounce의 sender 는 founder 본인 gmail. 즉 founder 가 (a) 직접 입력 (b) gmail 자동 룰 (c) 제3 SaaS 알림 목적지로 `alerts@packlinx.com` 사용 중\n- 어떤 트래픽인지 founder 본인만 확정 가능 → board ask 필요\n\n**옵션:**\n1. **NS 이전 → CF Email Routing**: packlinx.com NS 를 Cloudflare 로 이전 (1-2일), `alerts@` → `rpdla041200@gmail.com` 포워딩. 영구 해결. one-way door (DNS).\n2. **Vercel DNS 직접 MX**: ImprovMX/ForwardEmail 등 무료 forwarder MX 등록. NS 유지. 5분 작업.\n3. **주소 폐기**: `alerts@packlinx.com` 사용처 중단, `alerts@packlinx-api.com` (CF Email Routing 이미 활성, PACAA-907) 으로 재라우팅.\n4. **무시**: Gmail이 18h 후 final fail 통보. 일회성으로 끝남.\n\n**다음:** founder 의도 확인을 위해 ask_user_questions 발의."
+        createdAt: "2026-05-21T16:00:08.131Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Root cause = packlinx.com 도메인 MX 미설정 + Gmail 4시간 재시도. PACAA-905 진단 코멘트 참고. done."
+        createdAt: "2026-05-21T16:38:19.767Z"
+    identifier: "PACAA-970"
+    priority: "medium"
+    status: "done"
+  pacaa-971:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## E6 seo_indexing_check — 2026-05-22 실행 결과\n\n**상태:** done — 측정 완료, wake-event 없음\n\n### 실행 요약\n\n| 항목 | 결과 |\n|---|---|\n| GSC 측정 | 스킵 (GSC_SERVICE_ACCOUNT_JSON 미설정) |\n| Naver 측정 | 스킵 (NAVER_SEARCHADVISOR_API_KEY / SECRET 미설정) |\n| wake-event 발송 | 없음 |\n| audit log | $AGENT_HOME/runs/wake_audit-2026-05-22.jsonl 기록 완료 |\n\n### 도메인별 상태 (last-known 기준)\n\n**packlinx.com**\n- 마지막 측정값: 118,000 페이지 (2026-05-16)\n- 임계값: >= 100 페이지\n- 상태: suppressed_permanent_met (P2 정책 - 영구 충족, wake-event 억제)\n\n**keywords.packlinx.com**\n- 마지막 측정값: 7 페이지 (2026-05-16)\n- 임계값: >= 40 페이지\n- 상태: below_threshold - wake-event 미발송\n\n### 5-가드 점검\n\n- Whitelist: E6 PASS\n- Rate limit: 1/5 (오늘 첫 실행)\n- Idempotency: PASS - 2026-05-22 routine_summary 선행 없음\n- Audit log: PASS - 3개 엔트리 기록\n- Kill switch: PASS - PACAA-971 활성 할당 중\n\n### 크레덴셜 미설정 지속\n\nGSC 및 Naver 실측 불가 상태가 12일 연속. keywords.packlinx.com 40 페이지 임계값 달성 감지 불가.\n필요 조치 (CEO/CTO): adapterConfig.env에 GSC_SERVICE_ACCOUNT_JSON + NAVER_SEARCHADVISOR_API_KEY / NAVER_SEARCHADVISOR_API_SECRET 설정."
+        createdAt: "2026-05-21T18:03:01.953Z"
+    identifier: "PACAA-971"
+    priority: "medium"
+    status: "done"
+  pacaa-972:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[E7 stall_sweep] scan: 21/21 no-fire\n\n- in_progress 스캔: 1건 (PACAA-972 자체, skip)\n- blocked 스캔: 0건\n- backlog 스캔: 21건 → 전부 legitimate backlog-queue 분류\n- unintended-stall 발견: 0건\n- wake-comment 발화: 0건\n- 24h 중복 차단: 0건\n\naudit log: runs/wake_audit-2026-05-21.jsonl (21 entries)"
+        createdAt: "2026-05-21T23:41:58.023Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Heartbeat complete.\n\n**Result:** PACAA-972 was closed by a sibling CEO run at 23:40:14Z (~20s before my script). My run found same 21 scanned but classifier diverged — sibling treated all backlog as `legitimate backlog-queue`; mine flagged PACAA-192 as `unintended-stall` (rate-limit blocked from 03:01Z fire). Comment POST returned 409 ownership conflict — per `feedback_concurrent_run_409_ownership`, sibling wins.\n\n**Disposition:** Issue already `done` (sibling). No further mutation. Classifier divergence logged for next E7 spawn to surface again if it matters.\n\n**Artifacts:**\n- `runs/wake_audit-2026-05-21.jsonl` — 22 lines appended (scan + summary)\n- `Journal.md` — entry with classifier divergence note\n- `runs/2026-05-21-2344-decisions.md` — written"
+        createdAt: "2026-05-21T23:44:42.635Z"
+    identifier: "PACAA-972"
+    priority: "medium"
+    status: "done"
+  pacaa-973:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "# Daily Board Digest — 2026-05-22 KST\n\n## 어제 (2026-05-21 KST) 완료 — 1건\n- PACAA-756: 페이퍼클립 서버 노트북→데스크탑 이전 가이드 (19:25 KST)\n\n## 오늘 in_progress — 2건 (둘 다 본 digest routine)\n- PACAA-973: Daily Board Digest (본 이슈)\n- PACAA-974: wake_audit_digest 첨부 routine\n\n## blocked — 0건\n\n## 보드 결재/응답 대기 (in_review) — 5건\n- PACAA-968: [email:ceo] Plausible trial 종료 알림 처리\n- PACAA-905: 우리가 이메일 만든거 있나 (이메일 인벤토리 답변 대기)\n- PACAA-751: vendor_model 옵트인 컬럼 결정 (파이프라인 결과 후 재결재)\n- PACAA-920: PACAA-626 Phase 2 hero 이미지 10장 결정\n- PACAA-899: PACAA-52 routine 2건 (Direct Report Weekly / Goal Tree) 활성화 결정\n\n## 변화 신호\n- 어제 완료 1건 = 보드 직접 요청(서버 이전 가이드) 처리\n- in_progress 활성 child work 0건 — 자동 routine 만 가동\n- 보드 결재 대기 5건 — 이메일 트리어지(968), 인프라(905, 751), 이미지(920), routine(899)\n"
+        createdAt: "2026-05-22T00:04:30.259Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "escalation_grep: 0 hit / dormant: 0 / healthy: 7 / pending_interactions: 5\n\n## Daily Board Digest — 2026-05-22 (금) 09:00 KST\n\n**한 줄 결론**: 보드 응답 대기 5건 누적(최장 74.7h), 신규 변동은 PACAA-968 이메일 분류 1건.\n\n### 보드 액션 필요 (5건, ≥4h 미응답)\n- [PACAA-899] PACAA-52 routine 2건 결재 — ask_user_questions **74.7h** (interaction 65d53033)\n- [PACAA-905] 이메일 자산 정리 — ask_user_questions **65.3h** (e65dd4be)\n- [PACAA-905] 동 이슈 후속 1 — ask_user_questions **23.0h** (bba89cbc)\n- [PACAA-905] 동 이슈 후속 2 — ask_user_questions **7.4h** (1f186778)\n- [PACAA-920] PACAA-626 Phase 2 hero 10장 결정 — ask_user_questions **56.0h** (52dd6280)\n\n### 오늘 in_progress (2건)\n- PACAA-973 본 다이제스트 (self)\n- PACAA-974 wake_audit 자매 routine\n\n### 오늘 in_review (5건)\n- PACAA-968 [email:ceo] Plausible trial 종료 안내 — 0.4h, 다음 heartbeat 분류\n- PACAA-905 / PACAA-751 / PACAA-920 / PACAA-899 — 위 인터랙션 대기 동일 이슈\n\n### 차단 (blocked)\n- 0건\n\n### 어제(2026-05-21 KST) 완료 (3건)\n- PACAA-756 페이퍼클립 서버 노트북→데스크탑 이전 가이드\n- PACAA-971 E6 seo_indexing_check routine 발사\n- PACAA-972 E7 stall_sweep routine 발사\n\n### 어제 다이제스트(PACAA-958) 대비 변화\n- 신규 in_review: PACAA-968 (이메일 분류 대기, <4h)\n- PACAA-905 인터랙션 +2건 누적\n- 자기-이슈 회전: PACAA-958/959 → PACAA-973/974\n\n— CEO\n"
+        createdAt: "2026-05-22T00:04:32.102Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-audit] 2026-05-21: E1=0 / E5=0 / E6=0 / E7=87 / reject=0 / fired=1 / no-fire=86\n\n- source: runs/wake_audit-2026-05-21.jsonl (87 entries)\n- kinds: {'E7': 87}\n- classifications: {'active': 51, 'external-wait': 6, 'unintended-stall': 3, 'date-wait': 3, '?': 3, 'backlog-queue': 21}\n- 발화 0건, 차단 0건 — E7 stall_sweep 21건 스캔 전부 backlog-queue 분류 no-fire\n"
+        createdAt: "2026-05-22T00:04:56.187Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-audit] 2026-05-21: E1=0건 / E5=0건 / E6=0건 / E7=87건 / reject=62건 (rate=2, idempotent=0, whitelist=0)\n\n- E7 wake_classifier 발화: 87회 (allowed=25, reject=62)\n- 3축 가드 reject: rate=2, idempotent=0, whitelist=0\n- 나머지 60건 = classifier 자체 skip (active=51, external-wait=6, date-wait=3) — 가드 reject 아님, 정상 분류 결과\n- E1/E5/E6 fire 0건 (해당 일자 발화 없음 — 정상)\n\n출처: $AGENT_HOME/runs/wake_audit-2026-05-21.jsonl (parent routine PACAA-169 Phase 1B Routine 3, umbrella PACAA-167)"
+        createdAt: "2026-05-22T00:05:14.380Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**Routine close-out**\n\n- 디지스트 코멘트: `4d47a752` (canonical) — `dadc830e`는 동시 heartbeat 중복 발사, 본 코멘트가 정정본 (어제 완료 1건→3건 수정).\n- Telegram 발송: chat 5660750159, message_id **31** (2026-05-22 00:05:39 UTC).\n- 다음 발사: 내일 09:00 KST routine.\n\nstatus → done.\n"
+        createdAt: "2026-05-22T00:05:50.818Z"
+    identifier: "PACAA-973"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-974:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake_audit_digest] 2026-05-21 audit log → PACAA-973 첨부 완료\n\n- file: wake_audit-2026-05-21.jsonl (87 entries)\n- 발화 0건, 차단 0건\n- digest comment posted on PACAA-973\n"
+        createdAt: "2026-05-22T00:04:57.247Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "완료. PACAA-973 (Daily Board Digest 오늘 spawn) 에 wake-audit 코멘트 게시:\n- comment id: 0e799528-da64-4ae6-95a9-5bb4f369e911\n- 요약: 2026-05-21 E7=87 (allowed=25, reject=62) — 3축 가드 reject rate=2, idem=0, wl=0. 나머지 60건은 classifier 자체 skip (active=51, ext-wait=6, date-wait=3). E1/E5/E6 fire 0건.\n- 출처: $AGENT_HOME/runs/wake_audit-2026-05-21.jsonl\n- idempotency: wake_audit_digest:2026-05-21"
+        createdAt: "2026-05-22T00:05:29.262Z"
+    identifier: "PACAA-974"
+    priority: "low"
+    status: "done"
+  pacaa-975:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Fire 결과 — silent skip\n\n**라이브 cross-check**:\n- PACAA-905 status = `in_review` (변화 없음, board 가입 성공 미확인)\n- 최신 board 코멘트 (2026-05-21 16:34) = \"같은 이메일이 계속옴\" (이메일 forward 이슈, Workspace 가입 성공 신호 X)\n- 본 CEO 의 retry interaction 전수 GET 결과: `pacaa905:phone-retry:2026-05-21` (2026-05-21T01:04 UTC, Day 2 retry) — **pending, 미답변**\n\n**간격 판단**:\n- 최신 retry interaction 으로부터 경과 ≈ 1.6일 → 7일 게이트 미달 → silent skip.\n- 차단 시작 (2026-05-19) 부터는 Day 3 이지만, Day 2 retry 가 이미 떠 있고 답변 대기중이라 중복 발의 금지 (가드 #2 + #3).\n\n**다음 예상 알림**: 2026-05-28 (Day 2 retry interaction createdAt + 7일). 그 전이라도 보드가 답변하면 즉시 wake.\n\n→ 본 spawned issue 종료 (status=done)."
+        createdAt: "2026-05-22T01:04:18.355Z"
+    identifier: "PACAA-975"
+    priority: "medium"
+    status: "done"
+  pacaa-976:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[E7 stall_sweep] scan: 21/21 complete\n\n- in_progress 스캔: 0건\n- blocked 스캔: 0건\n- backlog 스캔: 21건\n- unintended-stall 발견: 0건\n- wake-comment 발화: 0건\n- 24h 중복 차단: 0건\n\naudit log: runs/wake_audit-2026-05-22.jsonl"
+        createdAt: "2026-05-22T05:27:18.961Z"
+    identifier: "PACAA-976"
+    priority: "medium"
+    status: "done"
+  pacaa-977:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "E7 stall_sweep 결과 (2026-05-22T09:01:24Z)\n\n- scanned: 21 (in_progress=1 self-skip, blocked=0, backlog=21)\n- unintended-stall: 1\n- fired (wake-comment): 1 — PACAA-192\n- rate-limit blocked (24h): 0\n- per_class: {active:17, unintended-stall:1, external-wait:2, date-wait:1}\n\nAudit: $AGENT_HOME/runs/wake_audit-2026-05-22.jsonl\nIdempotency key: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-22\n\nDoD met → done."
+        createdAt: "2026-05-22T09:02:13.713Z"
+    identifier: "PACAA-977"
+    priority: "medium"
+    status: "done"
+  pacaa-978:
+    identifier: "PACAA-978"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
+  pacaa-979:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## E6 seo_indexing_check 실행 결과 — 2026-05-23 03:00 KST\n\n**상태:** 자격증명 누락으로 GSC + Naver 양쪽 모두 스킵\n\n### 실행 요약\n\n| 항목 | 결과 |\n|------|------|\n| GSC 조회 (`packlinx.com`) | ⚠️ `gsc_skipped` — `GSC_CLIENT_EMAIL` / `GSC_PRIVATE_KEY` 미설정 |\n| GSC 조회 (`keywords.packlinx.com`) | ⚠️ `gsc_skipped` — 동일 |\n| Naver Webmaster (`packlinx.com`) | ⚠️ `naver_skipped` — `NAVER_SEARCHADVISOR_API_KEY` / `NAVER_SEARCHADVISOR_API_SECRET` 미설정 |\n| Naver Webmaster (`keywords.packlinx.com`) | ⚠️ `naver_skipped` — 동일 |\n| Wake-event 발송 | 없음 (데이터 없음) |\n\n### Audit Log\n\n파일: `$AGENT_HOME/runs/wake_audit-2026-05-23.jsonl`\n\n```jsonl\n{\"ts\": \"2026-05-23T06:27:17Z\", \"event\": \"gsc_skipped\", \"reason\": \"missing_creds\", \"domains\": [\"packlinx.com\", \"keywords.packlinx.com\"]}\n{\"ts\": \"2026-05-23T06:27:17Z\", \"event\": \"naver_skipped\", \"reason\": \"missing_creds\", \"domains\": [\"packlinx.com\", \"keywords.packlinx.com\"]}\n```\n\n### 다음 조치 필요\n\nGSC + Naver 인덱싱 측정을 활성화하려면 아래 env 변수를 adapterConfig에 설정해야 합니다.\n\n**GSC:**\n- `GSC_CLIENT_EMAIL` — Google Service Account 이메일\n- `GSC_PRIVATE_KEY` — Google Service Account 개인키\n\n**Naver Search Advisor:**\n- `NAVER_SEARCHADVISOR_API_KEY` — Naver 공개키\n- `NAVER_SEARCHADVISOR_API_SECRET` — Naver 비밀키\n\n자격증명 설정 후 다음 routine 실행 시 자동 활성화됩니다."
+        createdAt: "2026-05-23T06:27:49.177Z"
+    identifier: "PACAA-979"
+    priority: "medium"
+    status: "in_progress"
   pacaa-98:
     comments:
       -
@@ -27808,6 +27987,23 @@ tasks:
     identifier: "PACAA-98"
     priority: "medium"
     status: "done"
+  pacaa-980:
+    identifier: "PACAA-980"
+    priority: "medium"
+    status: "in_progress"
+  pacaa-981:
+    identifier: "PACAA-981"
+    priority: "low"
+    projectWorkspaceKey: "pkging-platform"
+    status: "todo"
+  pacaa-982:
+    identifier: "PACAA-982"
+    priority: "low"
+    status: "todo"
+  pacaa-983:
+    identifier: "PACAA-983"
+    priority: "medium"
+    status: "todo"
   pacaa-99:
     comments:
       -
