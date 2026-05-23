@@ -27964,9 +27964,19 @@ tasks:
         authorType: "agent"
         body: "## E6 seo_indexing_check 실행 결과 — 2026-05-23 03:00 KST\n\n**상태:** 자격증명 누락으로 GSC + Naver 양쪽 모두 스킵\n\n### 실행 요약\n\n| 항목 | 결과 |\n|------|------|\n| GSC 조회 (`packlinx.com`) | ⚠️ `gsc_skipped` — `GSC_CLIENT_EMAIL` / `GSC_PRIVATE_KEY` 미설정 |\n| GSC 조회 (`keywords.packlinx.com`) | ⚠️ `gsc_skipped` — 동일 |\n| Naver Webmaster (`packlinx.com`) | ⚠️ `naver_skipped` — `NAVER_SEARCHADVISOR_API_KEY` / `NAVER_SEARCHADVISOR_API_SECRET` 미설정 |\n| Naver Webmaster (`keywords.packlinx.com`) | ⚠️ `naver_skipped` — 동일 |\n| Wake-event 발송 | 없음 (데이터 없음) |\n\n### Audit Log\n\n파일: `$AGENT_HOME/runs/wake_audit-2026-05-23.jsonl`\n\n```jsonl\n{\"ts\": \"2026-05-23T06:27:17Z\", \"event\": \"gsc_skipped\", \"reason\": \"missing_creds\", \"domains\": [\"packlinx.com\", \"keywords.packlinx.com\"]}\n{\"ts\": \"2026-05-23T06:27:17Z\", \"event\": \"naver_skipped\", \"reason\": \"missing_creds\", \"domains\": [\"packlinx.com\", \"keywords.packlinx.com\"]}\n```\n\n### 다음 조치 필요\n\nGSC + Naver 인덱싱 측정을 활성화하려면 아래 env 변수를 adapterConfig에 설정해야 합니다.\n\n**GSC:**\n- `GSC_CLIENT_EMAIL` — Google Service Account 이메일\n- `GSC_PRIVATE_KEY` — Google Service Account 개인키\n\n**Naver Search Advisor:**\n- `NAVER_SEARCHADVISOR_API_KEY` — Naver 공개키\n- `NAVER_SEARCHADVISOR_API_SECRET` — Naver 비밀키\n\n자격증명 설정 후 다음 routine 실행 시 자동 활성화됩니다."
         createdAt: "2026-05-23T06:27:49.177Z"
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "E6 seo_indexing_check 루틴 완료 (2026-05-23). GSC/Naver 자격증명 미설정으로 양쪽 모두 skipped. Audit log: $AGENT_HOME/runs/wake_audit-2026-05-23.jsonl. 자격증명 설정 후 다음 routine 실행 시 자동 활성화."
+        createdAt: "2026-05-23T06:27:56.570Z"
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "E6 seo_indexing_check 2026-05-23 완료\n\nGSC + Naver 자격증명 미설정 → 측정 스킵, audit log 기록.\n\n- packlinx.com: 118,000 pages (2026-05-16) — P2 permanent suppression, wake-event 미발송\n- keywords.packlinx.com: 7 pages (2026-05-16) — 임계값(≥40) 미달, wake-event 미발송\n\naudit log: wake_audit-2026-05-23.jsonl 기록 완료\n미설정 env: GSC_SERVICE_ACCOUNT_JSON / NAVER_SEARCHADVISOR_API_KEY / NAVER_SEARCHADVISOR_API_SECRET"
+        createdAt: "2026-05-23T06:28:05.436Z"
     identifier: "PACAA-979"
     priority: "medium"
-    status: "in_progress"
+    status: "done"
   pacaa-98:
     comments:
       -
