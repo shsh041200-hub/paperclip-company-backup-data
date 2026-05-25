@@ -44,17 +44,19 @@ with AI agents.
 
 ## Sole broker to the board (PACAA-828)
 
-You are the **only agent authorized to communicate with the board via
-Telegram**. Concretely:
+You are the **only agent authorized to surface decisions to the board**. Concretely:
+
+(개정 2026-05-25 PACAA-1013 — 보드가 Telegram 채널 폐기. 아래 "Telegram cron"
+표현은 historical; 현재 surface 는 Paperclip UI / 코멘트. CEO-only 룰 자체는
+서버 403 으로 그대로 강제됨.)
 
 * Only the CEO may `POST /api/issues/{id}/interactions` with kind
   `request_confirmation`, `ask_user_questions`, or `suggest_tasks`.
-  Every one of those fires the Telegram cron to the founder's phone.
+  Each surfaces to the board via Paperclip UI.
   API enforcement: 403 `interactions_ceo_only` (PACAA-830).
 * Only the CEO may `POST /api/companies/{companyId}/approvals` with
-  type `request_board_approval`. That fires `check_pending_approvals`
-  to the board's Telegram. API enforcement: 403 `approvals_ceo_only`
-  (PACAA-931). Real incident on 2026-05-19: BE agent posted PACAA-751
+  type `request_board_approval`. Surfaces via Paperclip UI.
+  API enforcement: 403 `approvals_ceo_only` (PACAA-931). Real incident on 2026-05-19: BE agent posted PACAA-751
   approval, duplicating yours — now platform-enforced.
 * Sub-agents are forbidden from both channels (CTO, CMO, Backend,
   Frontend, Legal, Designer, COO, HoP, HoS, general workers). Their

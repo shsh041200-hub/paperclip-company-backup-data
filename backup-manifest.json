@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T14:01:05.696Z",
+  "generatedAt": "2026-05-25T14:00:59.595Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,17 +13,17 @@
     "skills": true
   },
   "counts": {
-    "files": 1096,
+    "files": 1112,
     "agents": 8,
     "skills": 26,
     "projects": 1,
-    "issues": 1032
+    "issues": 1047
   },
   "warnings": [
     "Skipped 14 terminated agents from export.",
     "Agent e5-worker command /bin/true was omitted from export because it is system-dependent.",
     "Agent email-worker command /bin/true was omitted from export because it is system-dependent.",
-    "Tasks pacaa-239, pacaa-240, pacaa-241, pacaa-370 and 5 more reference workspace 4f98a142-6af1-434b-9bbf-403516cb003b, but that workspace could not be exported portably."
+    "Tasks pacaa-1013, pacaa-239, pacaa-240, pacaa-241 and 6 more reference workspace 4f98a142-6af1-434b-9bbf-403516cb003b, but that workspace could not be exported portably."
   ],
   "fileInventory": [
     ".paperclip.yaml",
@@ -36,6 +36,7 @@
     "agents/backend-engineer/SOUL.md",
     "agents/backend-engineer/SOUL.md.backup-2026-05-07",
     "agents/ceo/AGENTS.md",
+    "agents/ceo/HEARTBEAT-email.md",
     "agents/ceo/HEARTBEAT.md",
     "agents/ceo/SOUL.md",
     "agents/cmo/AGENTS.md",
@@ -112,8 +113,22 @@
     "tasks/pacaa-1005/TASK.md",
     "tasks/pacaa-1006/TASK.md",
     "tasks/pacaa-1007/TASK.md",
+    "tasks/pacaa-1008/TASK.md",
+    "tasks/pacaa-1009/TASK.md",
     "tasks/pacaa-101/TASK.md",
+    "tasks/pacaa-1010/TASK.md",
+    "tasks/pacaa-1011/TASK.md",
+    "tasks/pacaa-1012/TASK.md",
+    "tasks/pacaa-1013/TASK.md",
+    "tasks/pacaa-1014/TASK.md",
+    "tasks/pacaa-1015/TASK.md",
+    "tasks/pacaa-1016/TASK.md",
+    "tasks/pacaa-1017/TASK.md",
+    "tasks/pacaa-1018/TASK.md",
+    "tasks/pacaa-1019/TASK.md",
     "tasks/pacaa-102/TASK.md",
+    "tasks/pacaa-1020/TASK.md",
+    "tasks/pacaa-1021/TASK.md",
     "tasks/pacaa-103-psi-quota-retry-one-shot/TASK.md",
     "tasks/pacaa-103/TASK.md",
     "tasks/pacaa-104-5d-index-audit-one-shot/TASK.md",
@@ -1118,6 +1133,7 @@
     "tasks/phase3-e7-enable-due-e7-stall-sweep-enable-trigger-patch/TASK.md",
     "tasks/phase4-eval-stub-phase-4-option-3-vs-option-1/TASK.md",
     "tasks/reminder-pacaa-1006-gsc-8-2026-07-19/TASK.md",
+    "tasks/reminder-pacaa-1018-batch-b-tier-2-lever-roi-2026-06-01/TASK.md",
     "tasks/stale-blocked-issue-sweep/TASK.md",
     "tasks/vendor-complaint-monthly-accumulation-review/TASK.md",
     "tasks/vendor-verification-quarterly-renewal-sweep/TASK.md",
