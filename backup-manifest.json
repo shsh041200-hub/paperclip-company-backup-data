@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-25T14:00:59.595Z",
+  "generatedAt": "2026-05-26T14:01:03.640Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 1112,
+    "files": 1125,
     "agents": 8,
     "skills": 26,
     "projects": 1,
-    "issues": 1047
+    "issues": 1060
   },
   "warnings": [
     "Skipped 14 terminated agents from export.",
@@ -129,8 +129,21 @@
     "tasks/pacaa-102/TASK.md",
     "tasks/pacaa-1020/TASK.md",
     "tasks/pacaa-1021/TASK.md",
+    "tasks/pacaa-1022/TASK.md",
+    "tasks/pacaa-1023/TASK.md",
+    "tasks/pacaa-1024/TASK.md",
+    "tasks/pacaa-1025/TASK.md",
+    "tasks/pacaa-1026/TASK.md",
+    "tasks/pacaa-1027/TASK.md",
+    "tasks/pacaa-1028/TASK.md",
+    "tasks/pacaa-1029/TASK.md",
     "tasks/pacaa-103-psi-quota-retry-one-shot/TASK.md",
     "tasks/pacaa-103/TASK.md",
+    "tasks/pacaa-1030/TASK.md",
+    "tasks/pacaa-1031/TASK.md",
+    "tasks/pacaa-1032/TASK.md",
+    "tasks/pacaa-1033/TASK.md",
+    "tasks/pacaa-1034/TASK.md",
     "tasks/pacaa-104-5d-index-audit-one-shot/TASK.md",
     "tasks/pacaa-104/TASK.md",
     "tasks/pacaa-105/TASK.md",
