@@ -1412,10 +1412,66 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-1034:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Daily backup완료. 푸시 클린, 시크릿 스크럽 19건 적용.\n\n**2026-05-26 23:00 KST 일일 백업**\n- Commit: `7dfcccb`\n- Counts: 8 agents / 26 skills / 1 project / **1060 issues** (전일 1047 → +13)\n- Files: 1125\n- Scrubber: 19 redactions (Cloudflare ×4, Supabase ×2, Telegram ×7, GitHub webhook ×1, FTC NTS ×2, Worker JWT ×1, Replicate ×1, Founder pw ×1)\n- Floor assertions passed, push 차단 없음\n- 이슈 status → done"
+        createdAt: "2026-05-26T14:01:33.557Z"
     identifier: "PACAA-1034"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
+  pacaa-1035:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## E6 seo_indexing_check — 2026-05-27 실행 완료\n\n**Status:** done — credentials 미설정으로 live 측정 불가, audit log 정상 기록\n\n### 가드 결과 (5/5 PASS)\n- Whitelist: PASS — E6 routine execution issue\n- Rate limit: PASS — 1/5 (first run of 2026-05-27)\n- Idempotency: PASS — no prior routine_summary for 2026-05-27\n- Kill switch: PASS — routine in_progress (active)\n- Audit log: PASS — written to `$AGENT_HOME/runs/wake_audit-2026-05-27.jsonl`\n\n### GSC 측정\n- 결과:  (GSC_SERVICE_ACCOUNT_JSON 미설정)\n- packlinx.com: suppressed_permanent_met (last known 118,000 pages — P2 suppression 유지)\n- keywords.packlinx.com: below_threshold_or_unknown (last known 7 pages, threshold 40 — wake-event 미발송)\n\n### Naver 측정\n- 결과:  —  /  미설정\n- 정책 준수: GSC 구간만 진행, Naver 구간 건너뜀\n\n### wake-event\n- 발송 없음 — live 데이터 없음 + keywords.packlinx.com threshold 미달 (last known 7/40)\n\n### 다음 액션\n- GSC 인증 설정 필요:  (service account w/ GSC read access)\n- Naver 인증 설정 필요:  + \n- 인증 미설정 = 매일 skipped 상태로 audit log 기록만 계속됨\n- 다음 E6 실행: 2026-05-28 03:00 KST (자동)\n"
+        createdAt: "2026-05-26T18:02:54.103Z"
+    identifier: "PACAA-1035"
+    priority: "medium"
+    status: "done"
+  pacaa-1036:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## E7 stall_sweep — scan 결과 (2026-05-26T21:01Z)\n\n- scanned: **23** (in_progress 1 self-excluded, backlog 23)\n- unintended-stall 감지: **1** (PACAA-192)\n- 발화: **0** — 24h rate-limit 차단 (오늘 09:00 동일 분류로 발화 이력)\n- per-class: active=19, external-wait=2, date-wait=1, unintended-stall=1\n\n가드 5종 모두 정상 작동. 본 spawn → done.\n\naudit: `$AGENT_HOME/runs/wake_audit-2026-05-26.jsonl`"
+        createdAt: "2026-05-26T21:01:32.591Z"
+    identifier: "PACAA-1036"
+    priority: "medium"
+    status: "done"
+  pacaa-1037:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 결과\n\n- audit log 파싱: `runs/wake_audit-2026-05-26.jsonl` 73 entries (3 summary + 70 individual E7 scans). E1/E5/E6 = 0건.\n- E7 70건 중 allowed=1, blocked=69 (active=58 / external-wait=6 / date-wait=3 / rate-limit=2).\n- Daily Board Digest spawn 라우틴 archived (PACAA-1000/1013 Telegram→Paperclip 라우팅 전환 시기 일치, 의도된 사일런싱). 기존 패턴대로 PACAA-53 hub 에 fallback 코멘트 게시.\n- PACAA-53 코멘트 게시 ✅ (id `c53cbeae-c0b6-4c10-9319-55d7d3e82bb0`) + 보정 코멘트 (id `e46e94f9-c180-486d-b9c4-f07052dd67e9`).\n\n## DoD\n- [x] audit log 파싱 성공\n- [x] board digest issue 코멘트 게시 (hub fallback)\n- [x] 본 이슈 done 처리\n\nidempotency: wake_audit_digest:2026-05-26"
+        createdAt: "2026-05-27T00:05:06.216Z"
+    identifier: "PACAA-1037"
+    priority: "low"
+    status: "done"
+  pacaa-1038:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## Routine fire — silent skip\n\n**라이브 cross-check (2026-05-27):**\n- PACAA-905 status: `in_review` (보드 close 안 함)\n- 최신 보드 코멘트 (2026-05-21 16:34): 이메일 루프 진단 요청 — \"성공/풀렸/가입 완료\" 키워드 없음\n- 최신 retry interaction `bba89cbc` (Day 2): 2026-05-21T01:04 KST\n- 경과: **6일** (< 7일 정기 retry 가드)\n\n**판단:** Spec 4단계 — silent skip.\n\n**다음 예상 알림:** 2026-05-28 (Day 9, 최신 retry 7일 경과 시점). Routine 다음 fire 에서 재평가.\n\n자기 자동 disable 트리거 (PACAA-905 done / 성공 코멘트) 미충족 → routine 라이브 유지."
+        createdAt: "2026-05-27T01:04:20.094Z"
+    identifier: "PACAA-1038"
+    priority: "medium"
+    status: "done"
+  pacaa-1039:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "scan: 23/23 | unintended: 1 | fired: 1 | blocked_24h: 0\nper_class: active=19, external-wait=2, unintended-stall=1, date-wait=1\nfired → PACAA-192 (backlog assigned but heartbeat stale)\naudit: $AGENT_HOME/runs/wake_audit-2026-05-27.jsonl\nguards: idempotencyKey=stall.detected:<iid>:<class>:YYYY-MM-DD; 24h rate-limit honored; SELF skip OK.\nDoD: 전수 스캔 완료, audit append, unintended ≥1 → wake-comment 발화. status=done."
+        createdAt: "2026-05-27T03:01:13.762Z"
+    identifier: "PACAA-1039"
+    priority: "medium"
+    status: "done"
   pacaa-104:
     comments:
       -
@@ -1492,6 +1548,21 @@ tasks:
     identifier: "PACAA-104"
     priority: "medium"
     status: "done"
+  pacaa-1040:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[E7 stall_sweep result @ 2026-05-27T09:00:55Z]\n\n- scanned: 23 (in_progress=1 self skipped, blocked=0, backlog=23)\n- per_class: active=19, external-wait=2, date-wait=1, unintended-stall=1\n- unintended-stall: 1 (PACAA-192, 24h rate-limit blocked — already fired at 03:00:53Z this morning)\n- fired: 0\n- rate-limit blocked: 1\n\naudit log: $AGENT_HOME/runs/wake_audit-2026-05-27.jsonl (23 entries + 1 summary).\nguards passed: whitelist (stall.detected only), 24h rate-limit (1 block enforced), idempotency key emitted on candidates, audit append, kill-switch intact.\n\nDoD: 전수 스캔 완료 / audit append / unintended-stall 발생했으나 24h 가드로 차단 → no-fire 결과 코멘트 + done."
+        createdAt: "2026-05-27T09:01:36.752Z"
+    identifier: "PACAA-1040"
+    priority: "medium"
+    status: "done"
+  pacaa-1041:
+    identifier: "PACAA-1041"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-105:
     comments:
       -
@@ -6437,6 +6508,11 @@ tasks:
         authorType: "agent"
         body: "[wake-event] E7 stall.detected: PACAA-192 unintended-stall at 2026-05-26T03:01:03.925842+00:00\nreason: backlog assigned but heartbeat stale\nidempotencyKey: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-26\naction: assignee 자가 reflection — 합법 wait 신호 baking 또는 force-restart 결정."
         createdAt: "2026-05-26T03:01:06.482Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-event] E7 stall.detected: PACAA-192 unintended-stall at 2026-05-27T03:00:53.786758+00:00\nreason: backlog assigned but heartbeat stale\nidempotencyKey: stall.detected:ce22e581-14f8-4cd3-9009-01c23d121b12:unintended-stall:2026-05-27\naction: assignee 자가 reflection — 합법 wait 신호 baking 또는 force-restart 결정."
+        createdAt: "2026-05-27T03:00:56.640Z"
     identifier: "PACAA-192"
     priority: "low"
     status: "backlog"
@@ -16189,6 +16265,16 @@ tasks:
         authorType: "agent"
         body: "[wake-audit] 2026-05-25: E1=0건 / E5=0건 / E6=0건 / E7=75건 / reject=73건 (rate=0, idempotent=0, whitelist=0)\n\n**E7 분류 분포 (75건 전수, 6h × 4회 = 4 sweep + summary markers)**\n- active (heartbeat 신선): 20건 — 정상 active skip\n- date-wait: 41건 — 예정 일자 미도래 (scheduled 2026-06-01 baseline 등)\n- dependency-wait: 6건 — umbrella waiting on children\n- external-wait: 4건 — keyword:telegram 등\n- self-skip: 2건 — stall_sweep 자기 자신\n\n**fired (allowed=True): 1건**\n- PACAA-192 — unintended-stall (backlog assigned but heartbeat stale, 2026-05-25T21:01)\n- idempotencyKey: `stall.detected:ce22e581:unintended-stall:2026-05-25`\n\n**5 가드 자가-감사**\n- whitelist=0: 본 routine은 비-발화 (조회+코멘트), 통과\n- rate=0: 단일 routine 1회/일, 통과\n- idempotent=0: `wake_audit_digest:2026-05-25` — 본 코멘트가 당일 첫 발화\n\n**비고**\n- 본 digest는 PACAA-53 hub 에 직접 첨부 (PACAA-66234... Daily Board Digest routine lastTriggeredAt=2026-05-24 이후 spawn 누락, fallback 패턴 PACAA-818 적용)\n- audit log: `runs/wake_audit-2026-05-25.jsonl` 18.2KB / 75 entries"
         createdAt: "2026-05-26T00:04:28.825Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-audit] 2026-05-26: E1=0건 / E5=0건 / E6=0건 / E7=70건 / reject=69건 (rate=2, idempotent=0, whitelist=0)\n\n**E7 분류 분포 (70건, 3회 sweep 합산):**\n- allowed (fired): **1건**\n- rejected: 69건\n  - classification=active: 58 (heartbeat 임박)\n  - classification=external-wait: 6\n  - classification=date-wait: 3\n  - rate-limit 24h same key: 2\n\n**Sweep summary 행 합계 (3회):** scanned=70, fired=1, blocked_24h=2, unintended-stall=3 / per_class: active=58, external-wait=6, unintended-stall=3, date-wait=3\n\n**fire 효율:** 1 / 70 = 1.4% — active 비중이 가장 큰 차단 사유. 정상 (active 는 자체 진행 중이므로 wake 불필요).\n\n**경고 — Daily Board Digest 게이트 끊김:**\nPACAA-53 spawn 라우틴 (66234a11) `lastTriggeredAt = 2026-05-24T00:00`. 2026-05-25 / 26 / 27 3일 연속 미발화. 본 코멘트는 hub fallback 으로 직접 게시. 별도 진단 child 필요 — 후속 발의 예정.\n\n— source: `$AGENT_HOME/runs/wake_audit-2026-05-26.jsonl`\n— idempotency: wake_audit_digest:2026-05-26\n— spawned by: PACAA-1037"
+        createdAt: "2026-05-27T00:03:59.648Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**보정** — Daily Board Digest 라우틴 (66234a11) `status=archived` (트리거는 enabled 이나 상위 archive 로 발화 차단). 2026-05-24 마지막 발화 직후 archive 됨. PACAA-1000 (Telegram → Paperclip routing 전환) / PACAA-1013 (Telegram bot 토큰 cancel) 와 시기 일치 — 의도된 사일런싱으로 추정. 위 \"경고\" 회수, 진단 child 발의 보류. (출처: routine `updatedAt = 2026-05-24T00:16:51`, `status=archived`)."
+        createdAt: "2026-05-27T00:04:45.929Z"
     identifier: "PACAA-53"
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
