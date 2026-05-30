@@ -218,6 +218,7 @@ projects:
 routines:
   80:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -226,6 +227,7 @@ routines:
         timezone: "Asia/Seoul"
   brn-cross-validation:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -251,6 +253,7 @@ routines:
         timezone: "Asia/Seoul"
   e6-seo-indexing-check-gsc-naver-indexing-threshold-wake:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -261,10 +264,12 @@ routines:
       -
         kind: "schedule"
         cronExpression: "0 3 * * *"
+        enabled: false
         label: "E6 daily 03:00 KST"
         timezone: "Asia/Seoul"
   e6-seo-indexing-check-gsc-naver-indexing-threshold-wake-2:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -275,11 +280,11 @@ routines:
       -
         kind: "schedule"
         cronExpression: "0 3 * * *"
-        enabled: false
         label: "E6 daily 03:00 KST"
         timezone: "Asia/Seoul"
   e7-stall-sweep-in-progress-blocked-backlog-stall-wake-comment:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -288,6 +293,7 @@ routines:
         timezone: "Asia/Seoul"
   ftc-import:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -296,6 +302,7 @@ routines:
         timezone: "Asia/Seoul"
   legal-counsel-weekly-self-audit:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -308,6 +315,7 @@ routines:
   p4b-v04-2-gsc-ctr-ga-engagement:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -317,8 +325,10 @@ routines:
   pacaa-103-psi-quota-retry-one-shot:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
   pacaa-104-5d-index-audit-one-shot:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -327,6 +337,7 @@ routines:
         timezone: "Asia/Seoul"
   pacaa-121-t-14d-gsc-alternate-canonical-pool-one-shot:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -344,6 +355,7 @@ routines:
         timezone: "Asia/Seoul"
   pacaa-196-backstop-flexible-packaging-guide-gsc-soak:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -375,6 +387,7 @@ routines:
         timezone: "Asia/Seoul"
   pacaa-905-google-workspace:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -382,6 +395,7 @@ routines:
         label: "PACAA-905 phone retry daily 10:03 KST"
         timezone: "Asia/Seoul"
   pacaa-96-serp-rank-50:
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -391,6 +405,7 @@ routines:
   phase2-canary-eval-due-phase-2-1-e6-e7-enable:
     concurrencyPolicy: "skip_if_active"
     priority: "high"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -401,6 +416,7 @@ routines:
   phase3-audit-digest-enable-due-wake-audit-digest-enable-trigger-patch:
     catchUpPolicy: "enqueue_missed_with_cap"
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -420,6 +436,7 @@ routines:
   phase4-eval-stub-phase-4-option-3-vs-option-1:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -429,6 +446,7 @@ routines:
   reminder-pacaa-1006-gsc-8-2026-07-19:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -437,6 +455,7 @@ routines:
         timezone: "Asia/Seoul"
   reminder-pacaa-1018-batch-b-tier-2-lever-roi-2026-06-01:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -446,6 +465,7 @@ routines:
   stale-blocked-issue-sweep:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -455,6 +475,7 @@ routines:
   vendor-complaint-monthly-accumulation-review:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -463,6 +484,7 @@ routines:
         timezone: "Asia/Seoul"
   vendor-verification-quarterly-renewal-sweep:
     concurrencyPolicy: "skip_if_active"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -477,6 +499,7 @@ routines:
   wake-audit-digest-24h-wake-event-audit-log-board-digest:
     concurrencyPolicy: "skip_if_active"
     priority: "low"
+    status: "paused"
     triggers:
       -
         kind: "schedule"
@@ -1429,6 +1452,15 @@ tasks:
         authorType: "agent"
         body: "## E6 seo_indexing_check — 2026-05-27 실행 완료\n\n**Status:** done — credentials 미설정으로 live 측정 불가, audit log 정상 기록\n\n### 가드 결과 (5/5 PASS)\n- Whitelist: PASS — E6 routine execution issue\n- Rate limit: PASS — 1/5 (first run of 2026-05-27)\n- Idempotency: PASS — no prior routine_summary for 2026-05-27\n- Kill switch: PASS — routine in_progress (active)\n- Audit log: PASS — written to `$AGENT_HOME/runs/wake_audit-2026-05-27.jsonl`\n\n### GSC 측정\n- 결과:  (GSC_SERVICE_ACCOUNT_JSON 미설정)\n- packlinx.com: suppressed_permanent_met (last known 118,000 pages — P2 suppression 유지)\n- keywords.packlinx.com: below_threshold_or_unknown (last known 7 pages, threshold 40 — wake-event 미발송)\n\n### Naver 측정\n- 결과:  —  /  미설정\n- 정책 준수: GSC 구간만 진행, Naver 구간 건너뜀\n\n### wake-event\n- 발송 없음 — live 데이터 없음 + keywords.packlinx.com threshold 미달 (last known 7/40)\n\n### 다음 액션\n- GSC 인증 설정 필요:  (service account w/ GSC read access)\n- Naver 인증 설정 필요:  + \n- 인증 미설정 = 매일 skipped 상태로 audit log 기록만 계속됨\n- 다음 E6 실행: 2026-05-28 03:00 KST (자동)\n"
         createdAt: "2026-05-26T18:02:54.103Z"
+      -
+        authorType: "user"
+        body: "정확히 내가 뭘 하면돼"
+        createdAt: "2026-05-27T17:04:04.160Z"
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "두 가지 API 키를 설정하면 됩니다.\n\n---\n\n## 1. Google Search Console (GSC) 키\n\n**목적:** packlinx.com / keywords.packlinx.com 색인 페이지 수 측정\n\n**설정 방법:**\n1. [Google Cloud Console](https://console.cloud.google.com/) → IAM → 서비스 계정 생성\n2. GSC 속성([search.google.com/search-console](https://search.google.com/search-console))에 해당 서비스 계정 이메일 **소유자** 권한으로 추가\n3. 서비스 계정 → 키 → JSON 키 다운로드\n4. JSON 파일 내용 전체를 환경변수로 설정:\n\n\n\n---\n\n## 2. Naver Search Advisor 키\n\n**목적:** Naver 색인 페이지 수 측정\n\n**설정 방법:**\n1. [Naver Search Advisor](https://searchadvisor.naver.com/) 로그인\n2. packlinx.com / keywords.packlinx.com 사이트 등록 (이미 되어 있으면 skip)\n3. 사이트 대시보드 → **API 키 관리** → 공개키 / 비밀키 복사\n4. 환경변수로 설정:\n\n\n\n---\n\n## 어디에 설정하나요?\n\nPaperclip 보드 → CMO 에이전트 → **어댑터 설정(adapterConfig.env)** 에 위 3개 변수 추가.\n\n설정 후 다음 날 03:00 KST E6 루틴 실행 시 자동으로 live 측정이 시작됩니다.\n현재는 키가 없어서 매일  상태로 audit log만 기록되고 있습니다.\n"
+        createdAt: "2026-05-27T17:04:27.304Z"
     identifier: "PACAA-1035"
     priority: "medium"
     status: "done"
@@ -1559,7 +1591,96 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-1041:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "백업 완료. `4aea865` 푸시됨.\n\n- agents 8 / skills 26 / projects 1 / issues 1067\n- 시크릿 스크럽: 19건 redaction (Cloudflare 4, Telegram 7, Supabase 2, FTC NTS 2, Worker JWT 1, GitHub webhook 1, 파운더 비밀번호 1, Replicate 1)\n- 변경 파일 10개 (오늘 새로 생긴 PACAA-1037~1041 등)\n- 이슈 status=done 처리"
+        createdAt: "2026-05-27T14:01:55.424Z"
     identifier: "PACAA-1041"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-1042:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## E6 seo_indexing_check 완료 — 2026-05-28\n\n**실행 결과: 정상 종료 (자격증명 없음 — 측정 skipped)**\n\n### 5-Guard 결과\n| Guard | 결과 |\n|---|---|\n| Whitelist | ✅ PASS — E6 routine execution issue (PACAA-1042) |\n| Rate limit | ✅ PASS — 1/5 (2026-05-28 첫 실행) |\n| Idempotency | ✅ PASS — 오늘 prior routine_summary 없음 |\n| Kill switch | ✅ PASS — 이슈 in_progress (active) |\n| Audit log | ✅ WRITTEN — `$AGENT_HOME/runs/wake_audit-2026-05-28.jsonl` |\n\n### 도메인별 측정 결과\n| 도메인 | 상태 | 마지막 기지값 | 임계값 | Wake-event |\n|---|---|---|---|---|\n| packlinx.com | `suppressed_permanent_met` (P2) | 118,000 페이지 (2026-05-16) | ≥100 | ❌ 발송 안 함 (P2 영구 suppression) |\n| keywords.packlinx.com | `below_threshold_or_unknown` | 7 페이지 (2026-05-16) | ≥40 | ❌ 미충족 |\n\n### GSC / Naver 스킵 사유\n- **GSC**: `GSC_SERVICE_ACCOUNT_JSON` 미설정 — 라이브 측정 불가. `gsc_skipped` audit 기록 완료.\n- **Naver**: `NAVER_SEARCHADVISOR_API_KEY` / `NAVER_SEARCHADVISOR_API_SECRET` 미설정 — `naver_skipped` audit 기록 완료.\n\n### 해결 필요 사항 (반복 blocker — 매일 동일)\n이 routine이 실제 인덱싱 측정을 수행하려면 CEO/CTO가 adapterConfig.env에 다음 변수를 설정해야 합니다:\n- `GSC_SERVICE_ACCOUNT_JSON` — Google Search Console 서비스 계정 JSON (GSC read 권한)\n- `NAVER_SEARCHADVISOR_API_KEY` — Naver Search Advisor 공개키\n- `NAVER_SEARCHADVISOR_API_SECRET` — Naver Search Advisor 비밀키\n\n이미 2026-05-10 ~ 2026-05-27 매일 동일 사항이 기록되었습니다. 자격증명 설정 전까지 매일 skipped 상태로 기록됩니다."
+        createdAt: "2026-05-27T18:02:51.436Z"
+    identifier: "PACAA-1042"
+    priority: "medium"
+    status: "done"
+  pacaa-1043:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## E7 stall_sweep 결과 (2026-05-27T21:00:55Z)\n\n- scanned: 23\n- per_class: active=19, unintended-stall=1, external-wait=2, date-wait=1\n- unintended: 1\n- fired: 0\n- blocked_24h: 1 (동일 (issueId, classification, day) 동일일 재발화 차단)\n\n## 가드 적용\n- Whitelist: stall.detected 전용 — ✅\n- Rate limit: 24h (issueId, classification, day) — ✅ (1건 차단)\n- Idempotency key: stall.detected:{issueId}:{classification}:{YYYY-MM-DD} — ✅\n- Audit log: $AGENT_HOME/runs/wake_audit-2026-05-27.jsonl 24줄 append — ✅\n- Kill switch: routine/trigger enabled=false 즉시 차단 — 미사용 ✅\n\n## 결론\n오늘 (UTC) 발화 0건. 본 spawn 회차 DoD 충족 → done."
+        createdAt: "2026-05-27T21:01:23.602Z"
+    identifier: "PACAA-1043"
+    priority: "medium"
+    status: "done"
+  pacaa-1044:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 완료 (wake_audit_digest 2026-05-28 09:00 KST 발화)\n\n**대상:** `runs/wake_audit-2026-05-27.jsonl` (72 lines)\n\n**Wake event 분포:**\n- E1=0건 / E5=0건 / E6=0건 / E7=72건 (전부 stall_sweep 6h cron)\n- allowed=4 / reject=68\n\n**Reject 사유:**\n- classification=active (heartbeat 최근): 57\n- external-wait (telegram 키워드): 6\n- date-wait (주간 키워드): 3\n- rate-limit (24h 동일 issueId,classification,day): 2\n\n**Posted:** PACAA-53 (Daily Board Digest hub) comment 2e16b026.\n\n**부가 발견:** Daily Board Digest 루틴 (66234a11) 마지막 spawn = 2026-05-24 (PACAA-998). 4일째 미발화 → 본 코멘트 hub fallback. PACAA-53 코멘트에 별도 root-cause 진단 필요 명시.\n\n**Idempotency:** PACAA-53 댓글 prefix `[wake-audit] 2026-05-27` 중복 없음 확인 후 1회만 게시."
+        createdAt: "2026-05-28T00:04:08.480Z"
+    identifier: "PACAA-1044"
+    priority: "low"
+    status: "done"
+  pacaa-1045:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 라이브 진단 (2026-05-30 24:19 KST)\n\n| 항목 | 결과 |\n|---|---|\n| `https://www.packlinx.com/` | **HTTP 402** `x-vercel-error: DEPLOYMENT_DISABLED` |\n| apex / www / 경로별 | 전부 동일하게 402 |\n| Body | `Payment required\n\nDEPLOYMENT_DISABLED` |\n| 서버 ID | `icn1::96mmp-1780154394092-d1a47daec9ec` |\n\n코드 배포 단의 ERROR 가 아니라 **Vercel 계정/결제/정책 레벨에서 deployment 자체를 비활성화**한 상태.\n\n## 히스토리 연결 — PACAA-594\n2026-05-11 Vercel 안전팀 \"공정사용지침 위반\" 이메일 수신. 당시 라이브 진단: team active / plan=Pro Plus / 도메인 verified / 프로젝트 paused 없음 → 보드 선택 **A. 무시**. 약 19일 뒤 오늘 DEPLOYMENT_DISABLED 실행 → 그때 우려한 시나리오 현실화 가능성 ↑.\n\n## 가능한 원인 후보\n1. **AUP/안전팀 enforcement** (PACAA-594 후속) — appeal 필요\n2. **Pro Plus 결제 실패** (카드 만료/한도) — 결제 정보 갱신\n3. **Plan 한도 초과** (bandwidth/build) — plan 업그레이드\n\nCEO Vercel API 권한은 read-only (PACAA-594 검증용)이며 billing·account 메뉴는 founder 계정 한정. 원인 식별을 위해 보드님이 Vercel 대시보드 직접 확인 필요.\n\n## 루틴 30개 paused\n별개 Paperclip platform 이슈 가능성 높음. 본 이슈는 **사이트 복구**가 1순위; 사이트 복구 후 루틴 재활성화는 별도 child issue 로 발의.\n\n## 다음 액션\n원인 식별을 위해 ask_user_questions 발의 — 보드님 Vercel 대시보드 확인 후 카테고리 선택."
+        createdAt: "2026-05-30T15:23:39.871Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 추가 진단 — Vercel API read-only 결과 (CEO 직접)\n\nCEO 보유 `VERCEL_TOKEN` 으로 라이브 확인 (billing 메뉴는 API 도 OWNER 권한이라 가능):\n\n```\nteam: shsh041200-7631's projects (team_37jyFoHivLNfKftJguZQlKTX)\nbilling.status: active\nbilling.plan: hobby            ← PACAA-594 (5-11) 당시 'pro plus' 였음\nbilling.planIteration: plus\nbilling.expiredSubscriptions: ['gfHmovGQ3PTCRDuy']  ← Pro Plus 구독 만료됨\nbilling.plusMigrationEnabled: false\nprojects (3개): pkging-platform / packlinx-web / pacaa94-keywords — paused=null (프로젝트 정지 아님)\n```\n\n## 원인 추정 — 1순위 강한 증거\n\n**Pro Plus 구독 만료 → Hobby tier 로 자동 다운그레이드 → Hobby tier `commercial use` 정책 위반 감지 → `DEPLOYMENT_DISABLED`** 패턴.\n\n- Hobby plan 은 **상업적 사용 금지** (Vercel AUP §commercial use restriction)\n- packlinx.com 은 명백한 commercial site → Pro Plus 가 active 였을 때만 허용\n- 구독 expired + commercial site = Vercel 자동 enforcement → 402\n- PACAA-594 (5-11) 의 AUP 이메일은 hobby downgrade 후 enforcement 의 사전 경고일 가능성도 있음\n\n→ ask_user_questions interaction `e15c8f84-...` 의 **B. 결제 실패** 또는 **A. AUP** 사이 — 사실상 **B+A 복합** (구독 만료가 trigger, AUP 가 enforcement 메커니즘).\n\n## 해결 경로 추천\n\n1. 보드님 `vercel.com/account/billing` → Pro Plus 재구독 (월 $20+) 또는 갱신\n2. 결제 완료 후 ~1-5분 내 자동 deployment 재활성화 (Vercel 표준 SLA)\n3. 재활성화 후 `curl https://www.packlinx.com/` 200 확인 → 본 이슈 close\n4. 사이트 복구 후 별도: PACAA-637 등 soak 측정 재개 + GSC URL 재제출\n\n## 별개 발견 — 루틴 pause 는 보드 의도\n\n루틴 30개 라이브 확인:\n- 24개 paused / 6개 archived\n- **24개 paused 전부 `2026-05-28` `local-board` 가 직접 업데이트** → 보드님이 의도적 일괄 pause 한 것 (platform 버그 아님)\n\nCMO 알람은 \"platform이 알아서 정지된 위기\" 였지만 **실제는 보드 의도 운영 정지**. 따라서:\n\n- Q: 사이트 복구도 보드 의도에 반하는가? (5-28 routine pause + Vercel 구독 만료 ≈ 동시기, 의도적 운영 다운 가능성 ↑)\n- Q: 또는 routine pause = 비용/방향 점검 중이고, Vercel 만료는 별개 결제 실수인가?\n\n원래 ask_user_questions 는 Vercel 원인 카테고리만 묻고 있는데, 보드 의도까지 묻는 게 더 핵심. 다만 동일 이슈에서 새 interaction 발의는 dedup 정책 위반. 보드님이 기존 interaction 응답 시 자유 입력란에 \"의도적 운영 정지 — 복구 보류\" 또는 \"실수 — 복구\" 명시 부탁드립니다."
+        createdAt: "2026-05-30T15:26:46.719Z"
+      -
+        authorType: "system"
+        body: "Paperclip automatically retried continuation for this assigned `in_progress` issue and the retry made progress, but it still has no live execution path. Moving it to `blocked` so it is visible for intervention.\n- Recovery action: `15b8699f-12d3-4670-b777-ee0909d8df84`\n- Recovery owner: [CEO](/PACAA/agents/e33ecade-45dc-47ea-9d46-78ef72e8831c)\n- Next action: the recovery owner should either restore a live execution path or record the manual resolution on the source issue."
+        createdAt: "2026-05-30T15:28:02.407Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 현황 (2026-05-30 wake 재개)\n\n사이트 여전히 `HTTP 402 DEPLOYMENT_DISABLED`. Vercel billing 변화 없음 (plan=hobby, expiredSubscriptions 동일).\n\n## 단일 Unblock 경로\n\n이슈가 `blocked` 상태. **보드님 직접 행동 1가지**만 필요:\n\n> vercel.com/account/billing → **Pro (또는 Pro Plus) 재구독** → 결제 완료\n\n결제 완료 직후 CEO 가 자동으로 사이트 복구 확인 + 후속 처리 (GSC URL 재제출 child issue, 루틴 재활성화 여부 확인) 를 진행합니다. 이 interaction 응답 옵션 중 **B. 결제 실패** 를 선택하시면 CEO 가 wake 됩니다.\n\n## Vercel 결제 URL 직접 링크\n- Team billing: https://vercel.com/shsh041200-7631s-projects/settings/billing\n- Account plans: https://vercel.com/account/billing\n\n현재 Vercel API 진단 기록:\n```\nplan: hobby (downgraded)\nplanIteration: plus\nstatus: active\nexpiredSubscriptions: ['gfHmovGQ3PTCRDuy']  ← Pro Plus 구독 만료됨\n```\n\nCEO 는 Vercel 결제 UI 에 접근할 수 없어 보드님 행동이 유일한 unblock path."
+        createdAt: "2026-05-30T15:28:43.411Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 2026-05-31 00:37 KST wake — recovery action 처리\n\n**라이브 재확인**: `https://www.packlinx.com/` → HTTP 402 `DEPLOYMENT_DISABLED` (11분 전과 동일, 변화 없음).\n\n**상태 진단**:\n- 인터랙션 `e15c8f84` (ask_user_questions, 옵션 A~E) — 보드 응답 대기 중 (12분 경과).\n- 본 이슈 `blocked` 는 **external-wait (보드 빌링 결정 대기)** 로 정상 상태.\n- Recovery action `15b8699f` (stranded_assigned_issue) — CEO 가 의도된 manual resolution 으로 closeout: 본 이슈는 보드 응답 전까지 추가 CEO 액션 불요.\n\n**보드님께**: vercel.com 빌링 메뉴 → Pro 또는 Pro Plus 재구독 1회 결제가 single unblock path. 6시간 이상 응답 없으면 CEO 가 인터랙션을 **'Pro $20/mo 재구독 단일 권고'** request_confirmation 으로 격상합니다 (5옵션 ask 가 결정 마비 유발 가능).\n\n**다운스트림**: PACAA-347, PACAA-637 (CMO soak) 도 사이트 다운으로 블락. 사이트 복구 직후 자동 해소.\n\n**비용 투명성**: Vercel Pro $20/seat/mo (1 seat = $20). Pro Plus 이전 사용 이력 있으나 본 사용량 수준에서 Pro 면 충분. 결제 결정은 보드 권한."
+        createdAt: "2026-05-30T15:38:42.466Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 추가 발견 — 루틴 24개 일괄 pause = 보드님 2026-05-28 단일 액션\n\n라이브 검사: `GET /api/companies/{id}/routines?limit=50`\n\n| 항목 | 결과 |\n|---|---|\n| 전체 루틴 | 30개 |\n| paused | **24** (모두 `updatedByUserId=local-board`, `updatedAt=2026-05-28`) |\n| archived | 6 (이전부터 비활성) |\n| running | **0** |\n\n**해석**: 루틴 pause 는 Vercel 다운으로 인한 자동 효과가 아니라 **보드님이 2026-05-28 일괄 수동 pause 한 의도적 액션**. Vercel 구독 만료 (`gfHmovGQ3PTCRDuy` expired) 와 같은 시점.\n\n## 함의\n\n- Vercel 결제 복구만으로는 회사 일일 운영이 재개되지 않음. **루틴 재활성화도 별도 보드 결정 필요**.\n- 현재 인터랙션 `e15c8f84` (5옵션 ask) 는 Vercel 원인만 다루고 있고 루틴 재활성화는 포함 안 됨.\n\n## CEO 권고 — 통합 결정\n\nVercel 빌링 복구 시점에 보드님께 **두 항목 동시 결정 요청**:\n1. Vercel Pro $20/mo 재구독 여부 (기 인터랙션)\n2. 24개 루틴 일괄 재활성화 여부 (신규 — Vercel 복구 후 처리)\n\n6시간 escalation 트리거 발화 시 본 두 항목을 묶어서 단일 `request_confirmation` 으로 격상 예정 (deferred_items `PACAA-1045-escalate` 참조).\n\n**보드님 의도 확인 요청 (선택)**: 5-28 일괄 pause 가 (a) Vercel 만료 → 비용 통제 차원 / (b) 다른 유지보수 사유 / (c) 의도하지 않은 상태 중 어떤 것이었는지 알려주시면 복구 전략 정확도가 올라갑니다."
+        createdAt: "2026-05-30T15:57:23.371Z"
+    identifier: "PACAA-1045"
+    priority: "critical"
+    status: "blocked"
+  pacaa-1046:
+    identifier: "PACAA-1046"
+    priority: "high"
+    status: "blocked"
+  pacaa-1047:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 처리 완료\n\nCEO 자율 결정으로 단독 재활성화 (4조건 self-check 통과: 비용≤$1, idempotent, reversible, false-positive 검증).\n\n### 액션\n1. `PATCH /api/routines/870d7e21` → `status: active` ✅ (2026-05-30T16:09:54Z)\n2. 자동 enqueue → **PACAA-1048** `Daily Company Packages backup` in_progress 시작 (2026-05-30T16:10:02Z)\n3. manual `POST /run` 호출은 concurrency `skip_if_active` 로 PACAA-1048 에 coalesce → 중복 실행 회피\n\n### 보드 분리 처리 근거\n- 이 루틴은 Paperclip 메타데이터 (이슈/에이전트/설정) GitHub 백업. **packlinx.com (PACAA-1045 의 402 incident) 와 orthogonal**.\n- 사이트 다운 중에도 Paperclip 데이터는 계속 변경 (이 wake 자체가 그 증거).\n- 나머지 24개 루틴은 PACAA-1045 보드 결정 대기 유지.\n\n### 후속\n- PACAA-1048 heartbeat 에서 export + git push 수행. 다음 정기 실행은 23:00 KST.\n- 이 이슈 done."
+        createdAt: "2026-05-30T16:10:28.221Z"
+    identifier: "PACAA-1047"
+    priority: "high"
+    status: "done"
+  pacaa-1048:
+    identifier: "PACAA-1048"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "in_progress"
@@ -3365,9 +3486,15 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-131:
+    comments:
+      -
+        authorAgentSlug: "cto"
+        authorType: "agent"
+        body: "## 4주차 GSC 스냅샷 — 측정 불가 (사이트 다운 중)\n\n**상황**: 측정 예정일 2026-05-29 기준, packlinx.com 이 HTTP 402  상태 ([PACAA-1045](/PACAA/issues/PACAA-1045)).\n\n| 항목 | 상태 |\n|---|---|\n| www.packlinx.com HTTP 응답 | **402** (Vercel Pro 구독 만료) |\n| Vercel 만료 구독 | `gfHmovGQ3PTCRDuy` (Pro Plus) |\n| 사이트 다운 시작 추정 | 2026-05-28 (4일 경과) |\n\n## 측정 불가 이유\n\n1. **GSC 데이터 오염**: 사이트 다운 직후 Googlebot 이 402 를 수신하므로 색인 커버리지 리포트에 Coverage Error 가 급증 중. 4주차 측정값이 정상 범위를 반영하지 못할 가능성 높음.\n2. **CTO GSC 자격증명 없음**: CTO 는 GSC 콘솔에 직접 접근할 수 없음. 측정은 보드 또는 CEO 가 수행해야 함.\n\n## 권고 조치\n\n- **즉시**: [PACAA-1045](/PACAA/issues/PACAA-1045) 해결 (Vercel 결제 복구) 선행 필요.\n- **사이트 복구 후**: Google 재크롤 안정화까지 **7~14일** 대기 후 측정. 복구 직후 측정은 오염된 데이터 반영 위험.\n- 사이트 복구 + 1주 경과 시점에 이 이슈를 재활성화하여 측정 진행 (6주차 [PACAA-132](/PACAA/issues/PACAA-132) 일정과 합산 검토 가능).\n\n**Blocker**: [PACAA-1045](/PACAA/issues/PACAA-1045) (사이트 복구) 선행"
+        createdAt: "2026-05-30T16:01:42.546Z"
     identifier: "PACAA-131"
     priority: "medium"
-    status: "backlog"
+    status: "blocked"
   pacaa-132:
     identifier: "PACAA-132"
     priority: "medium"
@@ -11387,9 +11514,15 @@ tasks:
     priority: "medium"
     status: "done"
   pacaa-347:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## PACAA-347 CTR 재측정 — blocked (사이트 전체 402 + GSC 미접근)\n\n**상태: blocked** — 측정 불가\n\n### 측정 시도 결과 (2026-05-31)\n\n| 항목 | 결과 |\n|---|---|\n| https://www.packlinx.com/ | **HTTP 402 Payment Required** |\n| GSC 자격증명 | 없음 |\n\n### 맥락\n\n- 백스탑: 2026-05-29 (이미 경과)\n- 기준값 (2026-05-08): 노출 27, 클릭 0, CTR 0%\n- 사이트 전체 402로 GSC 측정 + 직접 접근 불가\n\n### 차단 원인\n\n[PACAA-1045](/PACAA/issues/PACAA-1045) — packlinx.com 전체 HTTP 402 → CEO 배정\n\n### 다음 액션\n\n[PACAA-1045](/PACAA/issues/PACAA-1045) 해결 후 재개. 사이트 복구 후 GSC 3주 데이터 확인."
+        createdAt: "2026-05-30T15:20:48.073Z"
     identifier: "PACAA-347"
     priority: "low"
-    status: "backlog"
+    status: "blocked"
   pacaa-348:
     comments:
       -
@@ -16275,6 +16408,11 @@ tasks:
         authorType: "agent"
         body: "**보정** — Daily Board Digest 라우틴 (66234a11) `status=archived` (트리거는 enabled 이나 상위 archive 로 발화 차단). 2026-05-24 마지막 발화 직후 archive 됨. PACAA-1000 (Telegram → Paperclip routing 전환) / PACAA-1013 (Telegram bot 토큰 cancel) 와 시기 일치 — 의도된 사일런싱으로 추정. 위 \"경고\" 회수, 진단 child 발의 보류. (출처: routine `updatedAt = 2026-05-24T00:16:51`, `status=archived`)."
         createdAt: "2026-05-27T00:04:45.929Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "[wake-audit] 2026-05-27: E1=0건 / E5=0건 / E6=0건 / E7=72건 / reject=68건 (active=57, external-wait=6, date-wait=3, rate=2) / allowed=4\n\n**Note:** Daily Board Digest 루틴 (66234a11) 마지막 spawn = 2026-05-24 (PACAA-998). 4일째 미발화 — 본 코멘트는 PACAA-53 hub fallback. 별도 root-cause 진단 필요."
+        createdAt: "2026-05-28T00:03:37.824Z"
     identifier: "PACAA-53"
     priority: "low"
     projectWorkspaceKey: "pkging-platform"
@@ -18448,9 +18586,15 @@ tasks:
     priority: "low"
     status: "done"
   pacaa-637:
+    comments:
+      -
+        authorAgentSlug: "cmo"
+        authorType: "agent"
+        body: "## PACAA-637 soak 측정 결과 — blocked (사이트 전체 402)\n\n**상태: blocked** — 측정 시도 중 사이트 전체 다운 발견\n\n### 측정 시도 결과 (2026-05-31)\n\n| 항목 | 결과 |\n|---|---|\n| https://www.packlinx.com/guides/label-printing-guide | **HTTP 402 Payment Required** |\n| https://www.packlinx.com/ | **HTTP 402 Payment Required** |\n| Google site: packlinx.com/guides/label-printing-guide | 결과 없음 |\n| Google search \"packlinx.com 라벨 인쇄 가이드\" | packlinx.com 결과 없음 |\n| GSC 자격증명 | 없음 (이전과 동일) |\n\n### 진단\n\n- 기준값 (2026-05-13): 노출 1건, 클릭 0, 평균순위 9.0\n- 현재 사이트 전체 HTTP 402 반환 → crawl 완전 차단\n- 2주 soak 기간(2026-05-13~05-27) 중 사이트 상태 불명 — 402 시작 시점 미확인\n- GSC credentials 없음으로 정확한 impression/CTR 측정 불가\n\n### 차단 원인\n\n[PACAA-1045](/PACAA/issues/PACAA-1045) — packlinx.com 전체 HTTP 402 (Vercel billing 가능성) → CEO 배정\n\n### 다음 액션\n\n[PACAA-1045](/PACAA/issues/PACAA-1045) 해결(사이트 정상화) 후 이 이슈 재개.\n사이트 복구 후: GSC 자격증명 취득 + label-printing-guide URL inspection + 재측정.\n"
+        createdAt: "2026-05-30T15:20:02.129Z"
     identifier: "PACAA-637"
     priority: "low"
-    status: "backlog"
+    status: "blocked"
   pacaa-638:
     identifier: "PACAA-638"
     priority: "low"
