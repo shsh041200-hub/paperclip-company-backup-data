@@ -1662,6 +1662,11 @@ tasks:
         authorType: "agent"
         body: "## 추가 발견 — 루틴 24개 일괄 pause = 보드님 2026-05-28 단일 액션\n\n라이브 검사: `GET /api/companies/{id}/routines?limit=50`\n\n| 항목 | 결과 |\n|---|---|\n| 전체 루틴 | 30개 |\n| paused | **24** (모두 `updatedByUserId=local-board`, `updatedAt=2026-05-28`) |\n| archived | 6 (이전부터 비활성) |\n| running | **0** |\n\n**해석**: 루틴 pause 는 Vercel 다운으로 인한 자동 효과가 아니라 **보드님이 2026-05-28 일괄 수동 pause 한 의도적 액션**. Vercel 구독 만료 (`gfHmovGQ3PTCRDuy` expired) 와 같은 시점.\n\n## 함의\n\n- Vercel 결제 복구만으로는 회사 일일 운영이 재개되지 않음. **루틴 재활성화도 별도 보드 결정 필요**.\n- 현재 인터랙션 `e15c8f84` (5옵션 ask) 는 Vercel 원인만 다루고 있고 루틴 재활성화는 포함 안 됨.\n\n## CEO 권고 — 통합 결정\n\nVercel 빌링 복구 시점에 보드님께 **두 항목 동시 결정 요청**:\n1. Vercel Pro $20/mo 재구독 여부 (기 인터랙션)\n2. 24개 루틴 일괄 재활성화 여부 (신규 — Vercel 복구 후 처리)\n\n6시간 escalation 트리거 발화 시 본 두 항목을 묶어서 단일 `request_confirmation` 으로 격상 예정 (deferred_items `PACAA-1045-escalate` 참조).\n\n**보드님 의도 확인 요청 (선택)**: 5-28 일괄 pause 가 (a) Vercel 만료 → 비용 통제 차원 / (b) 다른 유지보수 사유 / (c) 의도하지 않은 상태 중 어떤 것이었는지 알려주시면 복구 전략 정확도가 올라갑니다."
         createdAt: "2026-05-30T15:57:23.371Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## CEO 격상 — 단일 권고 RC 발의 (ab3135a6)\n\n6h+ 응답 없음. 결정 마비 우려로 5옵션 ask `e15c8f84` 를 **단일 권고 request_confirmation `ab3135a6`** 로 supersede.\n\n**보드님 결정 1가지**: Accept (Vercel Pro $20/mo 재구독) 또는 Decline (Cloudflare Pages 마이그 옵션 별도 제시).\n\n**Note**: 시스템에 인터랙션 cancel 엔드포인트 없어 `e15c8f84` 도 pending 잔류. **신규 RC `ab3135a6` 응답을 우선** 처리 부탁드립니다.\n\n신규 RC 본문은 Paperclip UI 인터랙션 탭에서 확인 가능."
+        createdAt: "2026-05-30T21:25:15.945Z"
     identifier: "PACAA-1045"
     priority: "critical"
     status: "blocked"
@@ -1680,7 +1685,18 @@ tasks:
     priority: "high"
     status: "done"
   pacaa-1048:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "PACAA-1048 closed. Backup pushed cleanly.\n\n**오늘 백업 완료.**\n\n- Commit: `248422f` — 2026-05-31 23:00 KST daily Company Package snapshot (secrets scrubbed)\n- Counts: agents 8 / skills 26 / projects 1 / issues 1074 / files 1139\n- Scrubber: 19 redactions across 8 패턴 (Cloudflare 4, Paperclip JWT 1, Supabase 2, GitHub webhook 1, Founder pw 1, Telegram 7, Replicate 1, FTC NTS 2)\n- Snapshot: `$AGENT_HOME/backups/2026-05-31/export.json` (14.2MB)\n- Push: https://github.com/shsh041200-hub/paperclip-company-backup-data `4aea865..248422f`"
+        createdAt: "2026-05-30T16:11:43.422Z"
     identifier: "PACAA-1048"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-1049:
+    identifier: "PACAA-1049"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "in_progress"
@@ -5818,7 +5834,7 @@ tasks:
         createdAt: "2026-05-01T13:22:35.556Z"
       -
         authorType: "user"
-        body: "CF\\_ACCOUNT\\_ID a533fcfb9e663ae8f087026a3557ce54\n\nCF\\_API\\_TOKEN cfut\\_Cl103Sa7yCcgT648YcNK50MoQemw5SI1kNMVKa8Y7334ec87\n\n\n\nGITHUB\\_WEBHOOK\\_SECRET [REDACTED-GitHubWebhookSecret]\n\n\n\nE5 Worker JWT pcp\\_13897a46bb2537d54c4d917811e6d3b1174fc0e48bf5af95"
+        body: "CF\\_ACCOUNT\\_ID a533fcfb9e663ae8f087026a3557ce54\n\nCF\\_API\\_TOKEN [REDACTED-CloudflareUserAPIToken]\n\n\n\nGITHUB\\_WEBHOOK\\_SECRET [REDACTED-GitHubWebhookSecret]\n\n\n\nE5 Worker JWT [REDACTED-PaperclipWorkerJWT]"
         createdAt: "2026-05-01T14:15:03.437Z"
       -
         authorAgentSlug: "ceo"
@@ -6341,7 +6357,7 @@ tasks:
         createdAt: "2026-05-01T16:43:50.667Z"
       -
         authorType: "user"
-        body: "cfut\\_jjIllQuMD2Nx6l6LmOwBXv6TUk4fJ6qP0VnHwNUc470c2c68"
+        body: "[REDACTED-CloudflareUserAPIToken]"
         createdAt: "2026-05-01T16:43:52.641Z"
       -
         authorAgentSlug: "ceo"
@@ -9064,7 +9080,7 @@ tasks:
         createdAt: "2026-05-07T13:26:52.812Z"
       -
         authorType: "user"
-        body: "cfut\\_iS4HL6rs9tZ39U6eghPelFwpeledBKD6SR1hc6MN67487a5b&#x20;\n\n그리고 🔐 PACAA-266 — Founder Dashboard 자격증명\n\n\n\nBackend 가 1-card MVP (Pending interaction backlog) 워커 빌드 완료. 배포만 남음.\n\n\n\n━━━━━━━━━━━━\n\n📌 로그인 정보 (배포 후 사용)\n\nURL: [https://packlinx.com/admin](https://packlinx.com/admin)\n\nUsername: founder\n\nPassword: [REDACTED-FounderDashboardPassword]n\n\n다음 액션 (보드):\n\nPaperclip PACAA-266 에 곧 도착할 request\\_confirmation 인터랙션에 답하지 말고, 본 이슈 코멘트로 CLOUDFLARE\\_API\\_TOKEN 값을 paste 해주세요. paste 즉시 인터랙션 자동 expire → CEO wake → Backend 워크스페이스 .env 주입 → Backend wake → wrangler deploy.\n\n\n\n주의: 토큰은 weekly rotate (\\~2026-05-08 만료) — 노출 허용 범위\n\nDaily Board Digest 텔레그램 봇에게 보낸 이 내용은 Daily Board Digest텔레그램 봇에게 보내는게 아니라 Paperclip 텔레그램 봇에다가 보냈어야지"
+        body: "[REDACTED-CloudflareUserAPIToken]&#x20;\n\n그리고 🔐 PACAA-266 — Founder Dashboard 자격증명\n\n\n\nBackend 가 1-card MVP (Pending interaction backlog) 워커 빌드 완료. 배포만 남음.\n\n\n\n━━━━━━━━━━━━\n\n📌 로그인 정보 (배포 후 사용)\n\nURL: [https://packlinx.com/admin](https://packlinx.com/admin)\n\nUsername: founder\n\nPassword: [REDACTED-FounderDashboardPassword]n\n\n다음 액션 (보드):\n\nPaperclip PACAA-266 에 곧 도착할 request\\_confirmation 인터랙션에 답하지 말고, 본 이슈 코멘트로 CLOUDFLARE\\_API\\_TOKEN 값을 paste 해주세요. paste 즉시 인터랙션 자동 expire → CEO wake → Backend 워크스페이스 .env 주입 → Backend wake → wrangler deploy.\n\n\n\n주의: 토큰은 weekly rotate (\\~2026-05-08 만료) — 노출 허용 범위\n\nDaily Board Digest 텔레그램 봇에게 보낸 이 내용은 Daily Board Digest텔레그램 봇에게 보내는게 아니라 Paperclip 텔레그램 봇에다가 보냈어야지"
         createdAt: "2026-05-07T13:36:29.399Z"
       -
         authorAgentSlug: "backend-engineer"
