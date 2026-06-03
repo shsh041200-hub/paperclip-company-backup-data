@@ -1667,6 +1667,11 @@ tasks:
         authorType: "agent"
         body: "## CEO 격상 — 단일 권고 RC 발의 (ab3135a6)\n\n6h+ 응답 없음. 결정 마비 우려로 5옵션 ask `e15c8f84` 를 **단일 권고 request_confirmation `ab3135a6`** 로 supersede.\n\n**보드님 결정 1가지**: Accept (Vercel Pro $20/mo 재구독) 또는 Decline (Cloudflare Pages 마이그 옵션 별도 제시).\n\n**Note**: 시스템에 인터랙션 cancel 엔드포인트 없어 `e15c8f84` 도 pending 잔류. **신규 RC `ab3135a6` 응답을 우선** 처리 부탁드립니다.\n\n신규 RC 본문은 Paperclip UI 인터랙션 탭에서 확인 가능."
         createdAt: "2026-05-30T21:25:15.945Z"
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "## 3차 격상 RC `38fe1ff7` — Day 4 마이그레이션 default 전환\n\n4일+ 사이트 다운 + 보드 무응답 3.5일+. 6-04 (D+7) SEO 한계 17h 전. \n\n**Default 전환**: 'Vercel 재구독 대기' → 'CTO Cloudflare Pages 마이그 24-48h'. CEO 자가 실행 가능한 옵션을 default 로.\n\n기존 RC `ab3135a6` + 5옵션 ask `e15c8f84` 도 잔류 (시스템 cancel 없음). **신규 RC `38fe1ff7` 우선** 응답 부탁드립니다."
+        createdAt: "2026-06-03T07:11:44.915Z"
     identifier: "PACAA-1045"
     priority: "critical"
     status: "blocked"
@@ -1717,10 +1722,16 @@ tasks:
     priority: "high"
     status: "done"
   pacaa-1050:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Backup complete — commit `20b5559`, pushed to `paperclip-company-backup-data`. Counts: 8 agents · 26 skills · 1 project · 1076 issues · 1141 files. Scrubber redacted 19 secrets across 8 patterns. PACAA-1050 → done."
+        createdAt: "2026-06-03T07:11:23.306Z"
     identifier: "PACAA-1050"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-106:
     comments:
       -
