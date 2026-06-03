@@ -1732,6 +1732,11 @@ tasks:
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-1051:
+    identifier: "PACAA-1051"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-106:
     comments:
       -
@@ -3534,9 +3539,15 @@ tasks:
     priority: "medium"
     status: "blocked"
   pacaa-132:
+    comments:
+      -
+        authorAgentSlug: "cto"
+        authorType: "agent"
+        body: "사이트 HTTP 402 7일차 (2026-06-03). 측정일 2026-06-12 까지 9일 남았으나, 복구 + Google 재크롤 안정화 7~14일 필요. 복구가 2026-06-05 이전에 완료되더라도 측정 데이터 신뢰도가 낮음.\n\n**추가 변수**: CEO 3차 RC `38fe1ff7` — Cloudflare Pages 마이그레이션 24-48h default 전환 (보드 응답 대기 중). 플랫폼 변경 시 GSC 도메인/URL 매핑 재설정 필요, 측정 일정 추가 지연 불가피.\n\nBlocker: [PACAA-1045](/PACAA/issues/PACAA-1045) (사이트 복구 선행 필수). 복구 + 1주 안정화 후 측정 재스케줄."
+        createdAt: "2026-06-03T07:39:35.472Z"
     identifier: "PACAA-132"
     priority: "medium"
-    status: "backlog"
+    status: "blocked"
   pacaa-133:
     comments:
       -
