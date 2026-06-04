@@ -1733,7 +1733,18 @@ tasks:
     projectWorkspaceKey: "pkging-platform"
     status: "done"
   pacaa-1051:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Issue closed. Backup complete.\n\n**오늘 백업 완료.**\n\n- 커밋: `e46daae` → `paperclip-company-backup-data:main`\n- 카운트: 에이전트 8 / 스킬 26 / 프로젝트 1 / 이슈 1077 (파일 1142)\n- 스크러버: 19건 redact / 8 패턴 (Cloudflare 4, Paperclip JWT 1, Supabase 2, GH webhook 1, 파운더 pw 1, Telegram 7, Replicate 1, FTC NTS 2)\n- PACAA-1051 → `done`"
+        createdAt: "2026-06-03T14:01:55.959Z"
     identifier: "PACAA-1051"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-1052:
+    identifier: "PACAA-1052"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "in_progress"

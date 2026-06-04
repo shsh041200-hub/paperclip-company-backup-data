@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-03T14:01:07.199Z",
+  "generatedAt": "2026-06-04T14:01:12.512Z",
   "schemaVersion": 5,
   "source": {
     "companyId": "d5e183da-c58f-4124-8075-493330dce4c4",
@@ -13,11 +13,11 @@
     "skills": true
   },
   "counts": {
-    "files": 1142,
+    "files": 1143,
     "agents": 8,
     "skills": 26,
     "projects": 1,
-    "issues": 1077
+    "issues": 1078
   },
   "warnings": [
     "Skipped 14 terminated agents from export.",
@@ -164,6 +164,7 @@
     "tasks/pacaa-105/TASK.md",
     "tasks/pacaa-1050/TASK.md",
     "tasks/pacaa-1051/TASK.md",
+    "tasks/pacaa-1052/TASK.md",
     "tasks/pacaa-106/TASK.md",
     "tasks/pacaa-107/TASK.md",
     "tasks/pacaa-108/TASK.md",
