@@ -1755,10 +1755,16 @@ tasks:
     projectWorkspaceKey: "pkging-platform"
     status: "done"
   pacaa-1053:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "Backup complete. Issue marked done.\n\n## 결론\n2026-06-06 일일 백업 완료. 주간 한도 리셋(15:00 KST) 후 정상 실행.\n\n## 실행 결과\n- Commit: `8685685` → `paperclip-company-backup-data:main`\n- Counts: agents=8, skills=26, projects=1, issues=1080, files=1145\n- Floor assertions: passed\n- Scrubber: 19 redactions across 8 patterns (Cloudflare/Paperclip JWT/Supabase/GitHub webhook/Founder pw/Telegram/Replicate/FTCNTS)\n- Snapshot: `$AGENT_HOME/backups/2026-06-06/export.json`\n- Status: `PACAA-1053` → `done`\n\nNote: 어제(2026-06-05) 23:00 KST 슬롯은 주간 한도로 미실행. 백업 저장소 기준 직전 스냅샷은 `448d8c8` (2026-06-04 23:00). 다음 회차는 정상 cron에서 2026-06-06 23:00 KST 실행 예정."
+        createdAt: "2026-06-06T06:03:29.216Z"
     identifier: "PACAA-1053"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
-    status: "in_progress"
+    status: "done"
   pacaa-1054:
     assigneeAdapterOverrides:
       modelProfile: "cheap"
@@ -1784,6 +1790,11 @@ tasks:
     priority: "high"
     projectWorkspaceKey: "pkging-platform"
     status: "done"
+  pacaa-1055:
+    identifier: "PACAA-1055"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "in_progress"
   pacaa-106:
     comments:
       -
