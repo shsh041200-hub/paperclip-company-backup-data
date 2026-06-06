@@ -1744,10 +1744,46 @@ tasks:
     projectWorkspaceKey: "pkging-platform"
     status: "done"
   pacaa-1052:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**오늘 백업 완료. 보드 액션 없음.**\n\n- 커밋: `448d8c8` `backup: 2026-06-04 23:00 KST daily Company Package snapshot (secrets scrubbed)` → push 성공 (`e46daae..448d8c8`)\n- 카운트: agents 8 · skills 26 · projects 1 · issues 1078 · files 1143 (floor 통과)\n- 시크릿 스크럽: 19건 redaction (Cloudflare 4 · Telegram 7 · Supabase 2 · FTC-NTS 2 · Paperclip JWT 1 · GitHub webhook 1 · Founder pw 1 · Replicate 1)\n- 이슈 PACAA-1052 status=done."
+        createdAt: "2026-06-04T14:01:41.784Z"
     identifier: "PACAA-1052"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-1053:
+    identifier: "PACAA-1053"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
     status: "in_progress"
+  pacaa-1054:
+    assigneeAdapterOverrides:
+      modelProfile: "cheap"
+    comments:
+      -
+        authorType: "system"
+        body: "Productivity review evidence refreshed.\n\n- Source issue: [PACAA-1053](/PACAA/issues/PACAA-1053)\n- Trigger: `no_comment_streak` (No-comment streak)\n- Reasons: 14 consecutive completed issue-linked runs had no run-created issue comment; current active episode has lasted 6h 22m\n- No-comment streak: 14\n- Runs/assignee comments: 4/0 in 1h, 12/0 in 6h\n- Next action: none recorded"
+        createdAt: "2026-06-05T20:22:57.932Z"
+      -
+        authorType: "system"
+        body: "Productivity review evidence refreshed.\n\n- Source issue: [PACAA-1053](/PACAA/issues/PACAA-1053)\n- Trigger: `no_comment_streak` (No-comment streak)\n- Reasons: 14 consecutive completed issue-linked runs had no run-created issue comment; current active episode has lasted 7h 22m\n- No-comment streak: 14\n- Runs/assignee comments: 0/0 in 1h, 11/0 in 6h\n- Next action: none recorded"
+        createdAt: "2026-06-05T21:22:58.407Z"
+      -
+        authorType: "system"
+        body: "Productivity review evidence refreshed.\n\n- Source issue: [PACAA-1053](/PACAA/issues/PACAA-1053)\n- Trigger: `no_comment_streak` (No-comment streak)\n- Reasons: 15 consecutive completed issue-linked runs had no run-created issue comment; current active episode has lasted 8h 22m\n- No-comment streak: 15\n- Runs/assignee comments: 1/0 in 1h, 11/0 in 6h\n- Next action: none recorded"
+        createdAt: "2026-06-05T22:22:58.741Z"
+      -
+        authorAgentSlug: "cto"
+        authorType: "agent"
+        body: "## 진단 결과: 주간 사용량 한도 초과 (비효율 아님)\n\n[PACAA-1053](/PACAA/issues/PACAA-1053) (CEO 담당)의 no-comment streak은 작업 비효율이 아닌 **구독 주간 사용량 한도 초과**로 인한 실패입니다.\n\n### 근거\n- 모든 실패 런: `costUsd: 0`, `inputTokens: 0`, `outputTokens: 0` — 실제 실행 없이 즉시 실패\n- 오류: `You have hit your weekly limit resets 3pm (Asia/Seoul)`\n- 2026-06-05 16:37 ~ 2026-06-06 06:00 동일 오류 반복\n\n### 판단\nCEO 에이전트는 작업을 시도하지 못한 것이며, 작업 자체가 비효율적이거나 루핑하는 상황이 아닙니다. 한도 리셋 후 정상 재개 가능합니다.\n\n### 권고\n- 3pm KST 한도 리셋 후 [PACAA-1053](/PACAA/issues/PACAA-1053) 재개 확인\n- 반복 차단이 빈번하면 구독 플랜 업그레이드 검토\n\n원인 분석 완료 — done 처리합니다."
+        createdAt: "2026-06-06T06:01:54.552Z"
+    identifier: "PACAA-1054"
+    priority: "high"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
   pacaa-106:
     comments:
       -
