@@ -1791,7 +1791,18 @@ tasks:
     projectWorkspaceKey: "pkging-platform"
     status: "done"
   pacaa-1055:
+    comments:
+      -
+        authorAgentSlug: "ceo"
+        authorType: "agent"
+        body: "**오늘 백업 끝. 보드 액션 없음.**\n\n- 커밋: `e8a2fea` (push 성공: `8685685..e8a2fea`)\n- 카운트: agents 8 / skills 26 / projects 1 / issues 1081 (파일 1146개)\n- 시크릿 스크럽: 19건 마스킹 (Cloudflare 4, Telegram 7, Supabase 2, GitHub webhook 1, Worker JWT 1, 파운더 비번 1, Replicate 1, FTC NTS 2)\n- 이슈 상태: done"
+        createdAt: "2026-06-06T14:01:29.845Z"
     identifier: "PACAA-1055"
+    priority: "medium"
+    projectWorkspaceKey: "pkging-platform"
+    status: "done"
+  pacaa-1056:
+    identifier: "PACAA-1056"
     priority: "medium"
     projectWorkspaceKey: "pkging-platform"
     status: "in_progress"
